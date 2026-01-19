@@ -4,6 +4,18 @@
    ========================================================================== */
 
 /* ==========================================================================
+   Settings Header
+   ========================================================================== */
+
+.settings-header {
+  margin-bottom: var(--space-8);
+}
+
+.settings-header__content h1 {
+  margin-bottom: var(--space-2);
+}
+
+/* ==========================================================================
    Settings Section
    ========================================================================== */
 
@@ -40,6 +52,114 @@
 
 .settings-card:hover {
   border-color: var(--border-default);
+}
+
+.settings-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.settings-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-lg);
+  flex-shrink: 0;
+}
+
+.settings-card__icon--purple {
+  background: var(--accent-purple-muted);
+  color: var(--accent-purple);
+}
+
+.settings-card__icon--amber {
+  background: var(--accent-amber-muted);
+  color: var(--accent-amber);
+}
+
+.settings-card__icon--cyan {
+  background: var(--accent-cyan-muted);
+  color: var(--accent-cyan);
+}
+
+.settings-card__icon--success {
+  background: var(--accent-success-muted);
+  color: var(--accent-success);
+}
+
+.settings-card__title {
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.settings-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* ==========================================================================
+   Theme Selector
+   ========================================================================== */
+
+.theme-selector {
+  display: flex;
+  gap: var(--space-2);
+  padding: var(--space-1);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+}
+
+.theme-selector__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  flex: 1;
+  padding: var(--space-3) var(--space-4);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition-colors), var(--transition-transform);
+}
+
+.theme-selector__btn:hover {
+  background: var(--bg-quaternary);
+  color: var(--text-primary);
+}
+
+.theme-selector__btn:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.theme-selector__btn--active {
+  background: var(--accent-primary);
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.theme-selector__btn--active:hover {
+  background: var(--accent-primary-hover);
+  color: white;
+}
+
+.theme-selector__btn svg {
+  flex-shrink: 0;
 }
 
 /* ==========================================================================
@@ -112,6 +232,51 @@
    Danger Zone (for destructive actions)
    ========================================================================== */
 
+.settings-danger {
+  margin-top: var(--space-8);
+}
+
+.settings-danger__title {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--accent-error);
+  margin-bottom: var(--space-4);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+}
+
+.settings-danger__content {
+  padding: var(--space-5);
+  background: var(--accent-error-muted);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: var(--radius-lg);
+}
+
+.settings-danger__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.settings-danger__info {
+  flex: 1;
+}
+
+.settings-danger__item-title {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  margin: 0 0 var(--space-1) 0;
+}
+
+.settings-danger__item-desc {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Legacy class support */
 .settings-danger-zone {
   margin-top: var(--space-8);
   padding: var(--space-6);
@@ -134,6 +299,21 @@
 }
 
 /* ==========================================================================
+   Danger Button
+   ========================================================================== */
+
+.btn--danger {
+  background: var(--accent-error);
+  color: white;
+  border: 1px solid var(--accent-error);
+}
+
+.btn--danger:hover {
+  background: var(--accent-error-hover);
+  border-color: var(--accent-error-hover);
+}
+
+/* ==========================================================================
    Responsive Adjustments
    ========================================================================== */
 
@@ -144,5 +324,39 @@
 
   .settings-form {
     gap: var(--space-4);
+  }
+
+  .theme-selector {
+    flex-direction: column;
+  }
+
+  .settings-danger__item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .settings-danger__item .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .settings-card__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+
+  .theme-selector__btn span {
+    display: none;
+  }
+
+  .theme-selector {
+    flex-direction: row;
+  }
+
+  .theme-selector__btn {
+    padding: var(--space-3);
   }
 }

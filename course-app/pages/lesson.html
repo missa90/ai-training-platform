@@ -13,6 +13,9 @@
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 </head>
 <body class="page-lesson">
+  <!-- Skip Link for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <div class="app-container app-container--lesson">
     <!-- Mobile Toggle Button -->
     <button class="sidebar__mobile-toggle" id="sidebarMobileToggle" aria-label="Toggle navigation menu">
@@ -70,7 +73,7 @@
       </div>
 
       <!-- Lesson Stage (Presentation Area) -->
-      <main class="lesson-stage">
+      <main class="lesson-stage" id="main-content">
         <!-- Slide 1: The Memory Problem -->
         <section class="lesson-slide lesson-slide--active" data-slide="1">
           <div class="slide-content">
@@ -1656,6 +1659,7 @@
   </div>
 
   <!-- Scripts -->
+  <script src="../js/components/theme-switcher.js"></script>
   <script src="../js/main.js"></script>
   <script src="../js/components/context-window.js"></script>
   <script src="../js/components/context-timeline.js"></script>

@@ -15,6 +15,7 @@
 /* Utilities */
 @import url('./utilities/spacing.css');
 @import url('./utilities/animations.css');
+@import url('./utilities/accessibility.css');
 
 /* Components */
 @import url('./components/sidebar.css');

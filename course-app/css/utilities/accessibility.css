@@ -1,0 +1,162 @@
+/* ==========================================================================
+   Accessibility Utilities - AI Training Platform
+   Skip links, focus utilities, and screen reader helpers
+   ========================================================================== */
+
+/* ==========================================================================
+   Skip Link
+   Hidden link that appears on focus for keyboard navigation
+   ========================================================================== */
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: var(--space-4);
+  padding: var(--space-3) var(--space-5);
+  background: var(--accent-primary);
+  color: white;
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  z-index: var(--z-max);
+  transition: top var(--duration-fast) var(--ease-out);
+}
+
+.skip-link:focus {
+  top: var(--space-4);
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Screen Reader Only
+   Visually hidden but accessible to screen readers
+   ========================================================================== */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sr-only-focusable:focus,
+.sr-only-focusable:active {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* ==========================================================================
+   Focus Visible Utilities
+   Enhanced focus styles for better visibility
+   ========================================================================== */
+
+.focus-visible-ring:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.focus-visible-inset:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: -2px;
+}
+
+.focus-visible-shadow:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--accent-primary-muted);
+}
+
+/* ==========================================================================
+   Not Screen Reader Only (Opposite of sr-only)
+   For elements that should be visible but not to screen readers
+   ========================================================================== */
+
+[aria-hidden="true"] {
+  /* Prevent focus on hidden elements */
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   High Contrast Mode Support
+   ========================================================================== */
+
+@media (forced-colors: active) {
+  .skip-link:focus {
+    outline: 3px solid CanvasText;
+  }
+
+  .focus-visible-ring:focus-visible,
+  .focus-visible-inset:focus-visible {
+    outline: 3px solid CanvasText;
+  }
+}
+
+/* ==========================================================================
+   Motion Preferences
+   Reduce or remove animations for users who prefer reduced motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .skip-link {
+    transition: none;
+  }
+
+  /* Force no animation on all elements */
+  .no-motion-preference * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ==========================================================================
+   Focus Within
+   Style parent elements when child has focus
+   ========================================================================== */
+
+.focus-within-ring:focus-within {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.focus-within-border:focus-within {
+  border-color: var(--accent-primary);
+}
+
+/* ==========================================================================
+   Live Region Utilities
+   For dynamic content announcements
+   ========================================================================== */
+
+.live-polite {
+  /* Content changes announced at next pause */
+}
+
+.live-assertive {
+  /* Content changes announced immediately */
+}
+
+/* ==========================================================================
+   Touch Target Utilities
+   Ensure minimum 44x44px touch targets (WCAG 2.5.5)
+   ========================================================================== */
+
+.touch-target {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.touch-target-sm {
+  min-width: 36px;
+  min-height: 36px;
+}

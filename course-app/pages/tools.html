@@ -13,6 +13,9 @@
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 </head>
 <body class="page-tools">
+  <!-- Skip Link for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <div class="app-container">
     <!-- Mobile Toggle Button -->
     <button class="sidebar__mobile-toggle" id="sidebarMobileToggle" aria-label="Toggle navigation menu">
@@ -106,7 +109,7 @@
             </div>
             <span class="sidebar__item-text">Profile</span>
           </a>
-          <a href="#" class="sidebar__item" data-tooltip="Settings">
+          <a href="settings.html" class="sidebar__item" data-tooltip="Settings">
             <div class="sidebar__item-icon">
               <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="12" cy="12" r="3"></circle>
@@ -223,7 +226,7 @@
       </header>
 
       <!-- Page Content -->
-      <main class="page-content">
+      <main class="page-content" id="main-content">
         <!-- Tools Header -->
         <section class="tools-header animate-fade-up mb-8">
           <div class="tools-header__content">
@@ -537,6 +540,7 @@
   </div>
 
   <!-- JavaScript -->
+  <script src="../js/components/theme-switcher.js"></script>
   <script src="../js/components/sidebar.js"></script>
   <script src="../js/components/header.js"></script>
   <script src="../js/main.js"></script>
