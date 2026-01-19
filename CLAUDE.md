@@ -124,8 +124,15 @@ When developing training materials for this repository:
 - Mobile responsiveness improvements
 - Onboarding flow for new users
 
+### Sprint 5 (Completed - Jan 2026)
+- Form components (inputs, textarea, select, checkbox, radio, toggle)
+- Form validation states (error, success)
+- Tooltips (CSS-only with data attributes, JS popovers)
+- Dropdown menus (action menus, user menus, context menus)
+- Settings section with demo forms
+- Keyboard shortcut (kbd) styling
+
 ### Future Sprints (Planned)
-- Sprint 5: Form components, tooltips, dropdown menus
 - Sprint 6: Data visualization, charts, progress tracking
 - Sprint 7: Course player interface, video controls
 - Sprint 8: Settings pages, accessibility improvements
