@@ -648,6 +648,291 @@
   }
 
   // ========================================================================
+  // Chart Animations (Sprint 6)
+  // ========================================================================
+
+  function initChartAnimations() {
+    // Observe charts and animate when they enter viewport
+    const chartObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const chart = entry.target;
+
+          // Animate line charts
+          if (chart.classList.contains('chart--line')) {
+            animateLineChart(chart);
+          }
+
+          // Animate bar charts
+          if (chart.classList.contains('chart--bar-horizontal') || chart.classList.contains('chart--bar')) {
+            animateBarChart(chart);
+          }
+
+          // Animate donut charts
+          if (chart.classList.contains('chart--donut')) {
+            animateDonutChart(chart);
+          }
+
+          chartObserver.unobserve(chart);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    // Observe all chart containers
+    document.querySelectorAll('.chart, .chart-container').forEach(chart => {
+      chartObserver.observe(chart);
+    });
+  }
+
+  function animateLineChart(chart) {
+    const line = chart.querySelector('.chart__line--animated');
+    const area = chart.querySelector('.chart__area');
+    const points = chart.querySelectorAll('.chart__point');
+
+    if (line) {
+      const length = line.getTotalLength ? line.getTotalLength() : 500;
+      line.style.strokeDasharray = length;
+      line.style.strokeDashoffset = length;
+
+      // Animate line drawing
+      requestAnimationFrame(() => {
+        line.style.transition = 'stroke-dashoffset 1.5s cubic-bezier(0.16, 1, 0.3, 1)';
+        line.style.strokeDashoffset = '0';
+      });
+    }
+
+    if (area) {
+      area.style.opacity = '0';
+      setTimeout(() => {
+        area.style.transition = 'opacity 0.8s ease-out';
+        area.style.opacity = '1';
+      }, 800);
+    }
+
+    // Animate points with stagger
+    points.forEach((point, index) => {
+      point.style.opacity = '0';
+      point.style.transform = 'scale(0)';
+      setTimeout(() => {
+        point.style.transition = 'opacity 0.3s, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        point.style.opacity = '1';
+        point.style.transform = 'scale(1)';
+      }, 200 + (index * 100));
+    });
+  }
+
+  function animateBarChart(chart) {
+    const bars = chart.querySelectorAll('.bar-chart__bar--animated, .progress-bar__fill--animated');
+
+    bars.forEach((bar, index) => {
+      const targetWidth = bar.style.width;
+      bar.style.width = '0';
+
+      setTimeout(() => {
+        bar.style.transition = 'width 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+        bar.style.width = targetWidth;
+      }, index * 100);
+    });
+  }
+
+  function animateDonutChart(chart) {
+    const segments = chart.querySelectorAll('.donut-chart__segment');
+
+    segments.forEach((segment, index) => {
+      const dashArray = segment.getAttribute('stroke-dasharray');
+      segment.style.strokeDasharray = '0 100';
+
+      setTimeout(() => {
+        segment.style.transition = 'stroke-dasharray 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+        segment.style.strokeDasharray = dashArray;
+      }, 200 + (index * 150));
+    });
+  }
+
+  // ========================================================================
+  // Progress Tracking Animations (Sprint 6)
+  // ========================================================================
+
+  function initProgressAnimations() {
+    const progressObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const element = entry.target;
+
+          // Animate progress bars
+          const progressBars = element.querySelectorAll('.progress-bar__fill:not(.progress-bar__fill--animated)');
+          progressBars.forEach((bar, index) => {
+            const targetWidth = bar.style.width;
+            bar.style.width = '0';
+            setTimeout(() => {
+              bar.style.transition = 'width 1s cubic-bezier(0.16, 1, 0.3, 1)';
+              bar.style.width = targetWidth;
+            }, index * 150);
+          });
+
+          // Animate milestone markers
+          const milestones = element.querySelectorAll('.milestone-progress__step');
+          milestones.forEach((milestone, index) => {
+            milestone.style.opacity = '0';
+            milestone.style.transform = 'translateY(10px)';
+            setTimeout(() => {
+              milestone.style.transition = 'opacity 0.4s, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+              milestone.style.opacity = '1';
+              milestone.style.transform = 'translateY(0)';
+            }, 300 + (index * 100));
+          });
+
+          // Animate streak days
+          const streakDays = element.querySelectorAll('.streak-days__day');
+          streakDays.forEach((day, index) => {
+            day.style.opacity = '0';
+            day.style.transform = 'scale(0.5)';
+            setTimeout(() => {
+              day.style.transition = 'opacity 0.3s, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+              day.style.opacity = '1';
+              day.style.transform = 'scale(1)';
+            }, 100 + (index * 50));
+          });
+
+          progressObserver.unobserve(element);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    // Observe progress containers
+    document.querySelectorAll('.progress-stack, .milestone-progress, .streak-days, .goal-tracker').forEach(el => {
+      progressObserver.observe(el);
+    });
+  }
+
+  // ========================================================================
+  // Heatmap Animation (Sprint 6)
+  // ========================================================================
+
+  function initHeatmapAnimation() {
+    const heatmapObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const heatmap = entry.target;
+          const cells = heatmap.querySelectorAll('.heatmap__day');
+
+          cells.forEach((cell, index) => {
+            cell.style.opacity = '0';
+            cell.style.transform = 'scale(0)';
+
+            // Staggered animation with wave effect
+            const row = index % 7;
+            const col = Math.floor(index / 7);
+            const delay = (col * 30) + (row * 20);
+
+            setTimeout(() => {
+              cell.style.transition = 'opacity 0.2s, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)';
+              cell.style.opacity = '1';
+              cell.style.transform = 'scale(1)';
+            }, delay);
+          });
+
+          heatmapObserver.unobserve(heatmap);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.heatmap').forEach(heatmap => {
+      heatmapObserver.observe(heatmap);
+    });
+  }
+
+  // ========================================================================
+  // Leaderboard Animation (Sprint 6)
+  // ========================================================================
+
+  function initLeaderboardAnimation() {
+    const leaderboardObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const leaderboard = entry.target;
+          const items = leaderboard.querySelectorAll('.leaderboard__item');
+
+          items.forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateX(-20px)';
+
+            setTimeout(() => {
+              item.style.transition = 'opacity 0.4s, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+              item.style.opacity = '1';
+              item.style.transform = 'translateX(0)';
+            }, index * 100);
+          });
+
+          leaderboardObserver.unobserve(leaderboard);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.leaderboard').forEach(leaderboard => {
+      leaderboardObserver.observe(leaderboard);
+    });
+  }
+
+  // ========================================================================
+  // Metric Cards Animation (Sprint 6)
+  // ========================================================================
+
+  function initMetricCardAnimations() {
+    const metricObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const card = entry.target;
+          const value = card.querySelector('.metric-card__value');
+
+          if (value && !value.dataset.animated) {
+            // Parse numeric value
+            const text = value.textContent;
+            const numericMatch = text.match(/[\d.]+/);
+
+            if (numericMatch) {
+              const targetValue = parseFloat(numericMatch[0]);
+              const suffix = text.replace(numericMatch[0], '');
+              const isDecimal = targetValue % 1 !== 0;
+
+              // Animate the value
+              animateMetricValue(value, targetValue, suffix, isDecimal);
+              value.dataset.animated = 'true';
+            }
+          }
+
+          metricObserver.unobserve(card);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.metric-card').forEach(card => {
+      metricObserver.observe(card);
+    });
+  }
+
+  function animateMetricValue(element, target, suffix, isDecimal, duration = 1200) {
+    const startTime = performance.now();
+
+    function update(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+      const current = target * easeOut;
+
+      element.textContent = (isDecimal ? current.toFixed(1) : Math.floor(current)) + suffix;
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        element.textContent = (isDecimal ? target.toFixed(1) : target) + suffix;
+      }
+    }
+
+    requestAnimationFrame(update);
+  }
+
+  // ========================================================================
   // Initialize Everything
   // ========================================================================
 
@@ -680,6 +965,13 @@
     initHoverEffects();
     initActiveNav();
     initKeyboardNav();
+
+    // Sprint 6: Chart & Analytics Animations
+    initChartAnimations();
+    initProgressAnimations();
+    initHeatmapAnimation();
+    initLeaderboardAnimation();
+    initMetricCardAnimations();
 
     // Console branding
     console.log(

@@ -594,8 +594,8 @@
           </div>
         </section>
 
-        <!-- Settings Preview Section -->
-        <section class="settings-section mt-10 animate-fade-up" id="settingsSection">
+        <!-- Settings Preview Section - Hidden on dashboard, for settings.html page -->
+        <section class="settings-section mt-10 animate-fade-up" id="settingsSection" hidden>
           <div class="section-header mb-6">
             <h2 class="heading-3">Account Settings</h2>
             <span class="text-caption text-muted">Manage your profile and preferences</span>
@@ -907,6 +907,694 @@
           <div class="form-actions form-actions--right mt-6">
             <button class="btn btn--ghost">Cancel</button>
             <button class="btn btn--primary">Save Changes</button>
+          </div>
+        </section>
+
+        <!-- Analytics & Visualization Section (Sprint 6) - Hidden on dashboard, for analytics.html page -->
+        <section class="analytics-section mt-10" id="analyticsSection" hidden>
+          <div class="section-header mb-6">
+            <h2 class="heading-3">Learning Analytics</h2>
+            <span class="text-caption text-muted">Track your progress and achievements</span>
+          </div>
+
+          <!-- Quick Stats Row -->
+          <div class="quick-stats mb-8 animate-fade-up">
+            <div class="quick-stats__item">
+              <span class="quick-stats__value">2,450</span>
+              <span class="quick-stats__label">Total XP</span>
+            </div>
+            <div class="quick-stats__divider"></div>
+            <div class="quick-stats__item">
+              <span class="quick-stats__value">12</span>
+              <span class="quick-stats__label">Courses</span>
+            </div>
+            <div class="quick-stats__divider"></div>
+            <div class="quick-stats__item">
+              <span class="quick-stats__value">48h</span>
+              <span class="quick-stats__label">Learned</span>
+            </div>
+            <div class="quick-stats__divider"></div>
+            <div class="quick-stats__item">
+              <span class="quick-stats__value">7</span>
+              <span class="quick-stats__label">Day Streak</span>
+            </div>
+          </div>
+
+          <!-- Metric Cards Grid -->
+          <div class="stats-grid--3 mb-8 stagger-children-100">
+            <!-- Metric Card 1 -->
+            <div class="metric-card animate-fade-up">
+              <div class="metric-card__icon metric-card__icon--primary">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                </svg>
+              </div>
+              <div class="metric-card__content">
+                <div class="metric-card__value">87%</div>
+                <div class="metric-card__label">Completion Rate</div>
+              </div>
+              <div class="metric-card__trend metric-card__trend--up">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                  <polyline points="17 6 23 6 23 12"></polyline>
+                </svg>
+                +12%
+              </div>
+            </div>
+
+            <!-- Metric Card 2 -->
+            <div class="metric-card animate-fade-up">
+              <div class="metric-card__icon metric-card__icon--success">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <div class="metric-card__content">
+                <div class="metric-card__value">4.2h</div>
+                <div class="metric-card__label">Avg. Daily Time</div>
+              </div>
+              <div class="metric-card__trend metric-card__trend--up">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                  <polyline points="17 6 23 6 23 12"></polyline>
+                </svg>
+                +0.8h
+              </div>
+            </div>
+
+            <!-- Metric Card 3 -->
+            <div class="metric-card animate-fade-up">
+              <div class="metric-card__icon metric-card__icon--warning">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+              </div>
+              <div class="metric-card__content">
+                <div class="metric-card__value">24</div>
+                <div class="metric-card__label">Achievements</div>
+              </div>
+              <div class="metric-card__trend metric-card__trend--neutral">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                +2 this week
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts Row -->
+          <div class="analytics-grid mb-8">
+            <!-- Line Chart - Weekly Progress -->
+            <div class="chart-container animate-fade-up">
+              <div class="chart-container__header">
+                <h4 class="chart-container__title">Weekly Learning Progress</h4>
+                <div class="chart-container__actions">
+                  <button class="btn btn--ghost btn--sm">This Week</button>
+                </div>
+              </div>
+              <div class="chart chart--line" style="height: 200px;">
+                <div class="chart__grid">
+                  <div class="chart__grid-line"></div>
+                  <div class="chart__grid-line"></div>
+                  <div class="chart__grid-line"></div>
+                  <div class="chart__grid-line"></div>
+                </div>
+                <svg class="chart__svg" viewBox="0 0 100 50" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="var(--accent-primary)" stop-opacity="0.3"/>
+                      <stop offset="100%" stop-color="var(--accent-primary)" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                  <path class="chart__area" d="M0,45 L14,38 L28,42 L42,25 L56,30 L70,18 L84,22 L100,10 L100,50 L0,50 Z" fill="url(#lineGradient)"/>
+                  <path class="chart__line chart__line--animated" d="M0,45 L14,38 L28,42 L42,25 L56,30 L70,18 L84,22 L100,10" fill="none" stroke="var(--accent-primary)" stroke-width="2"/>
+                  <circle class="chart__point" cx="0" cy="45" r="3" fill="var(--accent-primary)"/>
+                  <circle class="chart__point" cx="14" cy="38" r="3" fill="var(--accent-primary)"/>
+                  <circle class="chart__point" cx="28" cy="42" r="3" fill="var(--accent-primary)"/>
+                  <circle class="chart__point" cx="42" cy="25" r="3" fill="var(--accent-primary)"/>
+                  <circle class="chart__point" cx="56" cy="30" r="3" fill="var(--accent-primary)"/>
+                  <circle class="chart__point" cx="70" cy="18" r="3" fill="var(--accent-primary)"/>
+                  <circle class="chart__point" cx="84" cy="22" r="3" fill="var(--accent-primary)"/>
+                  <circle class="chart__point" cx="100" cy="10" r="3" fill="var(--accent-primary)"/>
+                </svg>
+                <div class="chart__x-labels">
+                  <span>Mon</span>
+                  <span>Tue</span>
+                  <span>Wed</span>
+                  <span>Thu</span>
+                  <span>Fri</span>
+                  <span>Sat</span>
+                  <span>Sun</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Donut Chart - Time Distribution -->
+            <div class="chart-container animate-fade-up">
+              <div class="chart-container__header">
+                <h4 class="chart-container__title">Time Distribution</h4>
+              </div>
+              <div class="chart chart--donut">
+                <svg class="donut-chart" viewBox="0 0 42 42">
+                  <circle class="donut-chart__ring" cx="21" cy="21" r="15.91549431" fill="transparent" stroke="var(--bg-tertiary)" stroke-width="3"></circle>
+                  <circle class="donut-chart__segment donut-chart__segment--1" cx="21" cy="21" r="15.91549431" fill="transparent" stroke="var(--accent-primary)" stroke-width="3" stroke-dasharray="40 60" stroke-dashoffset="25"></circle>
+                  <circle class="donut-chart__segment donut-chart__segment--2" cx="21" cy="21" r="15.91549431" fill="transparent" stroke="var(--accent-cyan)" stroke-width="3" stroke-dasharray="25 75" stroke-dashoffset="85"></circle>
+                  <circle class="donut-chart__segment donut-chart__segment--3" cx="21" cy="21" r="15.91549431" fill="transparent" stroke="var(--accent-amber)" stroke-width="3" stroke-dasharray="20 80" stroke-dashoffset="60"></circle>
+                  <circle class="donut-chart__segment donut-chart__segment--4" cx="21" cy="21" r="15.91549431" fill="transparent" stroke="var(--accent-success)" stroke-width="3" stroke-dasharray="15 85" stroke-dashoffset="40"></circle>
+                </svg>
+                <div class="donut-chart__center">
+                  <span class="donut-chart__value">48h</span>
+                  <span class="donut-chart__label">Total</span>
+                </div>
+              </div>
+              <div class="chart-legend">
+                <div class="chart-legend__item">
+                  <span class="chart-legend__color" style="background: var(--accent-primary);"></span>
+                  <span class="chart-legend__label">Courses</span>
+                  <span class="chart-legend__value">40%</span>
+                </div>
+                <div class="chart-legend__item">
+                  <span class="chart-legend__color" style="background: var(--accent-cyan);"></span>
+                  <span class="chart-legend__label">Practice</span>
+                  <span class="chart-legend__value">25%</span>
+                </div>
+                <div class="chart-legend__item">
+                  <span class="chart-legend__color" style="background: var(--accent-amber);"></span>
+                  <span class="chart-legend__label">Quizzes</span>
+                  <span class="chart-legend__value">20%</span>
+                </div>
+                <div class="chart-legend__item">
+                  <span class="chart-legend__color" style="background: var(--accent-success);"></span>
+                  <span class="chart-legend__label">Community</span>
+                  <span class="chart-legend__value">15%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Progress & Stats Row -->
+          <div class="analytics-grid mb-8">
+            <!-- Progress Section -->
+            <div class="card animate-fade-up">
+              <h4 class="heading-5 mb-6">Course Progress</h4>
+
+              <!-- Progress Bars -->
+              <div class="progress-stack">
+                <div class="progress-item">
+                  <div class="progress-item__header">
+                    <span class="progress-item__label">Prompt Engineering</span>
+                    <span class="progress-item__value">75%</span>
+                  </div>
+                  <div class="progress-bar progress-bar--md">
+                    <div class="progress-bar__fill progress-bar__fill--animated" style="width: 75%;"></div>
+                  </div>
+                </div>
+
+                <div class="progress-item">
+                  <div class="progress-item__header">
+                    <span class="progress-item__label">RAG Fundamentals</span>
+                    <span class="progress-item__value">45%</span>
+                  </div>
+                  <div class="progress-bar progress-bar--md">
+                    <div class="progress-bar__fill progress-bar__fill--cyan" style="width: 45%;"></div>
+                  </div>
+                </div>
+
+                <div class="progress-item">
+                  <div class="progress-item__header">
+                    <span class="progress-item__label">AI Ethics & Safety</span>
+                    <span class="progress-item__value">20%</span>
+                  </div>
+                  <div class="progress-bar progress-bar--md">
+                    <div class="progress-bar__fill progress-bar__fill--amber" style="width: 20%;"></div>
+                  </div>
+                </div>
+
+                <div class="progress-item">
+                  <div class="progress-item__header">
+                    <span class="progress-item__label">AI Fundamentals</span>
+                    <span class="progress-item__value">100%</span>
+                  </div>
+                  <div class="progress-bar progress-bar--md">
+                    <div class="progress-bar__fill progress-bar__fill--success" style="width: 100%;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Milestone Progress -->
+              <div class="milestone-progress mt-6">
+                <div class="milestone-progress__header">
+                  <span class="milestone-progress__title">Learning Path</span>
+                  <span class="milestone-progress__count">3 of 5 completed</span>
+                </div>
+                <div class="milestone-progress__track">
+                  <div class="milestone-progress__fill" style="width: 60%;"></div>
+                  <div class="milestone-progress__step milestone-progress__step--completed" style="left: 0;">
+                    <div class="milestone-progress__marker">
+                      <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                    <span class="milestone-progress__label">Basics</span>
+                  </div>
+                  <div class="milestone-progress__step milestone-progress__step--completed" style="left: 25%;">
+                    <div class="milestone-progress__marker">
+                      <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                    <span class="milestone-progress__label">Prompts</span>
+                  </div>
+                  <div class="milestone-progress__step milestone-progress__step--completed" style="left: 50%;">
+                    <div class="milestone-progress__marker">
+                      <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                    <span class="milestone-progress__label">RAG</span>
+                  </div>
+                  <div class="milestone-progress__step milestone-progress__step--current" style="left: 75%;">
+                    <div class="milestone-progress__marker">4</div>
+                    <span class="milestone-progress__label">Agents</span>
+                  </div>
+                  <div class="milestone-progress__step" style="left: 100%;">
+                    <div class="milestone-progress__marker">5</div>
+                    <span class="milestone-progress__label">Expert</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Streak & Goals -->
+            <div class="card animate-fade-up">
+              <h4 class="heading-5 mb-6">Streaks & Goals</h4>
+
+              <!-- Streak Counter -->
+              <div class="streak-counter mb-6">
+                <div class="streak-counter__icon">
+                  <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+                    <path d="M12 23c-3.866 0-7-3.134-7-7 0-2.5 1.5-4.5 3-6 .5-.5 1-.9 1.5-1.2-.2 1.2.3 2.5 1 3.2.5.5 1.2.8 2 .8-.5-1.5-.5-3 .5-4.5 1-1.5 2.5-2.5 4-3.5.5-.3 1-.5 1.5-.8-.5 2 0 4 1 5.5 1 1.5 2.5 3 2.5 5.5 0 3.866-3.134 7-7 7z"/>
+                  </svg>
+                </div>
+                <div class="streak-counter__content">
+                  <div class="streak-counter__value">7</div>
+                  <div class="streak-counter__label">Day Streak</div>
+                </div>
+                <div class="streak-counter__badge">Personal Best!</div>
+              </div>
+
+              <!-- Week Days -->
+              <div class="streak-days mb-6">
+                <div class="streak-days__day streak-days__day--completed">
+                  <span class="streak-days__label">M</span>
+                  <div class="streak-days__indicator">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                </div>
+                <div class="streak-days__day streak-days__day--completed">
+                  <span class="streak-days__label">T</span>
+                  <div class="streak-days__indicator">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                </div>
+                <div class="streak-days__day streak-days__day--completed">
+                  <span class="streak-days__label">W</span>
+                  <div class="streak-days__indicator">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                </div>
+                <div class="streak-days__day streak-days__day--completed">
+                  <span class="streak-days__label">T</span>
+                  <div class="streak-days__indicator">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                </div>
+                <div class="streak-days__day streak-days__day--completed">
+                  <span class="streak-days__label">F</span>
+                  <div class="streak-days__indicator">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                </div>
+                <div class="streak-days__day streak-days__day--completed">
+                  <span class="streak-days__label">S</span>
+                  <div class="streak-days__indicator">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                </div>
+                <div class="streak-days__day streak-days__day--today">
+                  <span class="streak-days__label">S</span>
+                  <div class="streak-days__indicator">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Daily Goal -->
+              <div class="goal-tracker">
+                <div class="goal-tracker__header">
+                  <span class="goal-tracker__title">Daily Goal</span>
+                  <span class="goal-tracker__status goal-tracker__status--complete">Complete!</span>
+                </div>
+                <div class="goal-tracker__progress">
+                  <div class="progress-ring progress-ring--sm">
+                    <svg viewBox="0 0 36 36">
+                      <circle cx="18" cy="18" r="16" fill="none" stroke="var(--bg-quaternary)" stroke-width="3"/>
+                      <circle cx="18" cy="18" r="16" fill="none" stroke="var(--accent-success)" stroke-width="3" stroke-dasharray="100" stroke-dashoffset="0" transform="rotate(-90 18 18)"/>
+                    </svg>
+                    <span class="progress-ring__value">100%</span>
+                  </div>
+                  <div class="goal-tracker__details">
+                    <span class="goal-tracker__metric">2 lessons completed</span>
+                    <span class="goal-tracker__target">Goal: 2 lessons per day</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- XP Progress -->
+              <div class="xp-tracker mt-6">
+                <div class="xp-tracker__header">
+                  <span class="xp-tracker__level">Level 7</span>
+                  <span class="xp-tracker__xp">2,450 / 3,000 XP</span>
+                </div>
+                <div class="progress-bar progress-bar--lg">
+                  <div class="progress-bar__fill progress-bar__fill--gradient progress-bar__fill--shine" style="width: 82%;"></div>
+                </div>
+                <span class="xp-tracker__next">550 XP to Level 8</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Activity Heatmap & Leaderboard -->
+          <div class="analytics-grid mb-8">
+            <!-- Activity Heatmap -->
+            <div class="card animate-fade-up">
+              <div class="heatmap">
+                <div class="heatmap__header">
+                  <h4 class="heatmap__title">Activity Heatmap</h4>
+                  <span class="heatmap__period">Last 12 weeks</span>
+                </div>
+                <div class="heatmap__grid">
+                  <!-- Month Labels -->
+                  <div class="heatmap__months">
+                    <span>Oct</span>
+                    <span>Nov</span>
+                    <span>Dec</span>
+                  </div>
+                  <!-- Day Labels -->
+                  <div class="heatmap__days">
+                    <span>Mon</span>
+                    <span>Wed</span>
+                    <span>Fri</span>
+                  </div>
+                  <!-- Heatmap Cells (12 weeks x 7 days) -->
+                  <div class="heatmap__cells">
+                    <!-- Week 1 -->
+                    <div class="heatmap__week">
+                      <div class="heatmap__day heatmap__day--level-1"></div>
+                      <div class="heatmap__day heatmap__day--level-0"></div>
+                      <div class="heatmap__day heatmap__day--level-2"></div>
+                      <div class="heatmap__day heatmap__day--level-1"></div>
+                      <div class="heatmap__day heatmap__day--level-3"></div>
+                      <div class="heatmap__day heatmap__day--level-0"></div>
+                      <div class="heatmap__day heatmap__day--level-1"></div>
+                    </div>
+                    <!-- Week 2 -->
+                    <div class="heatmap__week">
+                      <div class="heatmap__day heatmap__day--level-2"></div>
+                      <div class="heatmap__day heatmap__day--level-1"></div>
+                      <div class="heatmap__day heatmap__day--level-0"></div>
+                      <div class="heatmap__day heatmap__day--level-2"></div>
+                      <div class="heatmap__day heatmap__day--level-4"></div>
+                      <div class="heatmap__day heatmap__day--level-1"></div>
+                      <div class="heatmap__day heatmap__day--level-0"></div>
+                    </div>
+                    <!-- Week 3 -->
+                    <div class="heatmap__week">
+                      <div class="heatmap__day heatmap__day--level-0"></div>
+                      <div class="heatmap__day heatmap__day--level-3"></div>
+                      <div class="heatmap__day heatmap__day--level-2"></div>
+                      <div class="heatmap__day heatmap__day--level-1"></div>
+                      <div class="heatmap__day heatmap__day--level-0"></div>
+                      <div class="heatmap__day heatmap__day--level-2"></div>
+                      <div class="heatmap__day heatmap__day--level-1"></div>
+                    </div>
+                    <!-- Week 4 -->
+                    <div class="heatmap__week">
+                      <div class="heatmap__day heatmap__day--level-1"></div>
+                      <div class="heatmap__day heatmap__day--level-2"></div>
+                      <div class="heatmap__day heatmap__day--level-3"></div>
+                      <div class="heatmap__day heatmap__day--level-4"></div>
+                      <div class="heatmap__day heatmap__day--level-2"></div>
+                      <div class="heatmap__day heatmap__day--level-1"></div>
+                      <div class="heatmap__day heatmap__day--level-0"></div>
+                    </div>
+                    <!-- Week 5 -->
+                    <div class="heatmap__week">
+                      <div class="heatmap__day heatmap__day--level-2"></div>
+                      <div class="heatmap__day heatmap__day--level-0"></div>
+                      <div class="heatmap__day heatmap__day--level-1"></div>
+                      <div class="heatmap__day heatmap__day--level-3"></div>
+                      <div class="heatmap__day heatmap__day--level-2"></div>
+                      <div class="heatmap__day heatmap__day--level-4"></div>
+                      <div class="heatmap__day heatmap__day--level-1"></div>
+                    </div>
+                    <!-- Week 6 -->
+                    <div class="heatmap__week">
+                      <div class="heatmap__day heatmap__day--level-0"></div>
+                      <div class="heatmap__day heatmap__day--level-1"></div>
+                      <div class="heatmap__day heatmap__day--level-2"></div>
+                      <div class="heatmap__day heatmap__day--level-0"></div>
+                      <div class="heatmap__day heatmap__day--level-3"></div>
+                      <div class="heatmap__day heatmap__day--level-2"></div>
+                      <div class="heatmap__day heatmap__day--level-1"></div>
+                    </div>
+                    <!-- Week 7 -->
+                    <div class="heatmap__week">
+                      <div class="heatmap__day heatmap__day--level-3"></div>
+                      <div class="heatmap__day heatmap__day--level-2"></div>
+                      <div class="heatmap__day heatmap__day--level-1"></div>
+                      <div class="heatmap__day heatmap__day--level-4"></div>
+                      <div class="heatmap__day heatmap__day--level-2"></div>
+                      <div class="heatmap__day heatmap__day--level-0"></div>
+                      <div class="heatmap__day heatmap__day--level-1"></div>
+                    </div>
+                    <!-- Week 8 -->
+                    <div class="heatmap__week">
+                      <div class="heatmap__day heatmap__day--level-1"></div>
+                      <div class="heatmap__day heatmap__day--level-3"></div>
+                      <div class="heatmap__day heatmap__day--level-4"></div>
+                      <div class="heatmap__day heatmap__day--level-2"></div>
+                      <div class="heatmap__day heatmap__day--level-1"></div>
+                      <div class="heatmap__day heatmap__day--level-3"></div>
+                      <div class="heatmap__day heatmap__day--level-2"></div>
+                    </div>
+                    <!-- Week 9 -->
+                    <div class="heatmap__week">
+                      <div class="heatmap__day heatmap__day--level-2"></div>
+                      <div class="heatmap__day heatmap__day--level-4"></div>
+                      <div class="heatmap__day heatmap__day--level-3"></div>
+                      <div class="heatmap__day heatmap__day--level-2"></div>
+                      <div class="heatmap__day heatmap__day--level-4"></div>
+                      <div class="heatmap__day heatmap__day--level-1"></div>
+                      <div class="heatmap__day heatmap__day--level-2"></div>
+                    </div>
+                    <!-- Week 10 -->
+                    <div class="heatmap__week">
+                      <div class="heatmap__day heatmap__day--level-3"></div>
+                      <div class="heatmap__day heatmap__day--level-2"></div>
+                      <div class="heatmap__day heatmap__day--level-4"></div>
+                      <div class="heatmap__day heatmap__day--level-3"></div>
+                      <div class="heatmap__day heatmap__day--level-2"></div>
+                      <div class="heatmap__day heatmap__day--level-4"></div>
+                      <div class="heatmap__day heatmap__day--level-3"></div>
+                    </div>
+                    <!-- Week 11 -->
+                    <div class="heatmap__week">
+                      <div class="heatmap__day heatmap__day--level-4"></div>
+                      <div class="heatmap__day heatmap__day--level-3"></div>
+                      <div class="heatmap__day heatmap__day--level-4"></div>
+                      <div class="heatmap__day heatmap__day--level-2"></div>
+                      <div class="heatmap__day heatmap__day--level-3"></div>
+                      <div class="heatmap__day heatmap__day--level-4"></div>
+                      <div class="heatmap__day heatmap__day--level-2"></div>
+                    </div>
+                    <!-- Week 12 (current) -->
+                    <div class="heatmap__week">
+                      <div class="heatmap__day heatmap__day--level-4"></div>
+                      <div class="heatmap__day heatmap__day--level-4"></div>
+                      <div class="heatmap__day heatmap__day--level-3"></div>
+                      <div class="heatmap__day heatmap__day--level-4"></div>
+                      <div class="heatmap__day heatmap__day--level-3"></div>
+                      <div class="heatmap__day heatmap__day--level-4"></div>
+                      <div class="heatmap__day heatmap__day--level-4 heatmap__day--today"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="heatmap__legend">
+                  <span class="heatmap__legend-label">Less</span>
+                  <div class="heatmap__day heatmap__day--level-0"></div>
+                  <div class="heatmap__day heatmap__day--level-1"></div>
+                  <div class="heatmap__day heatmap__day--level-2"></div>
+                  <div class="heatmap__day heatmap__day--level-3"></div>
+                  <div class="heatmap__day heatmap__day--level-4"></div>
+                  <span class="heatmap__legend-label">More</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Leaderboard -->
+            <div class="card animate-fade-up">
+              <div class="leaderboard">
+                <div class="leaderboard__header">
+                  <h4 class="leaderboard__title">Team Leaderboard</h4>
+                  <span class="leaderboard__period">This Week</span>
+                </div>
+                <div class="leaderboard__list">
+                  <!-- 1st Place -->
+                  <div class="leaderboard__item leaderboard__item--gold">
+                    <span class="leaderboard__rank">1</span>
+                    <div class="leaderboard__user">
+                      <div class="leaderboard__avatar">MK</div>
+                      <div class="leaderboard__info">
+                        <span class="leaderboard__name">Michael Kim</span>
+                        <span class="leaderboard__title">Engineering Lead</span>
+                      </div>
+                    </div>
+                    <div class="leaderboard__score">
+                      <span class="leaderboard__xp">3,240 XP</span>
+                      <span class="leaderboard__trend leaderboard__trend--up">+520</span>
+                    </div>
+                  </div>
+
+                  <!-- 2nd Place -->
+                  <div class="leaderboard__item leaderboard__item--silver">
+                    <span class="leaderboard__rank">2</span>
+                    <div class="leaderboard__user">
+                      <div class="leaderboard__avatar">SJ</div>
+                      <div class="leaderboard__info">
+                        <span class="leaderboard__name">Sarah Johnson</span>
+                        <span class="leaderboard__badge">You</span>
+                      </div>
+                    </div>
+                    <div class="leaderboard__score">
+                      <span class="leaderboard__xp">2,450 XP</span>
+                      <span class="leaderboard__trend leaderboard__trend--up">+380</span>
+                    </div>
+                  </div>
+
+                  <!-- 3rd Place -->
+                  <div class="leaderboard__item leaderboard__item--bronze">
+                    <span class="leaderboard__rank">3</span>
+                    <div class="leaderboard__user">
+                      <div class="leaderboard__avatar">AL</div>
+                      <div class="leaderboard__info">
+                        <span class="leaderboard__name">Alex Lee</span>
+                        <span class="leaderboard__title">Product Manager</span>
+                      </div>
+                    </div>
+                    <div class="leaderboard__score">
+                      <span class="leaderboard__xp">2,180 XP</span>
+                      <span class="leaderboard__trend leaderboard__trend--up">+290</span>
+                    </div>
+                  </div>
+
+                  <!-- 4th Place -->
+                  <div class="leaderboard__item">
+                    <span class="leaderboard__rank">4</span>
+                    <div class="leaderboard__user">
+                      <div class="leaderboard__avatar">JC</div>
+                      <div class="leaderboard__info">
+                        <span class="leaderboard__name">Jamie Chen</span>
+                        <span class="leaderboard__title">Data Analyst</span>
+                      </div>
+                    </div>
+                    <div class="leaderboard__score">
+                      <span class="leaderboard__xp">1,920 XP</span>
+                      <span class="leaderboard__trend leaderboard__trend--down">-50</span>
+                    </div>
+                  </div>
+
+                  <!-- 5th Place -->
+                  <div class="leaderboard__item">
+                    <span class="leaderboard__rank">5</span>
+                    <div class="leaderboard__user">
+                      <div class="leaderboard__avatar">RP</div>
+                      <div class="leaderboard__info">
+                        <span class="leaderboard__name">Rachel Park</span>
+                        <span class="leaderboard__title">Designer</span>
+                      </div>
+                    </div>
+                    <div class="leaderboard__score">
+                      <span class="leaderboard__xp">1,650 XP</span>
+                      <span class="leaderboard__trend leaderboard__trend--up">+120</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="leaderboard__view-all btn btn--ghost btn--sm">View Full Leaderboard</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bar Chart - Course Completion by Category -->
+          <div class="chart-container chart-container--wide animate-fade-up">
+            <div class="chart-container__header">
+              <h4 class="chart-container__title">Course Completion by Category</h4>
+              <div class="chart-container__actions">
+                <button class="btn btn--ghost btn--sm">All Time</button>
+              </div>
+            </div>
+            <div class="chart chart--bar-horizontal">
+              <div class="bar-chart__item">
+                <span class="bar-chart__label">Prompt Engineering</span>
+                <div class="bar-chart__bar-wrapper">
+                  <div class="bar-chart__bar bar-chart__bar--primary bar-chart__bar--animated" style="width: 85%;"></div>
+                </div>
+                <span class="bar-chart__value">85%</span>
+              </div>
+              <div class="bar-chart__item">
+                <span class="bar-chart__label">AI Fundamentals</span>
+                <div class="bar-chart__bar-wrapper">
+                  <div class="bar-chart__bar bar-chart__bar--success bar-chart__bar--animated" style="width: 100%;"></div>
+                </div>
+                <span class="bar-chart__value">100%</span>
+              </div>
+              <div class="bar-chart__item">
+                <span class="bar-chart__label">RAG & Retrieval</span>
+                <div class="bar-chart__bar-wrapper">
+                  <div class="bar-chart__bar bar-chart__bar--cyan bar-chart__bar--animated" style="width: 45%;"></div>
+                </div>
+                <span class="bar-chart__value">45%</span>
+              </div>
+              <div class="bar-chart__item">
+                <span class="bar-chart__label">AI Ethics</span>
+                <div class="bar-chart__bar-wrapper">
+                  <div class="bar-chart__bar bar-chart__bar--amber bar-chart__bar--animated" style="width: 20%;"></div>
+                </div>
+                <span class="bar-chart__value">20%</span>
+              </div>
+              <div class="bar-chart__item">
+                <span class="bar-chart__label">AI Agents</span>
+                <div class="bar-chart__bar-wrapper">
+                  <div class="bar-chart__bar bar-chart__bar--purple bar-chart__bar--animated" style="width: 10%;"></div>
+                </div>
+                <span class="bar-chart__value">10%</span>
+              </div>
+            </div>
           </div>
         </section>
       </main>

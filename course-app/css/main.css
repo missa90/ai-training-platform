@@ -28,6 +28,9 @@
 @import url('./components/forms.css');
 @import url('./components/tooltips.css');
 @import url('./components/dropdown.css');
+@import url('./components/charts.css');
+@import url('./components/progress.css');
+@import url('./components/stats.css');
 
 /* Pages */
 @import url('./pages/courses.css');
