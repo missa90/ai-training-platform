@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Header Component Demo - AI Training Platform</title>
+
+  <!-- Base Styles -->
+  <link rel="stylesheet" href="../css/base/tokens.css">
+  <link rel="stylesheet" href="../css/base/reset.css">
+  <link rel="stylesheet" href="../css/base/typography.css">
+
+  <!-- Component Styles -->
+  <link rel="stylesheet" href="../css/components/header.css">
+
+  <style>
+    /* Demo page styles */
+    body {
+      background: var(--bg-primary);
+      color: var(--text-secondary);
+      font-family: var(--font-body);
+      min-height: 100vh;
+    }
+
+    .demo-content {
+      padding: var(--space-8);
+      max-width: var(--container-lg);
+      margin: 0 auto;
+    }
+
+    .demo-section {
+      margin-bottom: var(--space-8);
+    }
+
+    .demo-section h2 {
+      margin-bottom: var(--space-4);
+      color: var(--text-primary);
+    }
+
+    .demo-info {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      margin-bottom: var(--space-6);
+    }
+
+    .demo-info h3 {
+      color: var(--accent-primary);
+      margin-bottom: var(--space-3);
+      font-size: var(--text-lg);
+    }
+
+    .demo-info ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .demo-info li {
+      padding: var(--space-2) 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .demo-info li:last-child {
+      border-bottom: none;
+    }
+
+    .demo-info code {
+      background: var(--bg-quaternary);
+      padding: 2px 6px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--accent-cyan);
+    }
+
+    .demo-controls {
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .demo-button {
+      padding: var(--space-3) var(--space-5);
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      font-weight: var(--font-medium);
+      cursor: pointer;
+      transition: var(--transition-colors);
+    }
+
+    .demo-button:hover {
+      background: var(--bg-quaternary);
+      border-color: var(--accent-primary);
+    }
+
+    .demo-button:active {
+      transform: translateY(1px);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Component -->
+  <header class="header">
+    <div class="header__inner">
+      <!-- Global Search Trigger -->
+      <button
+        class="header__search-trigger"
+        type="button"
+        aria-label="Open global search"
+      >
+        <!-- Search Icon -->
+        <svg class="header__search-icon icon icon--search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.35-4.35"/>
+        </svg>
+
+        <span class="header__search-placeholder">Search courses, lessons...</span>
+
+        <kbd class="header__search-kbd">
+          <span>⌘</span>
+          <span>K</span>
+        </kbd>
+      </button>
+
+      <!-- Spacer -->
+      <div class="header__spacer"></div>
+
+      <!-- Streak Badge -->
+      <div class="header__streak">
+        <!-- Fire Icon -->
+        <svg class="header__streak-icon icon icon--fire" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M12 2c.7 3.5-2.5 5.5-2.5 8.5 0 2.5 2 4.5 4.5 4.5 1.7 0 3.2-.9 4-2.3.8 1.8.5 4.3-1.5 6.3-2.5 2.5-6.5 2.5-9 0s-2.5-6.5 0-9c1.3-1.3 2.9-2 4.5-2V2z" fill="currentColor"/>
+        </svg>
+
+        <span class="header__streak-text">7 day streak</span>
+      </div>
+
+      <!-- Notifications Trigger -->
+      <button
+        class="header__notifications"
+        type="button"
+        aria-label="Open notifications"
+      >
+        <!-- Bell Icon -->
+        <svg class="header__notifications-icon icon icon--bell" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+        </svg>
+
+        <!-- Badge -->
+        <span class="header__notification-badge" aria-label="5 unread notifications">5</span>
+      </button>
+
+      <!-- User Menu -->
+      <button
+        class="header__user"
+        type="button"
+        aria-label="Open user menu"
+        aria-haspopup="true"
+      >
+        <!-- Avatar -->
+        <div class="header__user-avatar">
+          JD
+        </div>
+
+        <!-- Dropdown Icon -->
+        <svg class="header__user-dropdown-icon icon icon--chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Demo Content -->
+  <main class="demo-content">
+    <div class="demo-section">
+      <h2>Header Component Demo</h2>
+
+      <div class="demo-info">
+        <h3>Features</h3>
+        <ul>
+          <li><strong>Global Search:</strong> Click search bar or press <code>Cmd+K</code> (Mac) / <code>Ctrl+K</code> (Windows)</li>
+          <li><strong>Streak Badge:</strong> Animated on load with subtle pulse effect</li>
+          <li><strong>Notifications:</strong> Shows badge count with bounce animation</li>
+          <li><strong>User Menu:</strong> Dropdown trigger with avatar and chevron</li>
+          <li><strong>Keyboard Accessible:</strong> All interactive elements support keyboard navigation</li>
+          <li><strong>Responsive:</strong> Adapts to mobile, tablet, and desktop viewports</li>
+        </ul>
+      </div>
+
+      <div class="demo-info">
+        <h3>Interactive Demo Controls</h3>
+        <div class="demo-controls">
+          <button class="demo-button" onclick="updateNotificationCount(3)">
+            Set Notifications: 3
+          </button>
+          <button class="demo-button" onclick="updateNotificationCount(42)">
+            Set Notifications: 42
+          </button>
+          <button class="demo-button" onclick="updateNotificationCount(150)">
+            Set Notifications: 150
+          </button>
+          <button class="demo-button" onclick="updateNotificationCount(0)">
+            Clear Notifications
+          </button>
+          <button class="demo-button" onclick="updateStreak(14)">
+            Set Streak: 14 days
+          </button>
+          <button class="demo-button" onclick="updateStreak(100)">
+            Set Streak: 100 days
+          </button>
+        </div>
+      </div>
+
+      <div class="demo-info">
+        <h3>Console Output</h3>
+        <p>Open your browser's developer console to see interaction logs:</p>
+        <ul>
+          <li>Click search bar → <code>🔍 Opening global search...</code></li>
+          <li>Click notifications → <code>🔔 Opening notifications panel...</code></li>
+          <li>Click user menu → <code>👤 Opening user menu...</code></li>
+          <li>Press <code>Cmd+K</code> → Opens search</li>
+          <li>Press <code>Escape</code> → Closes all menus</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <!-- Component JavaScript -->
+  <script src="../js/components/header.js"></script>
+
+  <!-- Demo Controls -->
+  <script>
+    // Demo helper functions
+    function updateNotificationCount(count) {
+      if (window.headerComponent) {
+        window.headerComponent.updateNotificationCount(count);
+        console.log(`Updated notification count to: ${count}`);
+      }
+    }
+
+    function updateStreak(days) {
+      if (window.headerComponent) {
+        window.headerComponent.updateStreakCount(days);
+        console.log(`Updated streak to: ${days} days`);
+      }
+    }
+
+    // Log keyboard shortcuts
+    console.log('%c🎯 Keyboard Shortcuts', 'color: #6366f1; font-weight: bold; font-size: 14px;');
+    console.log('Cmd+K (Mac) or Ctrl+K (Windows) → Open Search');
+    console.log('Escape → Close All Menus');
+  </script>
+</body>
+</html>

@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI Training Platform - Interactive courses for enterprise AI skills development">
+  <title>Dashboard | AI Training Platform</title>
+
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="../css/main.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+</head>
+<body class="page-dashboard">
+  <div class="app-container">
+    <!-- Mobile Toggle Button -->
+    <button class="sidebar__mobile-toggle" id="sidebarMobileToggle" aria-label="Toggle navigation menu">
+      <div class="sidebar__mobile-toggle-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </button>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <!-- Desktop/Tablet Toggle -->
+      <button class="sidebar__toggle" id="sidebarToggle" aria-label="Collapse sidebar">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <!-- Logo -->
+      <div class="sidebar__logo">
+        <div class="sidebar__logo-icon">AI</div>
+        <span class="sidebar__logo-text">Training</span>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="sidebar__nav">
+        <!-- PRIMARY Section -->
+        <div class="sidebar__section">
+          <a href="index.html" class="sidebar__item sidebar__item--large active" data-tooltip="Dashboard">
+            <div class="sidebar__item-icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+                <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+                <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+                <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+              </svg>
+            </div>
+            <span class="sidebar__item-text">Dashboard</span>
+          </a>
+        </div>
+
+        <!-- LEARNING Section -->
+        <div class="sidebar__section">
+          <div class="sidebar__section-label">Learning</div>
+          <a href="courses.html" class="sidebar__item" data-tooltip="Courses">
+            <div class="sidebar__item-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+              </svg>
+            </div>
+            <span class="sidebar__item-text">Courses</span>
+            <span class="sidebar__item-badge">3 new</span>
+          </a>
+          <a href="tools.html" class="sidebar__item" data-tooltip="Tools">
+            <div class="sidebar__item-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+              </svg>
+            </div>
+            <span class="sidebar__item-text">Tools</span>
+          </a>
+        </div>
+
+        <!-- CONNECT Section -->
+        <div class="sidebar__section">
+          <div class="sidebar__section-label">Connect</div>
+          <a href="community.html" class="sidebar__item" data-tooltip="Community">
+            <div class="sidebar__item-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <span class="sidebar__item-text">Community</span>
+            <span class="sidebar__item-badge">12</span>
+          </a>
+        </div>
+
+        <!-- SECONDARY Section -->
+        <div class="sidebar__section">
+          <a href="profile.html" class="sidebar__item" data-tooltip="Profile">
+            <div class="sidebar__item-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+            <span class="sidebar__item-text">Profile</span>
+          </a>
+          <a href="#" class="sidebar__item" data-tooltip="Settings">
+            <div class="sidebar__item-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+              </svg>
+            </div>
+            <span class="sidebar__item-text">Settings</span>
+          </a>
+          <a href="#" class="sidebar__item" data-tooltip="Help">
+            <div class="sidebar__item-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+            </div>
+            <span class="sidebar__item-text">Help</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Progress Widget -->
+      <div class="sidebar__progress">
+        <div class="sidebar__progress-header">Weekly Progress</div>
+        <div class="sidebar__progress-ring-container">
+          <svg class="sidebar__progress-ring" viewBox="0 0 120 120">
+            <circle class="sidebar__progress-ring-bg" cx="60" cy="60" r="54"></circle>
+            <circle class="sidebar__progress-ring-fill" cx="60" cy="60" r="54" data-progress="65"></circle>
+          </svg>
+          <div class="sidebar__progress-percentage">65<span style="font-size: 0.6em;">%</span></div>
+        </div>
+        <div class="sidebar__progress-label">3/5 lessons this week</div>
+      </div>
+
+      <!-- User Card -->
+      <div class="sidebar__user">
+        <div class="sidebar__user-info">
+          <div class="sidebar__user-avatar">SJ</div>
+          <div class="sidebar__user-details">
+            <div class="sidebar__user-name">Sarah Johnson</div>
+            <span class="sidebar__user-level">Level 7 Expert</span>
+          </div>
+        </div>
+        <div class="sidebar__user-xp">
+          <div class="sidebar__user-xp-label">
+            <span><span class="sidebar__user-xp-current">2,450</span> XP</span>
+            <span><span class="sidebar__user-xp-max">3,000</span> XP</span>
+          </div>
+          <div class="sidebar__user-xp-bar">
+            <div class="sidebar__user-xp-fill" data-current="2450" data-max="3000"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upgrade CTA -->
+      <div class="sidebar__upgrade">
+        <button class="sidebar__upgrade-btn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          Upgrade to Pro
+        </button>
+      </div>
+    </aside>
+
+    <!-- Sidebar Overlay (mobile) -->
+    <div class="sidebar__overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+      <!-- Header -->
+      <header class="header">
+        <!-- Search Trigger -->
+        <button class="header__search-trigger" id="searchTrigger">
+          <svg class="header__search-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span class="header__search-placeholder">Search courses, lessons...</span>
+          <kbd class="header__search-kbd">
+            <span class="header__search-kbd-symbol">⌘</span>K
+          </kbd>
+        </button>
+
+        <!-- Spacer -->
+        <div class="header__spacer"></div>
+
+        <!-- Streak Badge -->
+        <div class="header__streak" id="streakBadge">
+          <svg class="header__streak-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M12 23c-3.866 0-7-3.134-7-7 0-2.5 1.5-4.5 3-6 .5-.5 1-.9 1.5-1.2-.2 1.2.3 2.5 1 3.2.5.5 1.2.8 2 .8-.5-1.5-.5-3 .5-4.5 1-1.5 2.5-2.5 4-3.5.5-.3 1-.5 1.5-.8-.5 2 0 4 1 5.5 1 1.5 2.5 3 2.5 5.5 0 3.866-3.134 7-7 7z"/>
+          </svg>
+          <span class="header__streak-text">7 day streak</span>
+        </div>
+
+        <!-- Notifications -->
+        <div class="header__notifications-wrapper">
+          <button class="header__notifications" id="notificationsBtn" aria-label="Notifications">
+            <svg class="header__notifications-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+            <span class="header__notifications-badge" id="notificationBadge">5</span>
+          </button>
+          <!-- Notifications Panel -->
+          <div class="notifications-panel" id="notificationsPanel">
+            <div class="notifications-panel__header">
+              <span class="notifications-panel__title">Notifications</span>
+              <div class="notifications-panel__actions">
+                <button class="notifications-panel__action" id="markAllRead">Mark all read</button>
+              </div>
+            </div>
+            <div class="notifications-panel__tabs">
+              <button class="notifications-panel__tab active" data-tab="all">All</button>
+              <button class="notifications-panel__tab" data-tab="unread">
+                Unread
+                <span class="notifications-panel__tab-badge">3</span>
+              </button>
+            </div>
+            <div class="notifications-panel__body">
+              <ul class="notifications-panel__list">
+                <li class="notification-item notification-item--unread">
+                  <div class="notification-item__icon notification-item__icon--achievement">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                  </div>
+                  <div class="notification-item__content">
+                    <div class="notification-item__title">New Achievement Unlocked!</div>
+                    <div class="notification-item__message">You've earned the "Week Warrior" badge for your 7-day streak.</div>
+                    <div class="notification-item__time">2 hours ago</div>
+                  </div>
+                  <div class="notification-item__unread"></div>
+                </li>
+                <li class="notification-item notification-item--unread">
+                  <div class="notification-item__icon notification-item__icon--course">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                    </svg>
+                  </div>
+                  <div class="notification-item__content">
+                    <div class="notification-item__title">New Course Available</div>
+                    <div class="notification-item__message">"Advanced RAG Techniques" added to your path.</div>
+                    <div class="notification-item__time">Yesterday</div>
+                  </div>
+                  <div class="notification-item__unread"></div>
+                </li>
+                <li class="notification-item notification-item--unread">
+                  <div class="notification-item__icon notification-item__icon--community">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                  </div>
+                  <div class="notification-item__content">
+                    <div class="notification-item__title">New Reply</div>
+                    <div class="notification-item__message">Michael replied to "Fine-tuning LLMs?"</div>
+                    <div class="notification-item__time">2 days ago</div>
+                  </div>
+                  <div class="notification-item__unread"></div>
+                </li>
+                <li class="notification-item">
+                  <div class="notification-item__icon notification-item__icon--system">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                  </div>
+                  <div class="notification-item__content">
+                    <div class="notification-item__title">Weekly Progress</div>
+                    <div class="notification-item__message">You completed 3 lessons this week!</div>
+                    <div class="notification-item__time">3 days ago</div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="notifications-panel__footer">
+              <button class="notifications-panel__view-all">
+                View All Notifications
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- User Menu -->
+        <button class="header__user-menu" id="userMenuBtn" aria-label="User menu">
+          <div class="header__user-avatar">
+            <span class="header__user-avatar-initials">SJ</span>
+          </div>
+          <svg class="header__user-chevron" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+      </header>
+
+      <!-- Page Content -->
+      <main class="page-content">
+        <!-- Welcome Section -->
+        <section class="welcome-section animate-fade-up mb-10">
+          <div class="welcome-content">
+            <p class="text-overline mb-2">Good morning</p>
+            <h1 class="heading-2 mb-3">Welcome back, Sarah!</h1>
+            <p class="text-body text-secondary">You're on fire! Keep your 7 day streak going.</p>
+          </div>
+          <div class="welcome-cta">
+            <button class="btn btn--primary btn--lg">
+              Continue: Prompt Engineering
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+        </section>
+
+        <!-- Stats Grid -->
+        <section class="stats-section mb-10">
+          <div class="stats-grid stagger-children-100">
+            <!-- Stat Card 1 - Courses -->
+            <div class="stat-card animate-fade-up">
+              <div class="stat-card__header">
+                <div class="stat-card__icon stat-card__icon--primary">
+                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                  </svg>
+                </div>
+                <span class="stat-card__trend stat-card__trend--up">+2</span>
+              </div>
+              <div class="stat-card__value text-stat" data-count="12">0</div>
+              <div class="stat-card__label text-caption">Courses Completed</div>
+              <div class="stat-card__sparkline">
+                <svg viewBox="0 0 100 30" preserveAspectRatio="none">
+                  <polyline points="0,25 15,20 30,22 45,15 60,18 75,10 90,12 100,5" fill="none" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Stat Card 2 - Hours -->
+            <div class="stat-card animate-fade-up">
+              <div class="stat-card__header">
+                <div class="stat-card__icon stat-card__icon--cyan">
+                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                </div>
+                <span class="stat-card__trend stat-card__trend--up">+8</span>
+              </div>
+              <div class="stat-card__value text-stat" data-count="48">0</div>
+              <div class="stat-card__label text-caption">Hours Learned</div>
+              <div class="stat-card__sparkline stat-card__sparkline--cyan">
+                <svg viewBox="0 0 100 30" preserveAspectRatio="none">
+                  <polyline points="0,20 15,18 30,25 45,12 60,15 75,8 90,10 100,5" fill="none" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Stat Card 3 - Streak -->
+            <div class="stat-card animate-fade-up">
+              <div class="stat-card__header">
+                <div class="stat-card__icon stat-card__icon--amber">
+                  <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                    <path d="M12 23c-3.866 0-7-3.134-7-7 0-2.5 1.5-4.5 3-6 .5-.5 1-.9 1.5-1.2-.2 1.2.3 2.5 1 3.2.5.5 1.2.8 2 .8-.5-1.5-.5-3 .5-4.5 1-1.5 2.5-2.5 4-3.5.5-.3 1-.5 1.5-.8-.5 2 0 4 1 5.5 1 1.5 2.5 3 2.5 5.5 0 3.866-3.134 7-7 7z"/>
+                  </svg>
+                </div>
+                <span class="stat-card__badge">Personal best!</span>
+              </div>
+              <div class="stat-card__value text-stat" data-count="7">0</div>
+              <div class="stat-card__label text-caption">Day Streak</div>
+              <div class="stat-card__mini-calendar">
+                <span class="day active"></span>
+                <span class="day active"></span>
+                <span class="day active"></span>
+                <span class="day active"></span>
+                <span class="day active"></span>
+                <span class="day active"></span>
+                <span class="day active today"></span>
+              </div>
+            </div>
+
+            <!-- Stat Card 4 - Level -->
+            <div class="stat-card animate-fade-up">
+              <div class="stat-card__header">
+                <div class="stat-card__icon stat-card__icon--success">
+                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                  </svg>
+                </div>
+                <span class="stat-card__trend">Expert</span>
+              </div>
+              <div class="stat-card__value text-stat" data-count="7">0</div>
+              <div class="stat-card__label text-caption">Current Level</div>
+              <div class="stat-card__xp-progress">
+                <div class="stat-card__xp-bar">
+                  <div class="stat-card__xp-fill" style="width: 82%;"></div>
+                </div>
+                <span class="stat-card__xp-text">550 XP to Level 8</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Continue Learning Section -->
+        <section class="continue-section mb-10">
+          <div class="section-header mb-6">
+            <h2 class="heading-3">Continue Learning</h2>
+            <a href="courses.html" class="section-link">View all courses →</a>
+          </div>
+
+          <div class="course-grid stagger-children-100">
+            <!-- Course Card 1 - Main (Large) -->
+            <div class="course-card course-card--featured animate-fade-up">
+              <div class="course-card__thumbnail">
+                <div class="course-card__thumbnail-bg" style="background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-purple) 100%);"></div>
+                <div class="course-card__badges">
+                  <span class="course-card__badge course-card__badge--level">Intermediate</span>
+                  <span class="course-card__badge course-card__badge--duration">4h 30m</span>
+                </div>
+              </div>
+              <div class="course-card__content">
+                <div class="course-card__meta">
+                  <span class="text-overline">12 lessons</span>
+                </div>
+                <h3 class="course-card__title heading-4">Prompt Engineering Mastery</h3>
+                <p class="course-card__description text-body-sm text-secondary">Master the art of crafting effective prompts for AI models to get better results.</p>
+                <div class="course-card__progress">
+                  <div class="course-card__progress-ring">
+                    <svg viewBox="0 0 36 36">
+                      <circle cx="18" cy="18" r="16" fill="none" stroke="var(--bg-quaternary)" stroke-width="3"/>
+                      <circle cx="18" cy="18" r="16" fill="none" stroke="var(--accent-primary)" stroke-width="3" stroke-dasharray="100" stroke-dashoffset="25" transform="rotate(-90 18 18)"/>
+                    </svg>
+                    <span class="course-card__progress-text">75%</span>
+                  </div>
+                  <div class="course-card__progress-info">
+                    <span class="text-body-sm text-primary">9 of 12 lessons</span>
+                    <span class="text-caption">Est. 15 min remaining</span>
+                  </div>
+                </div>
+                <div class="course-card__footer">
+                  <div class="course-card__social">
+                    <div class="course-card__avatars">
+                      <span class="course-card__avatar">A</span>
+                      <span class="course-card__avatar">B</span>
+                      <span class="course-card__avatar">C</span>
+                    </div>
+                    <span class="text-caption">1,234 learners</span>
+                  </div>
+                  <button class="btn btn--primary">Continue</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Course Card 2 -->
+            <div class="course-card animate-fade-up">
+              <div class="course-card__thumbnail">
+                <div class="course-card__thumbnail-bg" style="background: linear-gradient(135deg, var(--accent-cyan) 0%, #0ea5e9 100%);"></div>
+                <div class="course-card__badges">
+                  <span class="course-card__badge course-card__badge--level">Beginner</span>
+                </div>
+              </div>
+              <div class="course-card__content">
+                <h3 class="course-card__title heading-5">RAG Fundamentals</h3>
+                <p class="course-card__description text-body-sm text-secondary line-clamp-2">Learn retrieval-augmented generation from scratch.</p>
+                <div class="course-card__progress-bar">
+                  <div class="progress-bar">
+                    <div class="progress-fill" style="width: 45%;"></div>
+                  </div>
+                  <span class="text-caption">45% complete</span>
+                </div>
+                <button class="btn btn--secondary btn--sm mt-4">Continue</button>
+              </div>
+            </div>
+
+            <!-- Course Card 3 -->
+            <div class="course-card animate-fade-up">
+              <div class="course-card__thumbnail">
+                <div class="course-card__thumbnail-bg" style="background: linear-gradient(135deg, var(--accent-amber) 0%, #f97316 100%);"></div>
+                <div class="course-card__badges">
+                  <span class="course-card__badge course-card__badge--level">Advanced</span>
+                </div>
+              </div>
+              <div class="course-card__content">
+                <h3 class="course-card__title heading-5">AI Ethics & Safety</h3>
+                <p class="course-card__description text-body-sm text-secondary line-clamp-2">Understand responsible AI development practices.</p>
+                <div class="course-card__progress-bar">
+                  <div class="progress-bar">
+                    <div class="progress-fill" style="width: 20%;"></div>
+                  </div>
+                  <span class="text-caption">20% complete</span>
+                </div>
+                <button class="btn btn--secondary btn--sm mt-4">Continue</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Activity & Recommendations -->
+        <section class="bottom-grid">
+          <!-- Recent Activity -->
+          <div class="activity-card animate-fade-up">
+            <h3 class="heading-5 mb-4">Recent Activity</h3>
+            <div class="activity-list">
+              <div class="activity-item">
+                <div class="activity-item__icon activity-item__icon--success">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <div class="activity-item__content">
+                  <span class="activity-item__title">Completed: Intro to LLMs</span>
+                  <span class="activity-item__time text-caption">2 hours ago</span>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-item__icon activity-item__icon--amber">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                  </svg>
+                </div>
+                <div class="activity-item__content">
+                  <span class="activity-item__title">Earned: Week Warrior Badge</span>
+                  <span class="activity-item__time text-caption">Yesterday</span>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-item__icon activity-item__icon--primary">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                  </svg>
+                </div>
+                <div class="activity-item__content">
+                  <span class="activity-item__title">Joined: AI Study Group</span>
+                  <span class="activity-item__time text-caption">3 days ago</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Learning Path -->
+          <div class="path-card animate-fade-up">
+            <h3 class="heading-5 mb-4">Your Learning Path</h3>
+            <div class="path-list">
+              <div class="path-item path-item--completed">
+                <div class="path-item__marker">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <div class="path-item__content">
+                  <span class="path-item__title">AI Fundamentals</span>
+                  <span class="path-item__status text-caption text-success">Completed</span>
+                </div>
+              </div>
+              <div class="path-item path-item--current">
+                <div class="path-item__marker">2</div>
+                <div class="path-item__content">
+                  <span class="path-item__title">Prompt Engineering</span>
+                  <span class="path-item__status text-caption text-accent">In Progress - 75%</span>
+                </div>
+              </div>
+              <div class="path-item path-item--locked">
+                <div class="path-item__marker">3</div>
+                <div class="path-item__content">
+                  <span class="path-item__title">RAG Basics</span>
+                  <span class="path-item__status text-caption text-muted">Locked</span>
+                </div>
+              </div>
+              <div class="path-item path-item--locked">
+                <div class="path-item__marker">4</div>
+                <div class="path-item__content">
+                  <span class="path-item__title">Advanced Topics</span>
+                  <span class="path-item__status text-caption text-muted">Locked</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="index.html" class="mobile-nav__item active" aria-label="Home">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        </svg>
+        <span>Home</span>
+      </a>
+      <a href="courses.html" class="mobile-nav__item" aria-label="Courses">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
+        <span>Courses</span>
+      </a>
+      <a href="tools.html" class="mobile-nav__item" aria-label="Tools">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+        </svg>
+        <span>Tools</span>
+      </a>
+      <a href="community.html" class="mobile-nav__item" aria-label="Community">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+          <circle cx="9" cy="7" r="4"></circle>
+        </svg>
+        <span>Community</span>
+      </a>
+      <a href="profile.html" class="mobile-nav__item" aria-label="Profile">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+        <span>Profile</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- Search Modal -->
+  <div class="search-modal" id="searchModal">
+    <div class="search-modal__container">
+      <div class="search-modal__header">
+        <svg class="search-modal__icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" class="search-modal__input" id="searchInput" placeholder="Search courses, tools, discussions..." autocomplete="off">
+        <button class="search-modal__close" id="searchClose">Esc</button>
+      </div>
+      <div class="search-modal__body" id="searchBody">
+        <!-- Empty State -->
+        <div class="search-modal__empty" id="searchEmpty">
+          <div class="search-modal__empty-icon">
+            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
+          <div class="search-modal__empty-title">Start typing to search</div>
+          <div class="search-modal__empty-hint">Search across courses, tools, and community discussions</div>
+        </div>
+        <!-- Search Results (populated via JS) -->
+        <div class="search-modal__results-container" id="searchResults" style="display: none;">
+          <div class="search-modal__section">
+            <div class="search-modal__section-title">Courses</div>
+            <ul class="search-modal__results" id="searchResultsCourses"></ul>
+          </div>
+          <div class="search-modal__section">
+            <div class="search-modal__section-title">Tools</div>
+            <ul class="search-modal__results" id="searchResultsTools"></ul>
+          </div>
+          <div class="search-modal__section">
+            <div class="search-modal__section-title">Community</div>
+            <ul class="search-modal__results" id="searchResultsCommunity"></ul>
+          </div>
+        </div>
+      </div>
+      <div class="search-modal__footer">
+        <div class="search-modal__hint">
+          <kbd>Enter</kbd>
+          <span>to select</span>
+        </div>
+        <div class="search-modal__hint">
+          <kbd>↑</kbd><kbd>↓</kbd>
+          <span>to navigate</span>
+        </div>
+        <div class="search-modal__hint">
+          <kbd>Esc</kbd>
+          <span>to close</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Onboarding Modal -->
+  <div class="onboarding" id="onboarding">
+    <button class="onboarding__skip" id="onboardingSkip">Skip tour</button>
+    <div class="onboarding__modal">
+      <!-- Step 1: Welcome -->
+      <div class="onboarding__step active" data-step="1">
+        <div class="onboarding__illustration">
+          <div class="onboarding__illustration-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+              <path d="M2 17l10 5 10-5"></path>
+              <path d="M2 12l10 5 10-5"></path>
+            </svg>
+          </div>
+        </div>
+        <div class="onboarding__body">
+          <h2 class="onboarding__title">Welcome to AI Training</h2>
+          <p class="onboarding__description">Your personalized learning journey starts here. Master AI skills with interactive courses designed for enterprise professionals.</p>
+          <div class="onboarding__features">
+            <div class="onboarding__feature">
+              <div class="onboarding__feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <span class="onboarding__feature-text">Hands-on interactive lessons</span>
+            </div>
+            <div class="onboarding__feature">
+              <div class="onboarding__feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <span class="onboarding__feature-text">AI tools to practice your skills</span>
+            </div>
+            <div class="onboarding__feature">
+              <div class="onboarding__feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <span class="onboarding__feature-text">Community of learners to connect with</span>
+            </div>
+          </div>
+        </div>
+        <div class="onboarding__footer">
+          <div class="onboarding__dots">
+            <span class="onboarding__dot active"></span>
+            <span class="onboarding__dot"></span>
+            <span class="onboarding__dot"></span>
+            <span class="onboarding__dot"></span>
+          </div>
+          <div class="onboarding__nav">
+            <button class="onboarding__btn onboarding__btn--primary" data-action="next">Get Started</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Courses -->
+      <div class="onboarding__step" data-step="2">
+        <div class="onboarding__illustration onboarding__illustration--courses">
+          <div class="onboarding__illustration-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+          </div>
+        </div>
+        <div class="onboarding__body">
+          <h2 class="onboarding__title">Interactive Courses</h2>
+          <p class="onboarding__description">Learn at your own pace with courses designed by AI experts. Track your progress and earn achievements as you go.</p>
+        </div>
+        <div class="onboarding__footer">
+          <div class="onboarding__dots">
+            <span class="onboarding__dot"></span>
+            <span class="onboarding__dot active"></span>
+            <span class="onboarding__dot"></span>
+            <span class="onboarding__dot"></span>
+          </div>
+          <div class="onboarding__nav">
+            <button class="onboarding__btn onboarding__btn--secondary" data-action="prev">Back</button>
+            <button class="onboarding__btn onboarding__btn--primary" data-action="next">Next</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3: Tools -->
+      <div class="onboarding__step" data-step="3">
+        <div class="onboarding__illustration onboarding__illustration--tools">
+          <div class="onboarding__illustration-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+            </svg>
+          </div>
+        </div>
+        <div class="onboarding__body">
+          <h2 class="onboarding__title">Practice with AI Tools</h2>
+          <p class="onboarding__description">Apply what you learn with our Prompt Playground, Code Sandbox, and other interactive tools.</p>
+        </div>
+        <div class="onboarding__footer">
+          <div class="onboarding__dots">
+            <span class="onboarding__dot"></span>
+            <span class="onboarding__dot"></span>
+            <span class="onboarding__dot active"></span>
+            <span class="onboarding__dot"></span>
+          </div>
+          <div class="onboarding__nav">
+            <button class="onboarding__btn onboarding__btn--secondary" data-action="prev">Back</button>
+            <button class="onboarding__btn onboarding__btn--primary" data-action="next">Next</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4: Complete -->
+      <div class="onboarding__step" data-step="4">
+        <div class="onboarding__illustration onboarding__illustration--complete">
+          <div class="onboarding__illustration-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+        </div>
+        <div class="onboarding__body">
+          <h2 class="onboarding__title">You're All Set!</h2>
+          <p class="onboarding__description">Start your first course and begin building AI skills that will transform how you work.</p>
+        </div>
+        <div class="onboarding__footer">
+          <div class="onboarding__dots">
+            <span class="onboarding__dot"></span>
+            <span class="onboarding__dot"></span>
+            <span class="onboarding__dot"></span>
+            <span class="onboarding__dot active"></span>
+          </div>
+          <div class="onboarding__nav">
+            <button class="onboarding__btn onboarding__btn--secondary" data-action="prev">Back</button>
+            <button class="onboarding__btn onboarding__btn--primary" data-action="complete">Start Learning</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="../js/components/sidebar.js"></script>
+  <script src="../js/components/header.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

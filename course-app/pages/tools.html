@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive AI tools to practice and apply your skills">
+  <title>Tools | AI Training Platform</title>
+
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="../css/main.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+</head>
+<body class="page-tools">
+  <div class="app-container">
+    <!-- Mobile Toggle Button -->
+    <button class="sidebar__mobile-toggle" id="sidebarMobileToggle" aria-label="Toggle navigation menu">
+      <div class="sidebar__mobile-toggle-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </button>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <!-- Desktop/Tablet Toggle -->
+      <button class="sidebar__toggle" id="sidebarToggle" aria-label="Collapse sidebar">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <!-- Logo -->
+      <div class="sidebar__logo">
+        <div class="sidebar__logo-icon">AI</div>
+        <span class="sidebar__logo-text">Training</span>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="sidebar__nav">
+        <!-- PRIMARY Section -->
+        <div class="sidebar__section">
+          <a href="index.html" class="sidebar__item sidebar__item--large" data-tooltip="Dashboard">
+            <div class="sidebar__item-icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+                <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+                <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+                <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+              </svg>
+            </div>
+            <span class="sidebar__item-text">Dashboard</span>
+          </a>
+        </div>
+
+        <!-- LEARNING Section -->
+        <div class="sidebar__section">
+          <div class="sidebar__section-label">Learning</div>
+          <a href="courses.html" class="sidebar__item" data-tooltip="Courses">
+            <div class="sidebar__item-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+              </svg>
+            </div>
+            <span class="sidebar__item-text">Courses</span>
+            <span class="sidebar__item-badge">3 new</span>
+          </a>
+          <a href="tools.html" class="sidebar__item active" data-tooltip="Tools">
+            <div class="sidebar__item-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+              </svg>
+            </div>
+            <span class="sidebar__item-text">Tools</span>
+          </a>
+        </div>
+
+        <!-- CONNECT Section -->
+        <div class="sidebar__section">
+          <div class="sidebar__section-label">Connect</div>
+          <a href="community.html" class="sidebar__item" data-tooltip="Community">
+            <div class="sidebar__item-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <span class="sidebar__item-text">Community</span>
+            <span class="sidebar__item-badge">12</span>
+          </a>
+        </div>
+
+        <!-- SECONDARY Section -->
+        <div class="sidebar__section">
+          <a href="profile.html" class="sidebar__item" data-tooltip="Profile">
+            <div class="sidebar__item-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+            <span class="sidebar__item-text">Profile</span>
+          </a>
+          <a href="#" class="sidebar__item" data-tooltip="Settings">
+            <div class="sidebar__item-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+              </svg>
+            </div>
+            <span class="sidebar__item-text">Settings</span>
+          </a>
+          <a href="#" class="sidebar__item" data-tooltip="Help">
+            <div class="sidebar__item-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+            </div>
+            <span class="sidebar__item-text">Help</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Progress Widget -->
+      <div class="sidebar__progress">
+        <div class="sidebar__progress-header">Weekly Progress</div>
+        <div class="sidebar__progress-ring-container">
+          <svg class="sidebar__progress-ring" viewBox="0 0 120 120">
+            <circle class="sidebar__progress-ring-bg" cx="60" cy="60" r="54"></circle>
+            <circle class="sidebar__progress-ring-fill" cx="60" cy="60" r="54" data-progress="65"></circle>
+          </svg>
+          <div class="sidebar__progress-percentage">65<span style="font-size: 0.6em;">%</span></div>
+        </div>
+        <div class="sidebar__progress-label">3/5 lessons this week</div>
+      </div>
+
+      <!-- User Card -->
+      <div class="sidebar__user">
+        <div class="sidebar__user-info">
+          <div class="sidebar__user-avatar">SJ</div>
+          <div class="sidebar__user-details">
+            <div class="sidebar__user-name">Sarah Johnson</div>
+            <span class="sidebar__user-level">Level 7 Expert</span>
+          </div>
+        </div>
+        <div class="sidebar__user-xp">
+          <div class="sidebar__user-xp-label">
+            <span><span class="sidebar__user-xp-current">2,450</span> XP</span>
+            <span><span class="sidebar__user-xp-max">3,000</span> XP</span>
+          </div>
+          <div class="sidebar__user-xp-bar">
+            <div class="sidebar__user-xp-fill" data-current="2450" data-max="3000"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upgrade CTA -->
+      <div class="sidebar__upgrade">
+        <button class="sidebar__upgrade-btn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          Upgrade to Pro
+        </button>
+      </div>
+    </aside>
+
+    <!-- Sidebar Overlay (mobile) -->
+    <div class="sidebar__overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+      <!-- Header -->
+      <header class="header">
+        <!-- Search Trigger -->
+        <button class="header__search-trigger" id="searchTrigger">
+          <svg class="header__search-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span class="header__search-placeholder">Search tools...</span>
+          <kbd class="header__search-kbd">
+            <span class="header__search-kbd-symbol">⌘</span>K
+          </kbd>
+        </button>
+
+        <!-- Spacer -->
+        <div class="header__spacer"></div>
+
+        <!-- Streak Badge -->
+        <div class="header__streak" id="streakBadge">
+          <svg class="header__streak-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M12 23c-3.866 0-7-3.134-7-7 0-2.5 1.5-4.5 3-6 .5-.5 1-.9 1.5-1.2-.2 1.2.3 2.5 1 3.2.5.5 1.2.8 2 .8-.5-1.5-.5-3 .5-4.5 1-1.5 2.5-2.5 4-3.5.5-.3 1-.5 1.5-.8-.5 2 0 4 1 5.5 1 1.5 2.5 3 2.5 5.5 0 3.866-3.134 7-7 7z"/>
+          </svg>
+          <span class="header__streak-text">7 day streak</span>
+        </div>
+
+        <!-- Notifications -->
+        <button class="header__notifications" id="notificationsBtn" aria-label="Notifications">
+          <svg class="header__notifications-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+          </svg>
+          <span class="header__notifications-badge" id="notificationBadge">5</span>
+        </button>
+
+        <!-- User Menu -->
+        <button class="header__user-menu" id="userMenuBtn" aria-label="User menu">
+          <div class="header__user-avatar">
+            <span class="header__user-avatar-initials">SJ</span>
+          </div>
+          <svg class="header__user-chevron" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+      </header>
+
+      <!-- Page Content -->
+      <main class="page-content">
+        <!-- Tools Header -->
+        <section class="tools-header animate-fade-up mb-8">
+          <div class="tools-header__content">
+            <p class="text-overline mb-2">HANDS-ON PRACTICE</p>
+            <h1 class="heading-2 mb-3">AI Tools</h1>
+            <p class="text-body text-secondary">Interactive tools to practice and apply your AI skills</p>
+          </div>
+        </section>
+
+        <!-- Suggested Tools Section -->
+        <section class="tools-suggestions animate-fade-up mb-10">
+          <h3 class="heading-6 mb-4 text-secondary">Based on recent lessons</h3>
+          <div class="tools-suggestions__scroll">
+            <div class="suggestion-chip">
+              <div class="suggestion-chip__icon suggestion-chip__icon--primary">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="4 17 10 11 4 5"></polyline>
+                  <line x1="12" y1="19" x2="20" y2="19"></line>
+                </svg>
+              </div>
+              <span class="suggestion-chip__text">Prompt Playground</span>
+            </div>
+            <div class="suggestion-chip">
+              <div class="suggestion-chip__icon suggestion-chip__icon--cyan">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="9" y1="3" x2="9" y2="21"></line>
+                </svg>
+              </div>
+              <span class="suggestion-chip__text">Model Compare</span>
+            </div>
+            <div class="suggestion-chip">
+              <div class="suggestion-chip__icon suggestion-chip__icon--amber">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 18l2 2 4-4"></path>
+                  <path d="M21 10V8a2 2 0 0 0-2-2h-5"></path>
+                  <path d="M3 16a2 2 0 0 0 2 2h3"></path>
+                  <polyline points="7 2 7 8 1 8"></polyline>
+                </svg>
+              </div>
+              <span class="suggestion-chip__text">RAG Builder</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Main Tools Grid -->
+        <section class="tools-grid mb-10">
+          <!-- Prompt Playground -->
+          <div class="tool-card tool-card--cyan animate-fade-up">
+            <div class="tool-card__preview tool-card__preview--typing">
+              <div class="preview-typing">
+                <div class="preview-typing__line"></div>
+                <div class="preview-typing__line preview-typing__line--short"></div>
+                <div class="preview-typing__cursor"></div>
+              </div>
+            </div>
+            <div class="tool-card__content">
+              <div class="tool-card__header">
+                <div class="tool-card__icon">
+                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="4 17 10 11 4 5"></polyline>
+                    <line x1="12" y1="19" x2="20" y2="19"></line>
+                  </svg>
+                </div>
+                <span class="tool-card__stats">127 prompts saved</span>
+              </div>
+              <h3 class="tool-card__title heading-5">Prompt Playground</h3>
+              <p class="tool-card__description text-body-sm text-secondary">Experiment with prompts across different AI models</p>
+              <button class="tool-card__action btn btn--secondary btn--sm">
+                Launch Tool
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Template Library -->
+          <div class="tool-card tool-card--green animate-fade-up">
+            <div class="tool-card__preview tool-card__preview--templates">
+              <div class="preview-templates">
+                <div class="preview-templates__card"></div>
+                <div class="preview-templates__card"></div>
+                <div class="preview-templates__card"></div>
+                <div class="preview-templates__card"></div>
+              </div>
+            </div>
+            <div class="tool-card__content">
+              <div class="tool-card__header">
+                <div class="tool-card__icon">
+                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
+                </div>
+                <span class="tool-card__stats">50+ templates</span>
+              </div>
+              <h3 class="tool-card__title heading-5">Template Library</h3>
+              <p class="tool-card__description text-body-sm text-secondary">Browse and customize prompt templates for any task</p>
+              <button class="tool-card__action btn btn--secondary btn--sm">
+                Launch Tool
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Code Sandbox -->
+          <div class="tool-card tool-card--amber animate-fade-up">
+            <div class="tool-card__preview tool-card__preview--code">
+              <div class="preview-code">
+                <div class="preview-code__line"></div>
+                <div class="preview-code__line preview-code__line--indent"></div>
+                <div class="preview-code__line preview-code__line--indent"></div>
+                <div class="preview-code__line"></div>
+              </div>
+            </div>
+            <div class="tool-card__content">
+              <div class="tool-card__header">
+                <div class="tool-card__icon">
+                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                  </svg>
+                </div>
+                <span class="tool-card__stats">23 saved snippets</span>
+              </div>
+              <h3 class="tool-card__title heading-5">Code Sandbox</h3>
+              <p class="tool-card__description text-body-sm text-secondary">Write and test AI-powered code snippets</p>
+              <button class="tool-card__action btn btn--secondary btn--sm">
+                Launch Tool
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Model Compare -->
+          <div class="tool-card tool-card--purple animate-fade-up">
+            <div class="tool-card__preview tool-card__preview--compare">
+              <div class="preview-compare">
+                <div class="preview-compare__pane preview-compare__pane--left">
+                  <div class="preview-compare__header"></div>
+                  <div class="preview-compare__content"></div>
+                </div>
+                <div class="preview-compare__divider"></div>
+                <div class="preview-compare__pane preview-compare__pane--right">
+                  <div class="preview-compare__header"></div>
+                  <div class="preview-compare__content"></div>
+                </div>
+              </div>
+            </div>
+            <div class="tool-card__content">
+              <div class="tool-card__header">
+                <div class="tool-card__icon">
+                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="9" y1="3" x2="9" y2="21"></line>
+                  </svg>
+                </div>
+                <span class="tool-card__stats">5 comparisons</span>
+              </div>
+              <h3 class="tool-card__title heading-5">Model Compare</h3>
+              <p class="tool-card__description text-body-sm text-secondary">Compare outputs across different AI models side-by-side</p>
+              <button class="tool-card__action btn btn--secondary btn--sm">
+                Launch Tool
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Recent Work Section -->
+        <section class="recent-work animate-fade-up">
+          <h3 class="heading-5 mb-6">Recent Work</h3>
+          <div class="recent-work__list">
+            <div class="recent-work__item">
+              <div class="recent-work__icon recent-work__icon--cyan">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="4 17 10 11 4 5"></polyline>
+                  <line x1="12" y1="19" x2="20" y2="19"></line>
+                </svg>
+              </div>
+              <div class="recent-work__content">
+                <span class="recent-work__title">Product description generator</span>
+                <span class="recent-work__meta text-caption text-secondary">Prompt Playground</span>
+              </div>
+              <span class="recent-work__time text-caption">2h ago</span>
+              <button class="recent-work__action" aria-label="Open">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </button>
+            </div>
+
+            <div class="recent-work__item">
+              <div class="recent-work__icon recent-work__icon--purple">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="9" y1="3" x2="9" y2="21"></line>
+                </svg>
+              </div>
+              <div class="recent-work__content">
+                <span class="recent-work__title">GPT-4 vs Claude comparison</span>
+                <span class="recent-work__meta text-caption text-secondary">Model Compare</span>
+              </div>
+              <span class="recent-work__time text-caption">5h ago</span>
+              <button class="recent-work__action" aria-label="Open">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </button>
+            </div>
+
+            <div class="recent-work__item">
+              <div class="recent-work__icon recent-work__icon--amber">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+              </div>
+              <div class="recent-work__content">
+                <span class="recent-work__title">API integration example</span>
+                <span class="recent-work__meta text-caption text-secondary">Code Sandbox</span>
+              </div>
+              <span class="recent-work__time text-caption">Yesterday</span>
+              <button class="recent-work__action" aria-label="Open">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </button>
+            </div>
+
+            <div class="recent-work__item">
+              <div class="recent-work__icon recent-work__icon--green">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+              </div>
+              <div class="recent-work__content">
+                <span class="recent-work__title">Email response template</span>
+                <span class="recent-work__meta text-caption text-secondary">Template Library</span>
+              </div>
+              <span class="recent-work__time text-caption">2 days ago</span>
+              <button class="recent-work__action" aria-label="Open">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="index.html" class="mobile-nav__item" aria-label="Home">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        </svg>
+        <span>Home</span>
+      </a>
+      <a href="courses.html" class="mobile-nav__item" aria-label="Courses">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
+        <span>Courses</span>
+      </a>
+      <a href="tools.html" class="mobile-nav__item active" aria-label="Tools">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+        </svg>
+        <span>Tools</span>
+      </a>
+      <a href="community.html" class="mobile-nav__item" aria-label="Community">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+          <circle cx="9" cy="7" r="4"></circle>
+        </svg>
+        <span>Community</span>
+      </a>
+      <a href="profile.html" class="mobile-nav__item" aria-label="Profile">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+        <span>Profile</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="../js/components/sidebar.js"></script>
+  <script src="../js/components/header.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

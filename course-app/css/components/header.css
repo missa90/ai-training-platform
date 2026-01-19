@@ -1,0 +1,484 @@
+/* ==========================================================================
+   Header Component - AI Training Platform
+   ========================================================================== */
+
+.header {
+  position: sticky;
+  top: 0;
+  height: var(--header-height);
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border-subtle);
+  backdrop-filter: blur(12px);
+  z-index: var(--z-sticky);
+
+  /* Add subtle gradient overlay for depth */
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 10, 11, 0.95),
+    rgba(10, 10, 11, 0.98)
+  );
+
+  /* Flex layout for direct children */
+  display: flex;
+  align-items: center;
+  padding: 0 var(--space-6);
+  gap: var(--space-4);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 var(--space-6);
+  gap: var(--space-4);
+}
+
+/* ==========================================================================
+   Global Search Trigger
+   ========================================================================== */
+
+.header__search-trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 320px;
+  height: 40px;
+  padding: 0 var(--space-3);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: var(--transition-colors), var(--transition-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.header__search-trigger::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(99, 102, 241, 0.03) 50%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-out);
+}
+
+.header__search-trigger:hover {
+  border-color: var(--border-default);
+  background: var(--bg-quaternary);
+}
+
+.header__search-trigger:hover::before {
+  opacity: 1;
+}
+
+.header__search-trigger:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+  border-color: var(--accent-primary);
+}
+
+.header__search-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: var(--transition-colors);
+}
+
+.header__search-trigger:hover .header__search-icon {
+  color: var(--text-secondary);
+}
+
+.header__search-placeholder {
+  flex: 1;
+  text-align: left;
+  user-select: none;
+}
+
+.header__search-kbd {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 2px 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2),
+              inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  transition: var(--transition-colors);
+}
+
+.header__search-trigger:hover .header__search-kbd {
+  border-color: var(--border-default);
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   Spacer
+   ========================================================================== */
+
+.header__spacer {
+  flex: 1;
+}
+
+/* ==========================================================================
+   Streak Badge
+   ========================================================================== */
+
+.header__streak {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: linear-gradient(
+    135deg,
+    rgba(245, 158, 11, 0.12),
+    rgba(251, 191, 36, 0.08)
+  );
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-radius: var(--radius-full);
+  color: var(--accent-amber);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+  animation: streak-badge-enter var(--duration-slow) var(--ease-spring) forwards;
+}
+
+@keyframes streak-badge-enter {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(-4px);
+  }
+  60% {
+    transform: scale(1.02) translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Subtle pulse animation for streak */
+.header__streak.is-pulsing {
+  animation: streak-pulse 2s var(--ease-in-out) infinite;
+}
+
+@keyframes streak-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(245, 158, 11, 0);
+  }
+}
+
+.header__streak-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.header__streak-text {
+  white-space: nowrap;
+  letter-spacing: var(--tracking-tight);
+}
+
+/* ==========================================================================
+   Notifications Trigger
+   ========================================================================== */
+
+.header__notifications-wrapper {
+  position: relative;
+}
+
+.header__notifications {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition-colors), var(--transition-transform);
+}
+
+.header__notifications:hover {
+  background: var(--bg-quaternary);
+  border-color: var(--border-default);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+.header__notifications:active {
+  transform: translateY(0);
+}
+
+.header__notifications:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.header__notifications-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Notification Badge */
+.header__notifications-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+  background: var(--accent-error);
+  border: 2px solid var(--bg-primary);
+  border-radius: var(--radius-full);
+  color: white;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: var(--font-bold);
+  line-height: 1;
+  box-shadow: 0 2px 4px rgba(239, 68, 68, 0.3);
+  animation: badge-bounce var(--duration-slow) var(--ease-spring);
+}
+
+@keyframes badge-bounce {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ==========================================================================
+   User Menu
+   ========================================================================== */
+
+.header__user {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1);
+  padding-right: var(--space-3);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: var(--transition-colors), var(--transition-shadow);
+}
+
+.header__user:hover {
+  background: var(--bg-quaternary);
+  border-color: var(--border-default);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.header__user:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.header__user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(
+    135deg,
+    var(--accent-primary),
+    var(--accent-cyan)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  flex-shrink: 0;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.header__user-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-full);
+}
+
+.header__user-dropdown-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--text-muted);
+  transition: var(--transition-transform), var(--transition-colors);
+}
+
+.header__user:hover .header__user-dropdown-icon {
+  color: var(--text-secondary);
+}
+
+.header__user.is-open .header__user-dropdown-icon {
+  transform: rotate(180deg);
+}
+
+/* ==========================================================================
+   Icon Utilities
+   ========================================================================== */
+
+/* Generic icon styles */
+.icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  stroke-width: 2;
+  fill: none;
+  stroke: currentColor;
+}
+
+.icon--search {
+  stroke-width: 2.5;
+}
+
+.icon--fire {
+  fill: currentColor;
+  stroke: none;
+}
+
+.icon--bell {
+  stroke-width: 2;
+}
+
+.icon--chevron {
+  stroke-width: 2.5;
+}
+
+/* ==========================================================================
+   Responsive Adjustments
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .header__inner {
+    padding: 0 var(--space-4);
+    gap: var(--space-3);
+  }
+
+  .header__search-trigger {
+    width: 200px;
+  }
+
+  .header__search-placeholder {
+    display: none;
+  }
+
+  .header__search-kbd {
+    display: none;
+  }
+
+  .header__streak-text {
+    display: none;
+  }
+
+  .header__streak {
+    padding: var(--space-2);
+  }
+}
+
+@media (max-width: 480px) {
+  .header__search-trigger {
+    width: 40px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .header__search-icon {
+    margin: 0;
+  }
+}
+
+/* ==========================================================================
+   Loading States
+   ========================================================================== */
+
+.header__notifications.is-loading .header__notifications-icon {
+  animation: pulse 2s var(--ease-in-out) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* ==========================================================================
+   Accessibility
+   ========================================================================== */
+
+/* Focus visible improvements */
+@media (prefers-reduced-motion: no-preference) {
+  .header__search-trigger:focus-visible,
+  .header__notifications:focus-visible,
+  .header__user:focus-visible {
+    animation: focus-ring-pulse 1.5s ease-out;
+  }
+}
+
+@keyframes focus-ring-pulse {
+  0% {
+    outline-width: 2px;
+    outline-offset: 2px;
+  }
+  50% {
+    outline-width: 3px;
+    outline-offset: 3px;
+  }
+  100% {
+    outline-width: 2px;
+    outline-offset: 2px;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .header {
+    border-bottom-width: 2px;
+  }
+
+  .header__search-trigger,
+  .header__notifications,
+  .header__user {
+    border-width: 2px;
+  }
+
+  .header__notifications-badge {
+    border-width: 3px;
+  }
+}

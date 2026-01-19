@@ -1,0 +1,173 @@
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║                           HEADER COMPONENT LAYOUT                             ║
+║                            (64px height, sticky)                              ║
+╠═══════════════════════════════════════════════════════════════════════════════╣
+║                                                                               ║
+║  ┌────────────────────────────────┐                  ┌──────────────────┐    ║
+║  │  🔍  Search courses, lessons  │     [Spacer]      │  🔥 7 day streak │    ║
+║  │                          ⌘ K  │                  └──────────────────┘    ║
+║  └────────────────────────────────┘                                          ║
+║   Global Search Trigger (300px)                                              ║
+║   • Click or Cmd+K to open                          Streak Badge             ║
+║   • Hover: lighter background                       • Animated on load       ║
+║   • Focus: primary outline                          • Pulsing effect         ║
+║                                                                               ║
+║                                                      ┌────┐  ┌──────────┐    ║
+║                                                      │ 🔔 │  │  JD  ▼  │    ║
+║                                                      │  5 │  └──────────┘    ║
+║                                                      └────┘                   ║
+║                                                   Notifications  User Menu    ║
+║                                                   • Badge count  • Avatar     ║
+║                                                   • Click opens  • Dropdown   ║
+║                                                                               ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+
+
+RESPONSIVE BREAKPOINTS
+═══════════════════════════════════════════════════════════════════════════════
+
+Desktop (≥ 768px)
+┌──────────────────────────────┬─────────┬───────────────┬──────┬──────────┐
+│  🔍 Search courses... ⌘ K   │ [Space] │ 🔥 7 day str. │ 🔔 5 │  JD  ▼  │
+└──────────────────────────────┴─────────┴───────────────┴──────┴──────────┘
+     320px width                                40px      40px    ~70px
+
+Tablet (< 768px)
+┌────────────────────┬─────────┬─────┬──────┬──────────┐
+│  🔍 Search...     │ [Space] │ 🔥  │ 🔔 5 │  JD  ▼  │
+└────────────────────┴─────────┴─────┴──────┴──────────┘
+   200px width                  Icon  Icon   Avatar
+                                only  only
+
+Mobile (< 480px)
+┌────┬──────────────────────┬─────┬──────┬──────────┐
+│ 🔍 │      [Spacer]       │ 🔥  │ 🔔 5 │  JD  ▼  │
+└────┴──────────────────────┴─────┴──────┴──────────┘
+ 40px                        Icon  Icon   Avatar
+Icon                         only  only
+only
+
+
+COLOR SCHEME
+═══════════════════════════════════════════════════════════════════════════════
+
+Background Layers:
+┌─────────────────────────────────────────────────────────────┐
+│ Header Background: --bg-primary (#0a0a0b)                   │
+│ ┌─────────────────────────────────────────────────────────┐ │
+│ │ Search/Buttons: --bg-tertiary (#1a1a1f)                 │ │
+│ │   Hover → --bg-quaternary (#252530)                     │ │
+│ └─────────────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────────┘
+
+Accent Colors:
+• Streak Badge:       --accent-amber (#f59e0b)      🟡
+• Notification Badge: --accent-error (#ef4444)      🔴
+• Focus States:       --accent-primary (#6366f1)    🟣
+• Icons:              --text-muted (#6e6e73)        ⚪
+• Text:               --text-secondary (#a1a1a6)    ⚪
+
+
+INTERACTIVE STATES
+═══════════════════════════════════════════════════════════════════════════════
+
+Search Trigger:
+  Default    → bg: tertiary,    border: subtle,  icon: muted
+  Hover      → bg: quaternary,  border: default, icon: secondary
+  Focus      → Outline: 2px primary, offset: 2px
+  Active     → Scale down slightly
+
+Notifications:
+  Default    → bg: tertiary,    icon: secondary
+  Hover      → bg: quaternary,  icon: primary,   transform: -1px
+  Active     → transform: 0px
+  Badge      → Bounce animation on count change
+
+User Menu:
+  Default    → bg: tertiary,    avatar gradient
+  Hover      → bg: quaternary,  shadow: medium
+  Open       → Chevron rotates 180deg
+  Focus      → Outline: 2px primary
+
+Streak Badge:
+  On Load    → Scale + fade entry animation
+  After 500ms → Pulse ring effect (2 cycles)
+  On Update  → Pulse ring effect
+
+
+KEYBOARD SHORTCUTS
+═══════════════════════════════════════════════════════════════════════════════
+
+Global:
+  Cmd+K / Ctrl+K  → Open search modal
+  Escape          → Close all open menus
+  Tab             → Navigate between elements
+  Shift+Tab       → Navigate backwards
+
+Focused Elements:
+  Enter           → Activate button
+  Space           → Activate button
+
+
+ACCESSIBILITY FEATURES
+═══════════════════════════════════════════════════════════════════════════════
+
+✓ All buttons have aria-label attributes
+✓ Keyboard navigation fully supported
+✓ Focus-visible states with custom styling
+✓ Screen reader announces counts and states
+✓ High contrast mode increases border widths
+✓ Respects prefers-reduced-motion
+✓ Semantic HTML structure
+✓ Color contrast ratios meet WCAG AA standards
+
+
+ANIMATIONS TIMELINE
+═══════════════════════════════════════════════════════════════════════════════
+
+Page Load:
+  0ms     → Header renders
+  0-500ms → Streak badge enters (scale + fade)
+  500ms   → Pulse animation starts
+  4500ms  → Pulse animation stops
+
+User Interactions:
+  Click Search     → 100ms scale feedback
+  Hover Elements   → 150ms color transition
+  Badge Update     → 500ms bounce animation
+  Menu Toggle      → 300ms chevron rotation
+
+
+INTEGRATION POINTS
+═══════════════════════════════════════════════════════════════════════════════
+
+JavaScript API Methods:
+  headerComponent.updateNotificationCount(n)   → Update badge
+  headerComponent.updateStreakCount(n)         → Update streak
+  headerComponent.updateUserAvatar(data)       → Set avatar
+  headerComponent.closeAllMenus()              → Close dropdowns
+
+Event Placeholders (to be connected):
+  openSearch()           → Connect to search modal
+  toggleNotifications()  → Connect to notifications panel
+  toggleUserMenu()       → Connect to user dropdown
+
+
+FILES CREATED
+═══════════════════════════════════════════════════════════════════════════════
+
+/course-app/
+  css/components/
+    ✓ header.css              (Complete styling, 500+ lines)
+
+  js/components/
+    ✓ header.js               (Interactivity & event handling)
+    ✓ header-icons.js         (SVG icon library)
+
+  examples/
+    ✓ header-demo.html        (Live demo with controls)
+
+  docs/components/
+    ✓ header.md               (Comprehensive documentation)
+    ✓ header-layout.txt       (This visual reference)
+

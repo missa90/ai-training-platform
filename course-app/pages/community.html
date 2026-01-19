@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI Training Platform Community - Join discussions, study groups, and connect with learners">
+  <title>Community | AI Training Platform</title>
+
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="../css/main.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+</head>
+<body class="page-community">
+  <div class="app-container">
+    <!-- Mobile Toggle Button -->
+    <button class="sidebar__mobile-toggle" id="sidebarMobileToggle" aria-label="Toggle navigation menu">
+      <div class="sidebar__mobile-toggle-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </button>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <!-- Desktop/Tablet Toggle -->
+      <button class="sidebar__toggle" id="sidebarToggle" aria-label="Collapse sidebar">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <!-- Logo -->
+      <div class="sidebar__logo">
+        <div class="sidebar__logo-icon">AI</div>
+        <span class="sidebar__logo-text">Training</span>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="sidebar__nav">
+        <!-- PRIMARY Section -->
+        <div class="sidebar__section">
+          <a href="index.html" class="sidebar__item sidebar__item--large" data-tooltip="Dashboard">
+            <div class="sidebar__item-icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+                <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+                <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+                <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+              </svg>
+            </div>
+            <span class="sidebar__item-text">Dashboard</span>
+          </a>
+        </div>
+
+        <!-- LEARNING Section -->
+        <div class="sidebar__section">
+          <div class="sidebar__section-label">Learning</div>
+          <a href="courses.html" class="sidebar__item" data-tooltip="Courses">
+            <div class="sidebar__item-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+              </svg>
+            </div>
+            <span class="sidebar__item-text">Courses</span>
+            <span class="sidebar__item-badge">3 new</span>
+          </a>
+          <a href="tools.html" class="sidebar__item" data-tooltip="Tools">
+            <div class="sidebar__item-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+              </svg>
+            </div>
+            <span class="sidebar__item-text">Tools</span>
+          </a>
+        </div>
+
+        <!-- CONNECT Section -->
+        <div class="sidebar__section">
+          <div class="sidebar__section-label">Connect</div>
+          <a href="community.html" class="sidebar__item active" data-tooltip="Community">
+            <div class="sidebar__item-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <span class="sidebar__item-text">Community</span>
+            <span class="sidebar__item-badge">12</span>
+          </a>
+        </div>
+
+        <!-- SECONDARY Section -->
+        <div class="sidebar__section">
+          <a href="profile.html" class="sidebar__item" data-tooltip="Profile">
+            <div class="sidebar__item-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+            <span class="sidebar__item-text">Profile</span>
+          </a>
+          <a href="#" class="sidebar__item" data-tooltip="Settings">
+            <div class="sidebar__item-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+              </svg>
+            </div>
+            <span class="sidebar__item-text">Settings</span>
+          </a>
+          <a href="#" class="sidebar__item" data-tooltip="Help">
+            <div class="sidebar__item-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+            </div>
+            <span class="sidebar__item-text">Help</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Progress Widget -->
+      <div class="sidebar__progress">
+        <div class="sidebar__progress-header">Weekly Progress</div>
+        <div class="sidebar__progress-ring-container">
+          <svg class="sidebar__progress-ring" viewBox="0 0 120 120">
+            <circle class="sidebar__progress-ring-bg" cx="60" cy="60" r="54"></circle>
+            <circle class="sidebar__progress-ring-fill" cx="60" cy="60" r="54" data-progress="65"></circle>
+          </svg>
+          <div class="sidebar__progress-percentage">65<span style="font-size: 0.6em;">%</span></div>
+        </div>
+        <div class="sidebar__progress-label">3/5 lessons this week</div>
+      </div>
+
+      <!-- User Card -->
+      <div class="sidebar__user">
+        <div class="sidebar__user-info">
+          <div class="sidebar__user-avatar">SJ</div>
+          <div class="sidebar__user-details">
+            <div class="sidebar__user-name">Sarah Johnson</div>
+            <span class="sidebar__user-level">Level 7 Expert</span>
+          </div>
+        </div>
+        <div class="sidebar__user-xp">
+          <div class="sidebar__user-xp-label">
+            <span><span class="sidebar__user-xp-current">2,450</span> XP</span>
+            <span><span class="sidebar__user-xp-max">3,000</span> XP</span>
+          </div>
+          <div class="sidebar__user-xp-bar">
+            <div class="sidebar__user-xp-fill" data-current="2450" data-max="3000"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upgrade CTA -->
+      <div class="sidebar__upgrade">
+        <button class="sidebar__upgrade-btn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          Upgrade to Pro
+        </button>
+      </div>
+    </aside>
+
+    <!-- Sidebar Overlay (mobile) -->
+    <div class="sidebar__overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+      <!-- Header -->
+      <header class="header">
+        <!-- Search Trigger -->
+        <button class="header__search-trigger" id="searchTrigger">
+          <svg class="header__search-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span class="header__search-placeholder">Search discussions...</span>
+          <kbd class="header__search-kbd">
+            <span class="header__search-kbd-symbol">⌘</span>K
+          </kbd>
+        </button>
+
+        <!-- Spacer -->
+        <div class="header__spacer"></div>
+
+        <!-- Streak Badge -->
+        <div class="header__streak" id="streakBadge">
+          <svg class="header__streak-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M12 23c-3.866 0-7-3.134-7-7 0-2.5 1.5-4.5 3-6 .5-.5 1-.9 1.5-1.2-.2 1.2.3 2.5 1 3.2.5.5 1.2.8 2 .8-.5-1.5-.5-3 .5-4.5 1-1.5 2.5-2.5 4-3.5.5-.3 1-.5 1.5-.8-.5 2 0 4 1 5.5 1 1.5 2.5 3 2.5 5.5 0 3.866-3.134 7-7 7z"/>
+          </svg>
+          <span class="header__streak-text">7 day streak</span>
+        </div>
+
+        <!-- Notifications -->
+        <button class="header__notifications" id="notificationsBtn" aria-label="Notifications">
+          <svg class="header__notifications-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+          </svg>
+          <span class="header__notifications-badge" id="notificationBadge">5</span>
+        </button>
+
+        <!-- User Menu -->
+        <button class="header__user-menu" id="userMenuBtn" aria-label="User menu">
+          <div class="header__user-avatar">
+            <span class="header__user-avatar-initials">SJ</span>
+          </div>
+          <svg class="header__user-chevron" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+      </header>
+
+      <!-- Page Content -->
+      <main class="page-content">
+        <!-- Page Header -->
+        <section class="community-header animate-fade-up mb-8">
+          <div class="community-header__content">
+            <h1 class="heading-2 mb-2">Community</h1>
+            <p class="text-body text-secondary">Connect with learners, share knowledge, and grow together</p>
+          </div>
+          <div class="community-header__stats">
+            <div class="community-stat">
+              <div class="community-stat__value">1,247</div>
+              <div class="community-stat__label">Members</div>
+            </div>
+            <div class="community-stat">
+              <div class="community-stat__indicator"></div>
+              <div class="community-stat__value">184</div>
+              <div class="community-stat__label">Online now</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tab Navigation -->
+        <nav class="community-tabs animate-fade-up mb-8">
+          <button class="community-tabs__tab active" data-tab="discussions">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            Discussions
+          </button>
+          <button class="community-tabs__tab" data-tab="study-groups">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            Study Groups
+          </button>
+          <button class="community-tabs__tab" data-tab="events">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            Events
+          </button>
+          <button class="community-tabs__tab" data-tab="leaderboard">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+            Leaderboard
+          </button>
+        </nav>
+
+        <!-- Content Grid -->
+        <div class="community-content-grid">
+          <!-- Main Feed -->
+          <div class="community-feed">
+            <!-- Discussions Tab Content -->
+            <div class="tab-content active" id="discussions-content">
+              <div class="discussions-header mb-6">
+                <button class="btn btn--primary">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                  Start Discussion
+                </button>
+                <div class="discussions-filters">
+                  <button class="filter-btn active">All</button>
+                  <button class="filter-btn">Questions</button>
+                  <button class="filter-btn">Tips</button>
+                </div>
+              </div>
+
+              <!-- Discussion Feed -->
+              <div class="discussion-feed stagger-children-100">
+                <!-- Discussion Item 1 -->
+                <article class="discussion-item animate-fade-up">
+                  <div class="discussion-item__avatar">
+                    <span class="avatar-text">ML</span>
+                  </div>
+                  <div class="discussion-item__content">
+                    <div class="discussion-item__header">
+                      <div class="discussion-item__meta">
+                        <h3 class="discussion-item__title">Best practices for fine-tuning LLMs?</h3>
+                        <div class="discussion-item__info">
+                          <span class="discussion-item__author">Michael Lee</span>
+                          <span class="discussion-item__separator">•</span>
+                          <span class="discussion-item__time">2 hours ago</span>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="discussion-item__excerpt">I'm working on fine-tuning a model for sentiment analysis. What are the key things to watch out for? Any recommended datasets or techniques?</p>
+                    <div class="discussion-item__footer">
+                      <div class="discussion-item__tags">
+                        <span class="tag tag--primary">Fine-tuning</span>
+                        <span class="tag tag--secondary">LLMs</span>
+                      </div>
+                      <div class="discussion-item__stats">
+                        <span class="stat">
+                          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                          </svg>
+                          24 replies
+                        </span>
+                        <span class="stat">
+                          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                          </svg>
+                          156 views
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- Discussion Item 2 -->
+                <article class="discussion-item animate-fade-up">
+                  <div class="discussion-item__avatar">
+                    <span class="avatar-text">EP</span>
+                  </div>
+                  <div class="discussion-item__content">
+                    <div class="discussion-item__header">
+                      <div class="discussion-item__meta">
+                        <h3 class="discussion-item__title">Share your RAG implementation tips</h3>
+                        <div class="discussion-item__info">
+                          <span class="discussion-item__author">Emily Park</span>
+                          <span class="discussion-item__separator">•</span>
+                          <span class="discussion-item__time">5 hours ago</span>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="discussion-item__excerpt">Just completed the RAG course. What chunking strategies have worked best for you? How do you handle document updates?</p>
+                    <div class="discussion-item__footer">
+                      <div class="discussion-item__tags">
+                        <span class="tag tag--cyan">RAG</span>
+                        <span class="tag tag--secondary">Tips</span>
+                      </div>
+                      <div class="discussion-item__stats">
+                        <span class="stat">
+                          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                          </svg>
+                          18 replies
+                        </span>
+                        <span class="stat">
+                          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                          </svg>
+                          203 views
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- Discussion Item 3 -->
+                <article class="discussion-item animate-fade-up">
+                  <div class="discussion-item__avatar">
+                    <span class="avatar-text">JR</span>
+                  </div>
+                  <div class="discussion-item__content">
+                    <div class="discussion-item__header">
+                      <div class="discussion-item__meta">
+                        <h3 class="discussion-item__title">Prompt Engineering Course - Week 3 Discussion</h3>
+                        <div class="discussion-item__info">
+                          <span class="discussion-item__author">James Rodriguez</span>
+                          <span class="discussion-item__separator">•</span>
+                          <span class="discussion-item__time">1 day ago</span>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="discussion-item__excerpt">Let's discuss the chain-of-thought prompting techniques from this week's module. Who's tried applying them to real projects?</p>
+                    <div class="discussion-item__footer">
+                      <div class="discussion-item__tags">
+                        <span class="tag tag--amber">Prompts</span>
+                        <span class="tag tag--secondary">Course</span>
+                      </div>
+                      <div class="discussion-item__stats">
+                        <span class="stat">
+                          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                          </svg>
+                          42 replies
+                        </span>
+                        <span class="stat">
+                          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                          </svg>
+                          387 views
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- Discussion Item 4 -->
+                <article class="discussion-item animate-fade-up">
+                  <div class="discussion-item__avatar">
+                    <span class="avatar-text">AC</span>
+                  </div>
+                  <div class="discussion-item__content">
+                    <div class="discussion-item__header">
+                      <div class="discussion-item__meta">
+                        <h3 class="discussion-item__title">Anyone using Claude for production applications?</h3>
+                        <div class="discussion-item__info">
+                          <span class="discussion-item__author">Alex Chen</span>
+                          <span class="discussion-item__separator">•</span>
+                          <span class="discussion-item__time">2 days ago</span>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="discussion-item__excerpt">Considering switching from GPT-4 to Claude for our customer service bot. Would love to hear about your experiences with reliability and cost.</p>
+                    <div class="discussion-item__footer">
+                      <div class="discussion-item__tags">
+                        <span class="tag tag--primary">Production</span>
+                        <span class="tag tag--secondary">Question</span>
+                      </div>
+                      <div class="discussion-item__stats">
+                        <span class="stat">
+                          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                          </svg>
+                          31 replies
+                        </span>
+                        <span class="stat">
+                          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                          </svg>
+                          298 views
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- Discussion Item 5 -->
+                <article class="discussion-item animate-fade-up">
+                  <div class="discussion-item__avatar">
+                    <span class="avatar-text">NK</span>
+                  </div>
+                  <div class="discussion-item__content">
+                    <div class="discussion-item__header">
+                      <div class="discussion-item__meta">
+                        <h3 class="discussion-item__title">Weekly Study Group - AI Ethics Session</h3>
+                        <div class="discussion-item__info">
+                          <span class="discussion-item__author">Nina Kapoor</span>
+                          <span class="discussion-item__separator">•</span>
+                          <span class="discussion-item__time">3 days ago</span>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="discussion-item__excerpt">Join us this Friday at 3 PM for a deep dive into bias detection and mitigation strategies. Bring your questions and case studies!</p>
+                    <div class="discussion-item__footer">
+                      <div class="discussion-item__tags">
+                        <span class="tag tag--success">Ethics</span>
+                        <span class="tag tag--secondary">Event</span>
+                      </div>
+                      <div class="discussion-item__stats">
+                        <span class="stat">
+                          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                          </svg>
+                          12 replies
+                        </span>
+                        <span class="stat">
+                          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                          </svg>
+                          145 views
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <!-- Other tab contents would go here (Study Groups, Events) -->
+          </div>
+
+          <!-- Leaderboard Sidebar -->
+          <aside class="community-sidebar">
+            <div class="leaderboard-card animate-fade-up">
+              <div class="leaderboard-card__header">
+                <h3 class="heading-5">Leaderboard</h3>
+                <div class="leaderboard-filters">
+                  <button class="leaderboard-filter active" data-period="week">Week</button>
+                  <button class="leaderboard-filter" data-period="month">Month</button>
+                  <button class="leaderboard-filter" data-period="all">All</button>
+                </div>
+              </div>
+
+              <!-- Podium (Top 3) -->
+              <div class="podium">
+                <!-- 2nd Place -->
+                <div class="podium-place podium-place--2">
+                  <div class="podium-rank">2</div>
+                  <div class="podium-avatar">
+                    <span class="avatar-text">EP</span>
+                  </div>
+                  <div class="podium-name">Emily P.</div>
+                  <div class="podium-points">2,840 XP</div>
+                </div>
+
+                <!-- 1st Place -->
+                <div class="podium-place podium-place--1">
+                  <div class="podium-crown">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                  </div>
+                  <div class="podium-rank">1</div>
+                  <div class="podium-avatar">
+                    <span class="avatar-text">ML</span>
+                  </div>
+                  <div class="podium-name">Michael L.</div>
+                  <div class="podium-points">3,250 XP</div>
+                </div>
+
+                <!-- 3rd Place -->
+                <div class="podium-place podium-place--3">
+                  <div class="podium-rank">3</div>
+                  <div class="podium-avatar">
+                    <span class="avatar-text">JR</span>
+                  </div>
+                  <div class="podium-name">James R.</div>
+                  <div class="podium-points">2,615 XP</div>
+                </div>
+              </div>
+
+              <!-- Current User Position -->
+              <div class="leaderboard-current-user">
+                <div class="leaderboard-rank">7</div>
+                <div class="leaderboard-avatar">
+                  <span class="avatar-text">SJ</span>
+                </div>
+                <div class="leaderboard-info">
+                  <div class="leaderboard-name">You</div>
+                  <div class="leaderboard-points">2,450 XP</div>
+                </div>
+                <div class="leaderboard-trend leaderboard-trend--up">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                  </svg>
+                  2
+                </div>
+              </div>
+
+              <!-- Other Rankings -->
+              <div class="leaderboard-list">
+                <div class="leaderboard-item">
+                  <div class="leaderboard-rank">4</div>
+                  <div class="leaderboard-avatar">
+                    <span class="avatar-text">AC</span>
+                  </div>
+                  <div class="leaderboard-info">
+                    <div class="leaderboard-name">Alex C.</div>
+                    <div class="leaderboard-points">2,590 XP</div>
+                  </div>
+                </div>
+                <div class="leaderboard-item">
+                  <div class="leaderboard-rank">5</div>
+                  <div class="leaderboard-avatar">
+                    <span class="avatar-text">NK</span>
+                  </div>
+                  <div class="leaderboard-info">
+                    <div class="leaderboard-name">Nina K.</div>
+                    <div class="leaderboard-points">2,510 XP</div>
+                  </div>
+                </div>
+                <div class="leaderboard-item">
+                  <div class="leaderboard-rank">6</div>
+                  <div class="leaderboard-avatar">
+                    <span class="avatar-text">DW</span>
+                  </div>
+                  <div class="leaderboard-info">
+                    <div class="leaderboard-name">David W.</div>
+                    <div class="leaderboard-points">2,475 XP</div>
+                  </div>
+                </div>
+                <div class="leaderboard-item">
+                  <div class="leaderboard-rank">8</div>
+                  <div class="leaderboard-avatar">
+                    <span class="avatar-text">RS</span>
+                  </div>
+                  <div class="leaderboard-info">
+                    <div class="leaderboard-name">Rachel S.</div>
+                    <div class="leaderboard-points">2,380 XP</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </main>
+    </div>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="index.html" class="mobile-nav__item" aria-label="Home">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        </svg>
+        <span>Home</span>
+      </a>
+      <a href="courses.html" class="mobile-nav__item" aria-label="Courses">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
+        <span>Courses</span>
+      </a>
+      <a href="tools.html" class="mobile-nav__item" aria-label="Tools">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+        </svg>
+        <span>Tools</span>
+      </a>
+      <a href="community.html" class="mobile-nav__item active" aria-label="Community">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+          <circle cx="9" cy="7" r="4"></circle>
+        </svg>
+        <span>Community</span>
+      </a>
+      <a href="profile.html" class="mobile-nav__item" aria-label="Profile">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+        <span>Profile</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="../js/components/sidebar.js"></script>
+  <script src="../js/components/header.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

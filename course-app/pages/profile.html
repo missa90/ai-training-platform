@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Profile - Track your progress, achievements, and learning statistics">
+  <title>Profile | AI Training Platform</title>
+
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="../css/main.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+</head>
+<body class="page-profile">
+  <div class="app-container">
+    <!-- Mobile Toggle Button -->
+    <button class="sidebar__mobile-toggle" id="sidebarMobileToggle" aria-label="Toggle navigation menu">
+      <div class="sidebar__mobile-toggle-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </button>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <!-- Desktop/Tablet Toggle -->
+      <button class="sidebar__toggle" id="sidebarToggle" aria-label="Collapse sidebar">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <!-- Logo -->
+      <div class="sidebar__logo">
+        <div class="sidebar__logo-icon">AI</div>
+        <span class="sidebar__logo-text">Training</span>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="sidebar__nav">
+        <!-- PRIMARY Section -->
+        <div class="sidebar__section">
+          <a href="index.html" class="sidebar__item sidebar__item--large" data-tooltip="Dashboard">
+            <div class="sidebar__item-icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+                <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+                <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+                <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+              </svg>
+            </div>
+            <span class="sidebar__item-text">Dashboard</span>
+          </a>
+        </div>
+
+        <!-- LEARNING Section -->
+        <div class="sidebar__section">
+          <div class="sidebar__section-label">Learning</div>
+          <a href="courses.html" class="sidebar__item" data-tooltip="Courses">
+            <div class="sidebar__item-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+              </svg>
+            </div>
+            <span class="sidebar__item-text">Courses</span>
+            <span class="sidebar__item-badge">3 new</span>
+          </a>
+          <a href="tools.html" class="sidebar__item" data-tooltip="Tools">
+            <div class="sidebar__item-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+              </svg>
+            </div>
+            <span class="sidebar__item-text">Tools</span>
+          </a>
+        </div>
+
+        <!-- CONNECT Section -->
+        <div class="sidebar__section">
+          <div class="sidebar__section-label">Connect</div>
+          <a href="community.html" class="sidebar__item" data-tooltip="Community">
+            <div class="sidebar__item-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <span class="sidebar__item-text">Community</span>
+            <span class="sidebar__item-badge">12</span>
+          </a>
+        </div>
+
+        <!-- SECONDARY Section -->
+        <div class="sidebar__section">
+          <a href="profile.html" class="sidebar__item active" data-tooltip="Profile">
+            <div class="sidebar__item-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+            <span class="sidebar__item-text">Profile</span>
+          </a>
+          <a href="#" class="sidebar__item" data-tooltip="Settings">
+            <div class="sidebar__item-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+              </svg>
+            </div>
+            <span class="sidebar__item-text">Settings</span>
+          </a>
+          <a href="#" class="sidebar__item" data-tooltip="Help">
+            <div class="sidebar__item-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+            </div>
+            <span class="sidebar__item-text">Help</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Progress Widget -->
+      <div class="sidebar__progress">
+        <div class="sidebar__progress-header">Weekly Progress</div>
+        <div class="sidebar__progress-ring-container">
+          <svg class="sidebar__progress-ring" viewBox="0 0 120 120">
+            <circle class="sidebar__progress-ring-bg" cx="60" cy="60" r="54"></circle>
+            <circle class="sidebar__progress-ring-fill" cx="60" cy="60" r="54" data-progress="65"></circle>
+          </svg>
+          <div class="sidebar__progress-percentage">65<span style="font-size: 0.6em;">%</span></div>
+        </div>
+        <div class="sidebar__progress-label">3/5 lessons this week</div>
+      </div>
+
+      <!-- User Card -->
+      <div class="sidebar__user">
+        <div class="sidebar__user-info">
+          <div class="sidebar__user-avatar">SJ</div>
+          <div class="sidebar__user-details">
+            <div class="sidebar__user-name">Sarah Johnson</div>
+            <span class="sidebar__user-level">Level 7 Expert</span>
+          </div>
+        </div>
+        <div class="sidebar__user-xp">
+          <div class="sidebar__user-xp-label">
+            <span><span class="sidebar__user-xp-current">2,450</span> XP</span>
+            <span><span class="sidebar__user-xp-max">3,000</span> XP</span>
+          </div>
+          <div class="sidebar__user-xp-bar">
+            <div class="sidebar__user-xp-fill" data-current="2450" data-max="3000"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upgrade CTA -->
+      <div class="sidebar__upgrade">
+        <button class="sidebar__upgrade-btn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          Upgrade to Pro
+        </button>
+      </div>
+    </aside>
+
+    <!-- Sidebar Overlay (mobile) -->
+    <div class="sidebar__overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+      <!-- Header -->
+      <header class="header">
+        <!-- Search Trigger -->
+        <button class="header__search-trigger" id="searchTrigger">
+          <svg class="header__search-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span class="header__search-placeholder">Search courses, lessons...</span>
+          <kbd class="header__search-kbd">
+            <span class="header__search-kbd-symbol">⌘</span>K
+          </kbd>
+        </button>
+
+        <!-- Spacer -->
+        <div class="header__spacer"></div>
+
+        <!-- Streak Badge -->
+        <div class="header__streak" id="streakBadge">
+          <svg class="header__streak-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M12 23c-3.866 0-7-3.134-7-7 0-2.5 1.5-4.5 3-6 .5-.5 1-.9 1.5-1.2-.2 1.2.3 2.5 1 3.2.5.5 1.2.8 2 .8-.5-1.5-.5-3 .5-4.5 1-1.5 2.5-2.5 4-3.5.5-.3 1-.5 1.5-.8-.5 2 0 4 1 5.5 1 1.5 2.5 3 2.5 5.5 0 3.866-3.134 7-7 7z"/>
+          </svg>
+          <span class="header__streak-text">7 day streak</span>
+        </div>
+
+        <!-- Notifications -->
+        <button class="header__notifications" id="notificationsBtn" aria-label="Notifications">
+          <svg class="header__notifications-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+          </svg>
+          <span class="header__notifications-badge" id="notificationBadge">5</span>
+        </button>
+
+        <!-- User Menu -->
+        <button class="header__user-menu" id="userMenuBtn" aria-label="User menu">
+          <div class="header__user-avatar">
+            <span class="header__user-avatar-initials">SJ</span>
+          </div>
+          <svg class="header__user-chevron" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+      </header>
+
+      <!-- Page Content -->
+      <main class="page-content">
+        <!-- Profile Hero Section -->
+        <section class="profile-hero animate-fade-up">
+          <div class="profile-hero__content">
+            <div class="profile-avatar">
+              <div class="profile-avatar__ring">
+                <svg viewBox="0 0 120 120">
+                  <circle cx="60" cy="60" r="56" fill="none" stroke="url(#avatarGradient)" stroke-width="3"></circle>
+                  <defs>
+                    <linearGradient id="avatarGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color: var(--accent-primary)"/>
+                      <stop offset="100%" style="stop-color: var(--accent-purple)"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <div class="profile-avatar__image">SJ</div>
+            </div>
+
+            <div class="profile-hero__info">
+              <h1 class="profile-hero__name">Sarah Johnson</h1>
+              <div class="profile-hero__level">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+                <span>Level 7 Expert</span>
+              </div>
+            </div>
+
+            <div class="profile-hero__xp">
+              <div class="xp-ring">
+                <svg viewBox="0 0 180 180">
+                  <circle cx="90" cy="90" r="82" fill="none" stroke="var(--bg-quaternary)" stroke-width="6"></circle>
+                  <circle cx="90" cy="90" r="82" fill="none" stroke="url(#xpGradient)" stroke-width="6" stroke-dasharray="515" stroke-dashoffset="128" transform="rotate(-90 90 90)" stroke-linecap="round"></circle>
+                  <defs>
+                    <linearGradient id="xpGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color: var(--accent-primary)"/>
+                      <stop offset="50%" style="stop-color: var(--accent-cyan)"/>
+                      <stop offset="100%" style="stop-color: var(--accent-success)"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+                <div class="xp-ring__content">
+                  <div class="xp-ring__value">2,450</div>
+                  <div class="xp-ring__label">XP</div>
+                </div>
+              </div>
+              <div class="xp-ring__info">
+                <span class="text-caption text-muted">550 XP to Level 8</span>
+                <div class="xp-ring__max">/ 3,000 XP</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-hero__stats">
+            <div class="profile-stat">
+              <div class="profile-stat__value">12</div>
+              <div class="profile-stat__label">Courses</div>
+            </div>
+            <div class="profile-stat__divider"></div>
+            <div class="profile-stat">
+              <div class="profile-stat__value">48</div>
+              <div class="profile-stat__label">Hours</div>
+            </div>
+            <div class="profile-stat__divider"></div>
+            <div class="profile-stat">
+              <div class="profile-stat__value">7</div>
+              <div class="profile-stat__label">Streak</div>
+            </div>
+            <div class="profile-stat__divider"></div>
+            <div class="profile-stat">
+              <div class="profile-stat__value">#127</div>
+              <div class="profile-stat__label">Rank</div>
+            </div>
+          </div>
+
+          <div class="profile-hero__actions">
+            <button class="btn btn--secondary">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+              </svg>
+              Edit Profile
+            </button>
+            <button class="btn btn--secondary">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="18" cy="5" r="3"></circle>
+                <circle cx="6" cy="12" r="3"></circle>
+                <circle cx="18" cy="19" r="3"></circle>
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+              </svg>
+              Share
+            </button>
+          </div>
+        </section>
+
+        <!-- Tabs Section -->
+        <section class="profile-tabs mb-8">
+          <div class="tabs">
+            <button class="tabs__item active" data-tab="overview">Overview</button>
+            <button class="tabs__item" data-tab="achievements">Achievements</button>
+            <button class="tabs__item" data-tab="certificates">Certificates</button>
+            <button class="tabs__item" data-tab="settings">Settings</button>
+          </div>
+        </section>
+
+        <!-- Tab Content: Overview -->
+        <div class="tab-content active" data-content="overview">
+          <!-- Featured Achievements -->
+          <section class="mb-10">
+            <div class="section-header mb-6">
+              <h2 class="heading-3">Featured Achievements</h2>
+              <a href="#" class="section-link">View all →</a>
+            </div>
+
+            <div class="achievement-grid stagger-children-100">
+              <div class="achievement-card animate-fade-up">
+                <div class="achievement-card__icon achievement-card__icon--amber">
+                  <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+                    <path d="M12 23c-3.866 0-7-3.134-7-7 0-2.5 1.5-4.5 3-6 .5-.5 1-.9 1.5-1.2-.2 1.2.3 2.5 1 3.2.5.5 1.2.8 2 .8-.5-1.5-.5-3 .5-4.5 1-1.5 2.5-2.5 4-3.5.5-.3 1-.5 1.5-.8-.5 2 0 4 1 5.5 1 1.5 2.5 3 2.5 5.5 0 3.866-3.134 7-7 7z"/>
+                  </svg>
+                </div>
+                <div class="achievement-card__content">
+                  <h3 class="achievement-card__title">Week Warrior</h3>
+                  <p class="achievement-card__description">7 day learning streak</p>
+                </div>
+              </div>
+
+              <div class="achievement-card animate-fade-up">
+                <div class="achievement-card__icon achievement-card__icon--primary">
+                  <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                </div>
+                <div class="achievement-card__content">
+                  <h3 class="achievement-card__title">Fast Learner</h3>
+                  <p class="achievement-card__description">12 courses completed</p>
+                </div>
+              </div>
+
+              <div class="achievement-card animate-fade-up">
+                <div class="achievement-card__icon achievement-card__icon--success">
+                  <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                  </svg>
+                </div>
+                <div class="achievement-card__content">
+                  <h3 class="achievement-card__title">Expert Level</h3>
+                  <p class="achievement-card__description">Reached Level 7</p>
+                </div>
+              </div>
+
+              <div class="achievement-card animate-fade-up">
+                <div class="achievement-card__icon achievement-card__icon--cyan">
+                  <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                    <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                  </svg>
+                </div>
+                <div class="achievement-card__content">
+                  <h3 class="achievement-card__title">Knowledge Builder</h3>
+                  <p class="achievement-card__description">48 hours of learning</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Streak Calendar -->
+          <section class="mb-10">
+            <div class="section-header mb-6">
+              <h2 class="heading-3">Learning Streak</h2>
+              <div class="section-meta">
+                <span class="text-body-sm text-secondary">Current: 7 days</span>
+                <span class="text-body-sm text-accent">Best: 14 days</span>
+              </div>
+            </div>
+
+            <div class="streak-calendar animate-fade-up">
+              <div class="streak-calendar__grid">
+                <div class="streak-day" data-activity="0"></div>
+                <div class="streak-day" data-activity="1"></div>
+                <div class="streak-day" data-activity="2"></div>
+                <div class="streak-day" data-activity="0"></div>
+                <div class="streak-day" data-activity="3"></div>
+                <div class="streak-day" data-activity="2"></div>
+                <div class="streak-day" data-activity="1"></div>
+
+                <div class="streak-day" data-activity="2"></div>
+                <div class="streak-day" data-activity="1"></div>
+                <div class="streak-day" data-activity="0"></div>
+                <div class="streak-day" data-activity="2"></div>
+                <div class="streak-day" data-activity="3"></div>
+                <div class="streak-day" data-activity="1"></div>
+                <div class="streak-day" data-activity="2"></div>
+
+                <div class="streak-day" data-activity="0"></div>
+                <div class="streak-day" data-activity="1"></div>
+                <div class="streak-day" data-activity="2"></div>
+                <div class="streak-day" data-activity="3"></div>
+                <div class="streak-day" data-activity="2"></div>
+                <div class="streak-day" data-activity="1"></div>
+                <div class="streak-day" data-activity="0"></div>
+
+                <div class="streak-day" data-activity="1"></div>
+                <div class="streak-day" data-activity="2"></div>
+                <div class="streak-day" data-activity="3"></div>
+                <div class="streak-day active" data-activity="3"></div>
+                <div class="streak-day active" data-activity="2"></div>
+                <div class="streak-day active" data-activity="3"></div>
+                <div class="streak-day active today" data-activity="2"></div>
+              </div>
+
+              <div class="streak-calendar__legend">
+                <span class="text-caption text-muted">Less</span>
+                <div class="streak-legend">
+                  <div class="streak-legend__item" data-level="0"></div>
+                  <div class="streak-legend__item" data-level="1"></div>
+                  <div class="streak-legend__item" data-level="2"></div>
+                  <div class="streak-legend__item" data-level="3"></div>
+                </div>
+                <span class="text-caption text-muted">More</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Activity Timeline -->
+          <section>
+            <div class="section-header mb-6">
+              <h2 class="heading-3">Recent Activity</h2>
+            </div>
+
+            <div class="activity-timeline animate-fade-up">
+              <div class="timeline-item">
+                <div class="timeline-item__marker timeline-item__marker--success">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <div class="timeline-item__content">
+                  <div class="timeline-item__header">
+                    <span class="timeline-item__title">Completed: Intro to Large Language Models</span>
+                    <span class="timeline-item__time">2 hours ago</span>
+                  </div>
+                  <p class="timeline-item__description">Earned 250 XP and Fast Learner badge</p>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-item__marker timeline-item__marker--amber">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path d="M12 23c-3.866 0-7-3.134-7-7 0-2.5 1.5-4.5 3-6 .5-.5 1-.9 1.5-1.2-.2 1.2.3 2.5 1 3.2.5.5 1.2.8 2 .8-.5-1.5-.5-3 .5-4.5 1-1.5 2.5-2.5 4-3.5.5-.3 1-.5 1.5-.8-.5 2 0 4 1 5.5 1 1.5 2.5 3 2.5 5.5 0 3.866-3.134 7-7 7z"/>
+                  </svg>
+                </div>
+                <div class="timeline-item__content">
+                  <div class="timeline-item__header">
+                    <span class="timeline-item__title">Earned: Week Warrior Badge</span>
+                    <span class="timeline-item__time">Yesterday</span>
+                  </div>
+                  <p class="timeline-item__description">Maintained a 7 day learning streak</p>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-item__marker timeline-item__marker--primary">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                  </svg>
+                </div>
+                <div class="timeline-item__content">
+                  <div class="timeline-item__header">
+                    <span class="timeline-item__title">Joined: AI Study Group</span>
+                    <span class="timeline-item__time">3 days ago</span>
+                  </div>
+                  <p class="timeline-item__description">Connected with 47 other learners</p>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-item__marker timeline-item__marker--success">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                  </svg>
+                </div>
+                <div class="timeline-item__content">
+                  <div class="timeline-item__header">
+                    <span class="timeline-item__title">Leveled Up: Reached Level 7</span>
+                    <span class="timeline-item__time">5 days ago</span>
+                  </div>
+                  <p class="timeline-item__description">Unlocked Expert status and exclusive content</p>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-item__marker timeline-item__marker--cyan">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                  </svg>
+                </div>
+                <div class="timeline-item__content">
+                  <div class="timeline-item__header">
+                    <span class="timeline-item__title">Certificate Earned: Prompt Engineering Basics</span>
+                    <span class="timeline-item__time">1 week ago</span>
+                  </div>
+                  <p class="timeline-item__description">Verified certificate added to your profile</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Tab Content: Achievements (hidden by default) -->
+        <div class="tab-content" data-content="achievements">
+          <p class="text-body text-secondary">Achievements content coming soon...</p>
+        </div>
+
+        <!-- Tab Content: Certificates (hidden by default) -->
+        <div class="tab-content" data-content="certificates">
+          <p class="text-body text-secondary">Certificates content coming soon...</p>
+        </div>
+
+        <!-- Tab Content: Settings (hidden by default) -->
+        <div class="tab-content" data-content="settings">
+          <p class="text-body text-secondary">Settings content coming soon...</p>
+        </div>
+      </main>
+    </div>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="index.html" class="mobile-nav__item" aria-label="Home">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        </svg>
+        <span>Home</span>
+      </a>
+      <a href="courses.html" class="mobile-nav__item" aria-label="Courses">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
+        <span>Courses</span>
+      </a>
+      <a href="tools.html" class="mobile-nav__item" aria-label="Tools">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+        </svg>
+        <span>Tools</span>
+      </a>
+      <a href="community.html" class="mobile-nav__item" aria-label="Community">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+          <circle cx="9" cy="7" r="4"></circle>
+        </svg>
+        <span>Community</span>
+      </a>
+      <a href="profile.html" class="mobile-nav__item active" aria-label="Profile">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+        <span>Profile</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="../js/components/sidebar.js"></script>
+  <script src="../js/components/header.js"></script>
+  <script src="../js/pages/profile.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
