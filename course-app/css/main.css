@@ -25,9 +25,13 @@
 @import url('./components/notifications.css');
 @import url('./components/skeleton.css');
 @import url('./components/onboarding.css');
+@import url('./components/forms.css');
+@import url('./components/tooltips.css');
+@import url('./components/dropdown.css');
 
 /* Pages */
 @import url('./pages/courses.css');
 @import url('./pages/tools.css');
 @import url('./pages/community.css');
 @import url('./pages/profile.css');
+@import url('./pages/settings.css');

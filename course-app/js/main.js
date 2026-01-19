@@ -531,6 +531,76 @@
   }
 
   // ========================================================================
+  // Dropdown Menus
+  // ========================================================================
+
+  function initDropdowns() {
+    const dropdowns = document.querySelectorAll('.dropdown');
+
+    dropdowns.forEach(dropdown => {
+      const trigger = dropdown.querySelector('.dropdown__trigger');
+
+      if (trigger) {
+        trigger.addEventListener('click', (e) => {
+          e.stopPropagation();
+
+          // Close other dropdowns
+          dropdowns.forEach(d => {
+            if (d !== dropdown) d.classList.remove('is-open');
+          });
+
+          // Toggle current dropdown
+          dropdown.classList.toggle('is-open');
+        });
+      }
+    });
+
+    // Close dropdowns on outside click
+    document.addEventListener('click', (e) => {
+      dropdowns.forEach(dropdown => {
+        if (!dropdown.contains(e.target)) {
+          dropdown.classList.remove('is-open');
+        }
+      });
+    });
+
+    // Close on escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        dropdowns.forEach(dropdown => dropdown.classList.remove('is-open'));
+      }
+    });
+
+    // Handle dropdown item clicks
+    document.querySelectorAll('.dropdown__item').forEach(item => {
+      item.addEventListener('click', () => {
+        // Close the dropdown after clicking an item
+        const dropdown = item.closest('.dropdown');
+        if (dropdown) {
+          setTimeout(() => dropdown.classList.remove('is-open'), 100);
+        }
+      });
+    });
+  }
+
+  // ========================================================================
+  // Tooltips (JavaScript-enhanced)
+  // ========================================================================
+
+  function initTooltips() {
+    // Most tooltips work via CSS with data-tooltip attribute
+    // This is for dynamic/JS tooltips if needed
+
+    // Add keyboard support for tooltip triggers
+    document.querySelectorAll('[data-tooltip]').forEach(element => {
+      // Make focusable if not already
+      if (!element.hasAttribute('tabindex') && element.tagName !== 'BUTTON' && element.tagName !== 'A') {
+        element.setAttribute('tabindex', '0');
+      }
+    });
+  }
+
+  // ========================================================================
   // Smooth Hover Effects
   // ========================================================================
 
@@ -601,6 +671,8 @@
     initNotifications();
     initUserMenu();
     initOnboarding();
+    initDropdowns();
+    initTooltips();
     initScrollAnimations();
     initProgressRings();
     initXPBars();

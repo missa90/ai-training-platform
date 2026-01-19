@@ -1,0 +1,148 @@
+/* ==========================================================================
+   Settings Page - AI Training Platform
+   Settings section and form layouts
+   ========================================================================== */
+
+/* ==========================================================================
+   Settings Section
+   ========================================================================== */
+
+.settings-section {
+  max-width: 1200px;
+}
+
+/* ==========================================================================
+   Settings Grid
+   ========================================================================== */
+
+.settings-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+}
+
+@media (max-width: 1024px) {
+  .settings-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   Settings Card
+   ========================================================================== */
+
+.settings-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+}
+
+.settings-card:hover {
+  border-color: var(--border-default);
+}
+
+/* ==========================================================================
+   Settings Form
+   ========================================================================== */
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+/* ==========================================================================
+   Settings Demo Row
+   ========================================================================== */
+
+.settings-demo-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+.settings-demo-row .settings-card {
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.05),
+    rgba(139, 92, 246, 0.05)
+  );
+  border-color: var(--border-default);
+}
+
+/* ==========================================================================
+   Settings Tabs (for future use)
+   ========================================================================== */
+
+.settings-tabs {
+  display: flex;
+  gap: var(--space-1);
+  padding: var(--space-1);
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-6);
+}
+
+.settings-tab {
+  flex: 1;
+  padding: var(--space-3) var(--space-4);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition-colors);
+}
+
+.settings-tab:hover {
+  color: var(--text-secondary);
+}
+
+.settings-tab.active {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ==========================================================================
+   Danger Zone (for destructive actions)
+   ========================================================================== */
+
+.settings-danger-zone {
+  margin-top: var(--space-8);
+  padding: var(--space-6);
+  background: rgba(239, 68, 68, 0.05);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: var(--radius-lg);
+}
+
+.settings-danger-zone__title {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--accent-error);
+  margin-bottom: var(--space-2);
+}
+
+.settings-danger-zone__description {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-4);
+}
+
+/* ==========================================================================
+   Responsive Adjustments
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .settings-card {
+    padding: var(--space-4);
+  }
+
+  .settings-form {
+    gap: var(--space-4);
+  }
+}

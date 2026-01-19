@@ -593,6 +593,322 @@
             </div>
           </div>
         </section>
+
+        <!-- Settings Preview Section -->
+        <section class="settings-section mt-10 animate-fade-up" id="settingsSection">
+          <div class="section-header mb-6">
+            <h2 class="heading-3">Account Settings</h2>
+            <span class="text-caption text-muted">Manage your profile and preferences</span>
+          </div>
+
+          <div class="settings-grid">
+            <!-- Profile Settings Card -->
+            <div class="settings-card">
+              <h3 class="heading-5 mb-6">Profile Information</h3>
+
+              <form class="settings-form">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label form-label--required">First Name</label>
+                    <input type="text" class="form-input" value="Sarah" placeholder="Enter first name">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label form-label--required">Last Name</label>
+                    <input type="text" class="form-input" value="Johnson" placeholder="Enter last name">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">
+                    Email Address
+                    <span class="form-label__hint">Primary contact</span>
+                  </label>
+                  <div class="form-input-wrapper">
+                    <svg class="form-input__icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    <input type="email" class="form-input" value="sarah.johnson@company.com" placeholder="Enter email">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Bio</label>
+                  <textarea class="form-textarea" placeholder="Tell us about yourself...">AI enthusiast and product manager with 5 years of experience in enterprise software.</textarea>
+                  <span class="form-hint">Brief description for your profile. Max 200 characters.</span>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Experience Level</label>
+                  <select class="form-select">
+                    <option value="">Select your level</option>
+                    <option value="beginner">Beginner - New to AI</option>
+                    <option value="intermediate" selected>Intermediate - Some experience</option>
+                    <option value="advanced">Advanced - Professional level</option>
+                    <option value="expert">Expert - Industry leader</option>
+                  </select>
+                </div>
+
+                <div class="form-group form-group--error">
+                  <label class="form-label">Company Website</label>
+                  <input type="url" class="form-input" value="invalid-url" placeholder="https://example.com">
+                  <span class="form-error">
+                    <svg class="form-error__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    Please enter a valid URL starting with https://
+                  </span>
+                </div>
+              </form>
+            </div>
+
+            <!-- Preferences Card -->
+            <div class="settings-card">
+              <h3 class="heading-5 mb-6">Preferences</h3>
+
+              <div class="form-group">
+                <label class="form-toggle form-toggle--label-left">
+                  <input type="checkbox" class="form-toggle__input" checked>
+                  <div class="form-toggle__track">
+                    <div class="form-toggle__thumb"></div>
+                  </div>
+                  <div>
+                    <span class="form-toggle__label">Email Notifications</span>
+                    <p class="form-toggle__description">Receive updates about courses and achievements</p>
+                  </div>
+                </label>
+              </div>
+
+              <div class="form-group">
+                <label class="form-toggle form-toggle--label-left">
+                  <input type="checkbox" class="form-toggle__input">
+                  <div class="form-toggle__track">
+                    <div class="form-toggle__thumb"></div>
+                  </div>
+                  <div>
+                    <span class="form-toggle__label">Weekly Progress Report</span>
+                    <p class="form-toggle__description">Get a summary of your learning progress</p>
+                  </div>
+                </label>
+              </div>
+
+              <div class="form-group">
+                <label class="form-toggle form-toggle--label-left">
+                  <input type="checkbox" class="form-toggle__input" checked>
+                  <div class="form-toggle__track">
+                    <div class="form-toggle__thumb"></div>
+                  </div>
+                  <div>
+                    <span class="form-toggle__label">Community Mentions</span>
+                    <p class="form-toggle__description">Get notified when someone mentions you</p>
+                  </div>
+                </label>
+              </div>
+
+              <hr style="border: none; border-top: 1px solid var(--border-subtle); margin: var(--space-6) 0;">
+
+              <div class="form-group">
+                <label class="form-label">Learning Goals</label>
+                <div class="form-radio-group">
+                  <label class="form-radio">
+                    <input type="radio" name="goal" class="form-radio__input" value="casual">
+                    <span class="form-radio__circle"></span>
+                    <span class="form-radio__label">Casual - Learn at my own pace</span>
+                  </label>
+                  <label class="form-radio">
+                    <input type="radio" name="goal" class="form-radio__input" value="regular" checked>
+                    <span class="form-radio__circle"></span>
+                    <span class="form-radio__label">Regular - 2-3 lessons per week</span>
+                  </label>
+                  <label class="form-radio">
+                    <input type="radio" name="goal" class="form-radio__input" value="intensive">
+                    <span class="form-radio__circle"></span>
+                    <span class="form-radio__label">Intensive - Daily learning</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Interests</label>
+                <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+                  <label class="form-checkbox">
+                    <input type="checkbox" class="form-checkbox__input" checked>
+                    <span class="form-checkbox__box">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </span>
+                    <span class="form-checkbox__label">Prompt Engineering</span>
+                  </label>
+                  <label class="form-checkbox">
+                    <input type="checkbox" class="form-checkbox__input" checked>
+                    <span class="form-checkbox__box">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </span>
+                    <span class="form-checkbox__label">RAG & Retrieval Systems</span>
+                  </label>
+                  <label class="form-checkbox">
+                    <input type="checkbox" class="form-checkbox__input">
+                    <span class="form-checkbox__box">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </span>
+                    <span class="form-checkbox__label">AI Agents & Automation</span>
+                  </label>
+                  <label class="form-checkbox">
+                    <input type="checkbox" class="form-checkbox__input">
+                    <span class="form-checkbox__box">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </span>
+                    <span class="form-checkbox__label">Fine-tuning & Training</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tooltip & Dropdown Demo Row -->
+          <div class="settings-demo-row mt-8">
+            <div class="settings-card">
+              <h3 class="heading-5 mb-6">Interactive Elements Demo</h3>
+
+              <div style="display: flex; flex-wrap: wrap; gap: var(--space-6); align-items: flex-start;">
+                <!-- Tooltips Demo -->
+                <div>
+                  <label class="form-label mb-3">Tooltips</label>
+                  <div style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
+                    <button class="btn btn--secondary btn--sm" data-tooltip="This is a tooltip" data-tooltip-position="top">Hover me (top)</button>
+                    <button class="btn btn--secondary btn--sm" data-tooltip="Bottom tooltip" data-tooltip-position="bottom">Bottom</button>
+                    <button class="btn btn--secondary btn--sm" data-tooltip="Success!" data-tooltip-variant="success">Success</button>
+                    <button class="btn btn--secondary btn--sm" data-tooltip="Warning message" data-tooltip-variant="warning">Warning</button>
+                    <span class="info-tooltip" data-tooltip="Click for more info" data-tooltip-position="right">?</span>
+                  </div>
+                </div>
+
+                <!-- Dropdown Demo -->
+                <div>
+                  <label class="form-label mb-3">Dropdown Menu</label>
+                  <div class="dropdown" id="demoDropdown">
+                    <button class="btn btn--secondary dropdown__trigger" id="demoDropdownTrigger">
+                      Actions
+                      <svg class="dropdown__trigger-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </button>
+                    <div class="dropdown__menu dropdown__menu--right">
+                      <div class="dropdown__label">Quick Actions</div>
+                      <button class="dropdown__item">
+                        <svg class="dropdown__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                          <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg>
+                        <span class="dropdown__item-label">Edit Profile</span>
+                        <span class="dropdown__item-shortcut">E</span>
+                      </button>
+                      <button class="dropdown__item">
+                        <svg class="dropdown__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <circle cx="12" cy="12" r="3"></circle>
+                          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4"></path>
+                        </svg>
+                        <span class="dropdown__item-label">Settings</span>
+                      </button>
+                      <div class="dropdown__divider"></div>
+                      <button class="dropdown__item">
+                        <svg class="dropdown__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                          <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span class="dropdown__item-label">Email Support</span>
+                      </button>
+                      <div class="dropdown__divider"></div>
+                      <button class="dropdown__item dropdown__item--danger">
+                        <svg class="dropdown__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                          <polyline points="16 17 21 12 16 7"></polyline>
+                          <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        <span class="dropdown__item-label">Sign Out</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- User Menu Dropdown -->
+                <div>
+                  <label class="form-label mb-3">User Menu</label>
+                  <div class="dropdown" id="userDropdown">
+                    <button class="header__user dropdown__trigger" id="userDropdownTrigger">
+                      <div class="header__user-avatar">SJ</div>
+                      <svg class="dropdown__trigger-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </button>
+                    <div class="dropdown__menu dropdown__menu--right user-menu">
+                      <div class="user-menu__profile">
+                        <div class="user-menu__avatar">SJ</div>
+                        <div class="user-menu__info">
+                          <div class="user-menu__name">Sarah Johnson</div>
+                          <div class="user-menu__email">sarah.johnson@company.com</div>
+                          <span class="user-menu__status">Online</span>
+                        </div>
+                      </div>
+                      <div style="padding: var(--space-2);">
+                        <button class="dropdown__item is-selected">
+                          <svg class="dropdown__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                          </svg>
+                          <span class="dropdown__item-label">View Profile</span>
+                          <svg class="dropdown__item-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                          </svg>
+                        </button>
+                        <button class="dropdown__item">
+                          <svg class="dropdown__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                          </svg>
+                          <span class="dropdown__item-label">Privacy Settings</span>
+                        </button>
+                        <button class="dropdown__item">
+                          <svg class="dropdown__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                          </svg>
+                          <span class="dropdown__item-label">Notifications</span>
+                          <span class="dropdown__item-badge">5</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Keyboard Shortcuts -->
+              <div class="mt-6">
+                <label class="form-label mb-3">Keyboard Shortcuts</label>
+                <div style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
+                  <span class="text-body-sm text-secondary"><kbd class="kbd">Cmd</kbd> + <kbd class="kbd">K</kbd> Search</span>
+                  <span class="text-body-sm text-secondary"><kbd class="kbd">Esc</kbd> Close modal</span>
+                  <span class="text-body-sm text-secondary"><kbd class="kbd">?</kbd> Show shortcuts</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form Actions -->
+          <div class="form-actions form-actions--right mt-6">
+            <button class="btn btn--ghost">Cancel</button>
+            <button class="btn btn--primary">Save Changes</button>
+          </div>
+        </section>
       </main>
     </div>
 
