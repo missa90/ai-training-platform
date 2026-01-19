@@ -1,0 +1,451 @@
+/* ==========================================================================
+   Memory Explorer Component
+   Tabbed comparison of AI platform memory features
+   ========================================================================== */
+
+.memory-explorer {
+  width: 100%;
+  max-width: 900px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+/* ==========================================================================
+   Tab Navigation
+   ========================================================================== */
+
+.memory-explorer__tabs {
+  display: flex;
+  gap: 0;
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-subtle);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.memory-explorer__tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-5);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  cursor: pointer;
+  transition: var(--transition-all);
+  white-space: nowrap;
+}
+
+.memory-explorer__tab:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.memory-explorer__tab--active {
+  color: var(--text-primary);
+  border-bottom-color: var(--accent-primary);
+  background: var(--bg-secondary);
+}
+
+.memory-explorer__tab-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-md);
+  opacity: 0.7;
+  transition: var(--transition-all);
+}
+
+.memory-explorer__tab--active .memory-explorer__tab-icon {
+  opacity: 1;
+}
+
+.memory-explorer__tab-icon--claude {
+  color: #E97451;
+}
+
+.memory-explorer__tab-icon--chatgpt {
+  color: #10A37F;
+}
+
+.memory-explorer__tab-icon--copilot {
+  color: #0078D4;
+}
+
+.memory-explorer__tab-icon--gemini {
+  color: #8B5CF6;
+}
+
+/* ==========================================================================
+   Panels
+   ========================================================================== */
+
+.memory-explorer__panels {
+  position: relative;
+}
+
+.memory-explorer__panel {
+  display: none;
+  padding: var(--space-6);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity var(--duration-normal) var(--ease-smooth),
+              transform var(--duration-normal) var(--ease-smooth);
+}
+
+.memory-explorer__panel--active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.memory-explorer__panel-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--space-6);
+}
+
+/* ==========================================================================
+   Section Titles
+   ========================================================================== */
+
+.memory-explorer__section-title {
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  margin: 0 0 var(--space-4) 0;
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* ==========================================================================
+   Features List
+   ========================================================================== */
+
+.memory-explorer__features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.memory-explorer__feature {
+  padding: var(--space-3);
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  transition: var(--transition-all);
+}
+
+.memory-explorer__feature:hover {
+  border-color: var(--border-default);
+}
+
+.memory-explorer__feature-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.memory-explorer__feature-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.memory-explorer__feature-icon--success {
+  color: var(--accent-success);
+}
+
+.memory-explorer__feature-icon--warning {
+  color: var(--accent-amber);
+}
+
+.memory-explorer__feature-name {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+}
+
+.memory-explorer__feature-badge {
+  display: inline-flex;
+  padding: var(--space-1) var(--space-2);
+  background: var(--accent-primary-muted);
+  color: var(--accent-primary);
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  border-radius: var(--radius-full);
+  margin-left: auto;
+}
+
+.memory-explorer__feature-badge--new {
+  background: var(--accent-success-muted);
+  color: var(--accent-success);
+}
+
+.memory-explorer__feature-desc {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+/* ==========================================================================
+   Best For Section
+   ========================================================================== */
+
+.memory-explorer__best-for {
+  display: flex;
+  flex-direction: column;
+}
+
+.memory-explorer__use-cases {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-5) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.memory-explorer__use-cases li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-normal);
+}
+
+.memory-explorer__use-cases li svg {
+  flex-shrink: 0;
+  color: var(--accent-cyan);
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   Pricing Section
+   ========================================================================== */
+
+.memory-explorer__pricing {
+  margin-top: auto;
+  padding: var(--space-4);
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+}
+
+.memory-explorer__pricing-title {
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  margin: 0 0 var(--space-3) 0;
+}
+
+.memory-explorer__pricing-tiers {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.memory-explorer__tier {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-2) 0;
+  border-bottom: 1px dashed var(--border-subtle);
+}
+
+.memory-explorer__tier:last-child {
+  border-bottom: none;
+}
+
+.memory-explorer__tier-name {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--text-primary);
+}
+
+.memory-explorer__tier-detail {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Comparison Table Section
+   ========================================================================== */
+
+.memory-explorer__comparison {
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-tertiary);
+}
+
+.memory-explorer__comparison-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-4);
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  cursor: pointer;
+  transition: var(--transition-all);
+}
+
+.memory-explorer__comparison-toggle:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.memory-explorer__comparison-chevron {
+  transition: transform var(--duration-normal) var(--ease-smooth);
+}
+
+.memory-explorer__comparison--open .memory-explorer__comparison-chevron {
+  transform: rotate(180deg);
+}
+
+.memory-explorer__comparison-table {
+  display: none;
+  padding: 0 var(--space-4) var(--space-4);
+  overflow-x: auto;
+}
+
+.memory-explorer__comparison--open .memory-explorer__comparison-table {
+  display: block;
+}
+
+.memory-explorer__comparison-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-xs);
+}
+
+.memory-explorer__comparison-table th,
+.memory-explorer__comparison-table td {
+  padding: var(--space-3);
+  text-align: center;
+  border: 1px solid var(--border-subtle);
+}
+
+.memory-explorer__comparison-table th {
+  background: var(--bg-quaternary);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+}
+
+.memory-explorer__comparison-table th:first-child,
+.memory-explorer__comparison-table td:first-child {
+  text-align: left;
+  background: var(--bg-quaternary);
+  font-weight: var(--font-medium);
+  color: var(--text-secondary);
+}
+
+.memory-explorer__comparison-table td {
+  color: var(--text-secondary);
+}
+
+.memory-explorer__check {
+  color: var(--accent-success);
+  font-weight: var(--font-bold);
+}
+
+.memory-explorer__highlight {
+  color: var(--accent-success);
+  font-weight: var(--font-semibold);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .memory-explorer__tabs {
+    justify-content: flex-start;
+  }
+
+  .memory-explorer__tab {
+    flex: none;
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .memory-explorer__tab span:not(.memory-explorer__tab-icon) {
+    display: none;
+  }
+
+  .memory-explorer__tab--active span:not(.memory-explorer__tab-icon) {
+    display: inline;
+  }
+
+  .memory-explorer__panel {
+    padding: var(--space-4);
+  }
+
+  .memory-explorer__panel-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  .memory-explorer__comparison-table {
+    font-size: var(--text-xs);
+  }
+
+  .memory-explorer__comparison-table th,
+  .memory-explorer__comparison-table td {
+    padding: var(--space-2);
+  }
+}
+
+@media (max-width: 480px) {
+  .memory-explorer__tab {
+    padding: var(--space-3);
+  }
+
+  .memory-explorer__feature {
+    padding: var(--space-2);
+  }
+
+  .memory-explorer__feature-header {
+    flex-wrap: wrap;
+  }
+
+  .memory-explorer__feature-badge {
+    margin-left: 0;
+    margin-top: var(--space-1);
+  }
+}
+
+/* ==========================================================================
+   Reduced Motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .memory-explorer__panel,
+  .memory-explorer__tab,
+  .memory-explorer__comparison-chevron {
+    transition: none;
+  }
+}

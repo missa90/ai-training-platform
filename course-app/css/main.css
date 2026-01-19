@@ -31,6 +31,11 @@
 @import url('./components/charts.css');
 @import url('./components/progress.css');
 @import url('./components/stats.css');
+@import url('./components/context-window.css');
+@import url('./components/context-timeline.css');
+@import url('./components/rag-demo.css');
+@import url('./components/memory-explorer.css');
+@import url('./components/best-practices.css');
 
 /* Pages */
 @import url('./pages/courses.css');
@@ -38,3 +43,4 @@
 @import url('./pages/community.css');
 @import url('./pages/profile.css');
 @import url('./pages/settings.css');
+@import url('./pages/lesson.css');

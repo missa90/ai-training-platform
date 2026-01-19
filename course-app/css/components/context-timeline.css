@@ -1,0 +1,608 @@
+/* ==========================================================================
+   Context Timeline Component
+   Interactive visualization of context loss across multi-day projects
+   ========================================================================== */
+
+.context-timeline {
+  width: 100%;
+  max-width: 800px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.context-timeline__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-5);
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.context-timeline__title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+}
+
+.context-timeline__title svg {
+  color: var(--accent-amber);
+}
+
+.context-timeline__stats {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.context-timeline__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.context-timeline__stat-label {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.context-timeline__stat-value {
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  color: var(--accent-error);
+  font-family: var(--font-mono);
+}
+
+/* ==========================================================================
+   Timeline Track
+   ========================================================================== */
+
+.context-timeline__track {
+  display: flex;
+  align-items: stretch;
+  padding: var(--space-6) var(--space-4);
+  overflow-x: auto;
+  gap: 0;
+}
+
+/* ==========================================================================
+   Day Columns
+   ========================================================================== */
+
+.context-timeline__day {
+  flex: 1;
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0.4;
+  transform: translateY(10px);
+  transition: opacity var(--duration-normal) var(--ease-out),
+              transform var(--duration-normal) var(--ease-smooth);
+}
+
+.context-timeline__day--active,
+.context-timeline__day--complete {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.context-timeline__day-label {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  margin-bottom: var(--space-1);
+}
+
+.context-timeline__day-title {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+}
+
+/* ==========================================================================
+   Session Cards
+   ========================================================================== */
+
+.context-timeline__session {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3);
+  flex: 1;
+}
+
+.context-timeline__session--complete {
+  border-color: var(--accent-success);
+  background: rgba(16, 185, 129, 0.05);
+}
+
+.context-timeline__session-content {
+  margin-top: var(--space-2);
+}
+
+.context-timeline__session-label {
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  color: var(--text-muted);
+}
+
+/* Context Bar (mini progress indicator) */
+.context-timeline__context-bar {
+  height: 4px;
+  background: var(--bg-quaternary);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.context-timeline__context-fill {
+  height: 100%;
+  width: var(--fill, 0%);
+  background: var(--accent-success);
+  border-radius: var(--radius-full);
+  transition: width var(--duration-slow) var(--ease-smooth);
+}
+
+.context-timeline__context-fill--warning {
+  background: var(--accent-amber);
+}
+
+.context-timeline__context-fill--danger {
+  background: var(--accent-error);
+}
+
+/* Context List */
+.context-timeline__context-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-2) 0 0 0;
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+
+.context-timeline__context-list li {
+  padding: var(--space-1) 0;
+  padding-left: var(--space-3);
+  position: relative;
+}
+
+.context-timeline__context-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  background: var(--accent-success);
+  border-radius: var(--radius-full);
+}
+
+.context-timeline__context-item--lost {
+  color: var(--accent-error);
+  text-decoration: line-through;
+  opacity: 0.8;
+}
+
+.context-timeline__context-item--lost::before {
+  background: var(--accent-error);
+}
+
+/* ==========================================================================
+   Session Breaks (with crisis points)
+   ========================================================================== */
+
+.context-timeline__break {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.context-timeline__break-line {
+  width: 2px;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--border-default) 0,
+    var(--border-default) 4px,
+    transparent 4px,
+    transparent 8px
+  );
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Crisis Point Button */
+.context-timeline__crisis-point {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background: var(--accent-amber-muted);
+  border: 2px solid var(--accent-amber);
+  color: var(--accent-amber);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1;
+  transition: var(--transition-all);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.context-timeline__crisis-point:hover {
+  background: var(--accent-amber);
+  color: var(--text-inverse);
+  transform: scale(1.1);
+}
+
+.context-timeline__crisis-point--severe {
+  background: var(--accent-error-muted);
+  border-color: var(--accent-error);
+  color: var(--accent-error);
+}
+
+.context-timeline__crisis-point--severe:hover {
+  background: var(--accent-error);
+  color: white;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(245, 158, 11, 0);
+  }
+}
+
+/* ==========================================================================
+   Crisis Popup
+   ========================================================================== */
+
+.context-timeline__popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 300px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-visible);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  z-index: var(--z-popover);
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition-all);
+}
+
+.context-timeline__popup--active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.context-timeline__popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.context-timeline__popup-title {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--accent-error);
+}
+
+.context-timeline__popup-close {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: var(--text-lg);
+  transition: var(--transition-colors);
+}
+
+.context-timeline__popup-close:hover {
+  color: var(--text-primary);
+}
+
+.context-timeline__popup-content {
+  padding: var(--space-4);
+}
+
+.context-timeline__popup-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.context-timeline__popup-content li {
+  padding: var(--space-2) 0;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.context-timeline__popup-content li:last-child {
+  border-bottom: none;
+}
+
+.context-timeline__popup-impact {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  background: var(--accent-error-muted);
+  border-top: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.context-timeline__popup-impact-label {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.context-timeline__popup-impact-value {
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  color: var(--accent-error);
+}
+
+/* ==========================================================================
+   Controls
+   ========================================================================== */
+
+.context-timeline__controls {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-tertiary);
+}
+
+.context-timeline__play-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: var(--accent-primary);
+  border: none;
+  border-radius: var(--radius-md);
+  color: white;
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  cursor: pointer;
+  transition: var(--transition-all);
+}
+
+.context-timeline__play-btn:hover {
+  background: var(--accent-primary-hover);
+}
+
+.context-timeline__play-btn--playing {
+  background: var(--accent-amber);
+}
+
+.context-timeline__play-btn--playing:hover {
+  background: var(--accent-amber-hover);
+}
+
+.context-timeline__reset-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: transparent;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: var(--transition-all);
+}
+
+.context-timeline__reset-btn:hover {
+  background: var(--bg-quaternary);
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   Scenario Cards
+   ========================================================================== */
+
+.scenario-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.scenario-card {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  transition: var(--transition-all);
+}
+
+.scenario-card:hover {
+  border-color: var(--border-visible);
+  transform: translateY(-2px);
+}
+
+.scenario-card__icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+}
+
+.scenario-card__icon--document {
+  background: var(--accent-primary-muted);
+  color: var(--accent-primary);
+}
+
+.scenario-card__icon--team {
+  background: var(--accent-cyan-muted);
+  color: var(--accent-cyan);
+}
+
+.scenario-card__icon--analysis {
+  background: var(--accent-purple-muted);
+  color: var(--accent-purple);
+}
+
+.scenario-card__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.scenario-card__title {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  margin: 0 0 var(--space-1) 0;
+}
+
+.scenario-card__text {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin: 0;
+  line-height: var(--leading-relaxed);
+}
+
+/* ==========================================================================
+   Callout Variant
+   ========================================================================== */
+
+.slide-callout--warning {
+  background: var(--accent-error-muted);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.slide-callout--warning .slide-callout__icon {
+  color: var(--accent-error);
+}
+
+.slide-callout--warning strong {
+  color: var(--accent-error);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .context-timeline__track {
+    padding: var(--space-4) var(--space-3);
+  }
+
+  .context-timeline__day {
+    min-width: 120px;
+  }
+
+  .scenario-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .context-timeline__header {
+    flex-direction: column;
+    gap: var(--space-3);
+    align-items: flex-start;
+  }
+
+  .context-timeline__stats {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .context-timeline__day {
+    min-width: 100px;
+  }
+
+  .context-timeline__context-list {
+    display: none;
+  }
+
+  .scenario-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .scenario-card__icon {
+    margin: 0 auto;
+  }
+}
+
+/* ==========================================================================
+   Animation States
+   ========================================================================== */
+
+.context-timeline--playing .context-timeline__day {
+  opacity: 0.4;
+  transform: translateY(10px);
+}
+
+.context-timeline--playing .context-timeline__day--active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Day activation animation */
+.context-timeline__day--animating {
+  animation: dayActivate var(--duration-slow) var(--ease-spring);
+}
+
+@keyframes dayActivate {
+  0% {
+    opacity: 0.4;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   Reduced Motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .context-timeline__crisis-point {
+    animation: none;
+  }
+
+  .context-timeline__day,
+  .context-timeline__popup {
+    transition: none;
+  }
+}
