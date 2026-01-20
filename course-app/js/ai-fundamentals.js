@@ -19,16 +19,29 @@
     capabilitySimVisible: {}
   };
 
-  // Load saved progress from localStorage
-  const savedProgress = localStorage.getItem('ai-fundamentals-progress');
-  if (savedProgress) {
-    try {
+  // Load saved progress from localStorage with validation
+  try {
+    const savedProgress = localStorage.getItem('ai-fundamentals-progress');
+    if (savedProgress) {
       const progress = JSON.parse(savedProgress);
-      state.completedSlides = new Set(progress.completedSlides || []);
-      state.currentSlide = progress.currentSlide || 1;
-    } catch (e) {
-      console.warn('Failed to load saved progress');
+
+      // Validate completedSlides is an array of valid slide numbers
+      if (Array.isArray(progress.completedSlides)) {
+        const validSlides = progress.completedSlides.filter(
+          n => typeof n === 'number' && n >= 1 && n <= state.totalSlides
+        );
+        state.completedSlides = new Set(validSlides);
+      }
+
+      // Validate currentSlide is a valid number
+      const currentSlide = parseInt(progress.currentSlide, 10);
+      if (!isNaN(currentSlide) && currentSlide >= 1 && currentSlide <= state.totalSlides) {
+        state.currentSlide = currentSlide;
+      }
     }
+  } catch (e) {
+    // localStorage unavailable or invalid data - use defaults
+    console.warn('Failed to load saved progress:', e.message);
   }
 
   // ============================================================================

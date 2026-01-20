@@ -281,18 +281,43 @@ class Header {
 
     if (!avatar) return;
 
+    // Clear existing content safely
+    avatar.textContent = '';
+
     if (userData.avatar) {
-      avatar.innerHTML = `<img src="${userData.avatar}" alt="${userData.name}">`;
+      // Create img element safely to prevent XSS
+      const img = document.createElement('img');
+      // Validate URL - only allow http(s) and data URIs
+      const avatarUrl = String(userData.avatar || '');
+      if (avatarUrl.match(/^(https?:\/\/|data:image\/)/i)) {
+        img.src = avatarUrl;
+      } else {
+        // Invalid URL, fall back to initials
+        avatar.textContent = this.getInitials(userData.name);
+        return;
+      }
+      // Sanitize alt text by using textContent-style encoding
+      img.alt = String(userData.name || 'User avatar');
+      avatar.appendChild(img);
     } else {
       // Show initials if no avatar
-      const initials = userData.name
-        .split(' ')
-        .map(n => n[0])
-        .join('')
-        .toUpperCase()
-        .slice(0, 2);
-      avatar.textContent = initials;
+      avatar.textContent = this.getInitials(userData.name);
     }
+  }
+
+  /**
+   * Get initials from a name string
+   * @param {string} name - User's name
+   * @returns {string} Two-letter initials
+   */
+  getInitials(name) {
+    const safeName = String(name || '');
+    return safeName
+      .split(' ')
+      .map(n => n[0] || '')
+      .join('')
+      .toUpperCase()
+      .slice(0, 2) || 'U';
   }
 }
 

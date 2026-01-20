@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self';">
   <meta name="description" content="AI Fundamentals - Learn the basics of AI, how LLMs work, and how to use AI effectively">
   <title>AI Fundamentals | AI Training Platform</title>
 
@@ -108,7 +109,7 @@
         <div class="lesson-progress__bar">
           <div class="lesson-progress__fill" id="progressFill" style="--progress: 9.09%"></div>
         </div>
-        <span class="lesson-progress__label" id="progressLabel">Section 1 of 11</span>
+        <span class="lesson-progress__label" id="progressLabel" aria-live="polite">Section 1 of 11</span>
       </div>
 
       <!-- Lesson Stage (Presentation Area) -->
@@ -204,7 +205,7 @@
                       </div>
                       <div class="ai-comparison__result-box">
                         <div class="ai-comparison__result-label">AI Output</div>
-                        <div class="ai-comparison__result-text" id="aiResultText"></div>
+                        <div class="ai-comparison__result-text" id="aiResultText" aria-live="polite"></div>
                       </div>
                     </div>
                   </div>
@@ -278,10 +279,11 @@
                     <span>Step 1: Text becomes Tokens</span>
                   </div>
                   <div class="llm-demo__token-input">
-                    <input type="text" id="tokenInput" value="Enterprise AI Training" placeholder="Type any text...">
+                    <label for="tokenInput" class="sr-only">Enter text to tokenize</label>
+                    <input type="text" id="tokenInput" value="Enterprise AI Training" placeholder="Type any text..." aria-describedby="tokenOutput">
                     <button class="llm-demo__tokenize-btn" id="tokenizeBtn">Tokenize</button>
                   </div>
-                  <div class="llm-demo__token-output" id="tokenOutput">
+                  <div class="llm-demo__token-output" id="tokenOutput" aria-live="polite" role="region" aria-label="Tokenization results">
                     <div class="llm-demo__token-hint">Click "Tokenize" to see how AI breaks text into tokens</div>
                   </div>
                   <div class="llm-demo__token-count" id="tokenCount" style="display: none;">
@@ -540,7 +542,7 @@
                         </svg>
                         Analyze Data
                       </button>
-                      <div class="sim-analysis__output" id="analysisResponse">
+                      <div class="sim-analysis__output" id="analysisResponse" aria-live="polite" role="region" aria-label="Analysis results">
                         <div class="sim-analysis__insight sim-analysis__insight--positive">
                           <span class="sim-analysis__insight-icon">📈</span>
                           <div class="sim-analysis__insight-content">
@@ -585,7 +587,7 @@
                         </svg>
                         Generate Formula
                       </button>
-                      <div class="sim-code__output" id="codeResponse">
+                      <div class="sim-code__output" id="codeResponse" aria-live="polite" role="region" aria-label="Code generation results">
                         <div class="sim-code__formula">
                           <div class="sim-code__formula-label">Generated Formula:</div>
                           <code class="sim-code__formula-code">=INDEX(A:A,MATCH(MAX(B:B),B:B,0))</code>

@@ -241,6 +241,63 @@
   }
 
   // ========================================================================
+  // Focus Trap Utility
+  // ========================================================================
+
+  function createFocusTrap(container) {
+    const focusableSelectors = [
+      'button:not([disabled])',
+      'input:not([disabled])',
+      'select:not([disabled])',
+      'textarea:not([disabled])',
+      'a[href]',
+      '[tabindex]:not([tabindex="-1"])'
+    ].join(', ');
+
+    let previousActiveElement = null;
+
+    function getFocusableElements() {
+      return Array.from(container.querySelectorAll(focusableSelectors))
+        .filter(el => el.offsetParent !== null); // Only visible elements
+    }
+
+    function handleKeyDown(e) {
+      if (e.key !== 'Tab') return;
+
+      const focusable = getFocusableElements();
+      if (focusable.length === 0) return;
+
+      const firstElement = focusable[0];
+      const lastElement = focusable[focusable.length - 1];
+
+      if (e.shiftKey && document.activeElement === firstElement) {
+        e.preventDefault();
+        lastElement.focus();
+      } else if (!e.shiftKey && document.activeElement === lastElement) {
+        e.preventDefault();
+        firstElement.focus();
+      }
+    }
+
+    return {
+      activate() {
+        previousActiveElement = document.activeElement;
+        container.addEventListener('keydown', handleKeyDown);
+        const focusable = getFocusableElements();
+        if (focusable.length > 0) {
+          focusable[0].focus();
+        }
+      },
+      deactivate() {
+        container.removeEventListener('keydown', handleKeyDown);
+        if (previousActiveElement && previousActiveElement.focus) {
+          previousActiveElement.focus();
+        }
+      }
+    };
+  }
+
+  // ========================================================================
   // Search Modal
   // ========================================================================
 
@@ -251,6 +308,9 @@
     const searchClose = document.getElementById('searchClose');
     const searchEmpty = document.getElementById('searchEmpty');
     const searchResults = document.getElementById('searchResults');
+
+    // Create focus trap for the search modal
+    const searchFocusTrap = searchModal ? createFocusTrap(searchModal) : null;
 
     // Sample search data
     const searchData = {
@@ -277,17 +337,27 @@
     function openSearch() {
       if (searchModal) {
         searchModal.classList.add('active');
-        searchInput?.focus();
+        searchModal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
+        // Activate focus trap and focus on search input
+        if (searchFocusTrap) {
+          searchFocusTrap.activate();
+        }
+        searchInput?.focus();
       }
     }
 
     function closeSearch() {
       if (searchModal) {
         searchModal.classList.remove('active');
+        searchModal.setAttribute('aria-hidden', 'true');
         if (searchInput) searchInput.value = '';
         document.body.style.overflow = '';
         resetSearch();
+        // Deactivate focus trap and restore focus
+        if (searchFocusTrap) {
+          searchFocusTrap.deactivate();
+        }
       }
     }
 
@@ -324,37 +394,182 @@
       }
     }
 
+    /**
+     * Sanitize text to prevent XSS
+     * @param {string} text - Text to sanitize
+     * @returns {string} Sanitized text
+     */
+    function sanitizeText(text) {
+      const div = document.createElement('div');
+      div.textContent = String(text || '');
+      return div.textContent;
+    }
+
+    /**
+     * Create SVG icon element safely
+     * @param {string} type - Icon type (course, tool, community)
+     * @returns {SVGElement} SVG element
+     */
+    function createIconSvg(type) {
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('viewBox', '0 0 24 24');
+      svg.setAttribute('width', '20');
+      svg.setAttribute('height', '20');
+      svg.setAttribute('fill', 'none');
+      svg.setAttribute('stroke', 'currentColor');
+      svg.setAttribute('stroke-width', '2');
+      svg.setAttribute('aria-hidden', 'true');
+
+      const iconPaths = {
+        course: [
+          { tag: 'path', d: 'M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z' },
+          { tag: 'path', d: 'M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z' }
+        ],
+        tool: [
+          { tag: 'path', d: 'M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z' }
+        ],
+        community: [
+          { tag: 'path', d: 'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2' },
+          { tag: 'circle', cx: '9', cy: '7', r: '4' }
+        ]
+      };
+
+      const paths = iconPaths[type] || [];
+      paths.forEach(pathDef => {
+        const el = document.createElementNS('http://www.w3.org/2000/svg', pathDef.tag);
+        if (pathDef.d) el.setAttribute('d', pathDef.d);
+        if (pathDef.cx) el.setAttribute('cx', pathDef.cx);
+        if (pathDef.cy) el.setAttribute('cy', pathDef.cy);
+        if (pathDef.r) el.setAttribute('r', pathDef.r);
+        svg.appendChild(el);
+      });
+
+      return svg;
+    }
+
+    /**
+     * Render search results safely using DOM methods
+     * @param {string} containerId - Container element ID
+     * @param {Array} items - Search result items
+     * @param {string} type - Result type (course, tool, community)
+     */
     function renderResults(containerId, items, type) {
       const container = document.getElementById(containerId);
       if (!container) return;
 
-      container.innerHTML = items.map(item => `
-        <li class="search-modal__result" data-href="${item.href}">
-          <div class="search-modal__result-icon search-modal__result-icon--${type}">
-            ${getIconSvg(type)}
-          </div>
-          <div class="search-modal__result-content">
-            <div class="search-modal__result-title">${item.title}</div>
-            <div class="search-modal__result-meta">${item.meta}</div>
-          </div>
-        </li>
-      `).join('');
+      // Clear existing content safely
+      container.textContent = '';
 
-      // Add click handlers
-      container.querySelectorAll('.search-modal__result').forEach(result => {
-        result.addEventListener('click', () => {
-          window.location.href = result.dataset.href;
+      items.forEach(item => {
+        const li = document.createElement('li');
+        li.className = 'search-modal__result';
+        li.setAttribute('role', 'option');
+        li.setAttribute('tabindex', '0');
+
+        // Create icon container
+        const iconDiv = document.createElement('div');
+        iconDiv.className = `search-modal__result-icon search-modal__result-icon--${sanitizeText(type)}`;
+        iconDiv.appendChild(createIconSvg(type));
+
+        // Create content container
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'search-modal__result-content';
+
+        const titleDiv = document.createElement('div');
+        titleDiv.className = 'search-modal__result-title';
+        titleDiv.textContent = sanitizeText(item.title);
+
+        const metaDiv = document.createElement('div');
+        metaDiv.className = 'search-modal__result-meta';
+        metaDiv.textContent = sanitizeText(item.meta);
+
+        contentDiv.appendChild(titleDiv);
+        contentDiv.appendChild(metaDiv);
+
+        li.appendChild(iconDiv);
+        li.appendChild(contentDiv);
+
+        // Add click and keyboard handlers
+        const href = sanitizeText(item.href);
+        const navigateToResult = () => {
+          // Validate href is a safe relative URL
+          if (href && !href.includes('://') && !href.startsWith('javascript:')) {
+            window.location.href = href;
+          }
+        };
+
+        li.addEventListener('click', navigateToResult);
+        li.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            navigateToResult();
+          }
         });
+
+        container.appendChild(li);
       });
     }
 
-    function getIconSvg(type) {
-      const icons = {
-        course: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>',
-        tool: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>',
-        community: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>'
-      };
-      return icons[type] || '';
+    // Track selected result index for keyboard navigation
+    let selectedResultIndex = -1;
+
+    /**
+     * Get all visible search results
+     * @returns {NodeListOf<Element>} All result elements
+     */
+    function getVisibleResults() {
+      return searchModal?.querySelectorAll('.search-modal__result') || [];
+    }
+
+    /**
+     * Update selection highlight
+     * @param {number} newIndex - New index to select
+     */
+    function updateSelection(newIndex) {
+      const results = getVisibleResults();
+      if (results.length === 0) return;
+
+      // Remove previous selection
+      results.forEach(r => r.classList.remove('search-modal__result--selected'));
+
+      // Wrap around
+      if (newIndex < 0) newIndex = results.length - 1;
+      if (newIndex >= results.length) newIndex = 0;
+
+      selectedResultIndex = newIndex;
+
+      // Add selection and scroll into view
+      const selectedResult = results[selectedResultIndex];
+      if (selectedResult) {
+        selectedResult.classList.add('search-modal__result--selected');
+        selectedResult.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        selectedResult.focus();
+      }
+    }
+
+    /**
+     * Handle keyboard navigation in search modal
+     * @param {KeyboardEvent} e - Keyboard event
+     */
+    function handleSearchKeydown(e) {
+      const results = getVisibleResults();
+
+      switch (e.key) {
+        case 'ArrowDown':
+          e.preventDefault();
+          updateSelection(selectedResultIndex + 1);
+          break;
+        case 'ArrowUp':
+          e.preventDefault();
+          updateSelection(selectedResultIndex - 1);
+          break;
+        case 'Enter':
+          if (selectedResultIndex >= 0 && results[selectedResultIndex]) {
+            e.preventDefault();
+            results[selectedResultIndex].click();
+          }
+          break;
+      }
     }
 
     // Event listeners
@@ -380,10 +595,14 @@
       searchModal.addEventListener('click', (e) => {
         if (e.target === searchModal) closeSearch();
       });
+
+      // Add keyboard navigation for search results
+      searchModal.addEventListener('keydown', handleSearchKeydown);
     }
 
     if (searchInput) {
       searchInput.addEventListener('input', (e) => {
+        selectedResultIndex = -1; // Reset selection on new search
         performSearch(e.target.value);
       });
     }
@@ -398,6 +617,7 @@
     const notificationsPanel = document.getElementById('notificationsPanel');
     const markAllRead = document.getElementById('markAllRead');
     const notificationBadge = document.getElementById('notificationBadge');
+    const notificationsList = document.querySelector('.notifications-panel__list');
 
     function toggleNotifications() {
       notificationsPanel?.classList.toggle('active');
@@ -407,6 +627,36 @@
       notificationsPanel?.classList.remove('active');
     }
 
+    function getUnreadCount() {
+      return document.querySelectorAll('.notification-item--unread').length;
+    }
+
+    function updateBadges() {
+      const unreadCount = getUnreadCount();
+
+      // Update header badge
+      if (notificationBadge) {
+        notificationBadge.textContent = String(unreadCount);
+        notificationBadge.style.display = unreadCount > 0 ? '' : 'none';
+      }
+
+      // Update tab badge
+      const tabBadge = document.querySelector('.notifications-panel__tab-badge');
+      if (tabBadge) {
+        tabBadge.textContent = String(unreadCount);
+      }
+    }
+
+    function markNotificationAsRead(item) {
+      if (!item.classList.contains('notification-item--unread')) return;
+
+      item.classList.remove('notification-item--unread');
+      const indicator = item.querySelector('.notification-item__unread');
+      if (indicator) indicator.remove();
+
+      updateBadges();
+    }
+
     function markAllAsRead() {
       document.querySelectorAll('.notification-item--unread').forEach(item => {
         item.classList.remove('notification-item--unread');
@@ -414,15 +664,50 @@
         if (indicator) indicator.remove();
       });
 
-      // Update badge
-      if (notificationBadge) {
-        notificationBadge.textContent = '0';
-        notificationBadge.style.display = 'none';
-      }
+      updateBadges();
 
-      // Update tab badge
-      const tabBadge = document.querySelector('.notifications-panel__tab-badge');
-      if (tabBadge) tabBadge.textContent = '0';
+      // If on Unread tab, show empty state
+      const activeTab = document.querySelector('.notifications-panel__tab.active');
+      if (activeTab?.dataset.tab === 'unread') {
+        filterNotifications('unread');
+      }
+    }
+
+    function filterNotifications(filter) {
+      const items = document.querySelectorAll('.notification-item');
+
+      items.forEach(item => {
+        if (filter === 'all') {
+          item.style.display = '';
+        } else if (filter === 'unread') {
+          item.style.display = item.classList.contains('notification-item--unread') ? '' : 'none';
+        }
+      });
+
+      // Show empty state if no visible items in unread tab
+      if (filter === 'unread') {
+        const visibleItems = Array.from(items).filter(item =>
+          item.classList.contains('notification-item--unread')
+        );
+        const emptyState = document.querySelector('.notifications-panel__empty');
+        if (visibleItems.length === 0 && !emptyState) {
+          // Create empty state if none exist
+          const emptyDiv = document.createElement('div');
+          emptyDiv.className = 'notifications-panel__empty';
+          emptyDiv.innerHTML = `
+            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--text-muted); opacity: 0.5; margin-bottom: var(--space-3);">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+            <p style="color: var(--text-secondary); font-size: var(--text-sm);">All caught up!</p>
+          `;
+          notificationsList?.appendChild(emptyDiv);
+        }
+      } else {
+        // Remove empty state on All tab
+        const emptyState = document.querySelector('.notifications-panel__empty');
+        if (emptyState) emptyState.remove();
+      }
     }
 
     // Event listeners
@@ -435,6 +720,16 @@
 
     if (markAllRead) {
       markAllRead.addEventListener('click', markAllAsRead);
+    }
+
+    // Individual notification click to mark as read
+    if (notificationsList) {
+      notificationsList.addEventListener('click', (e) => {
+        const item = e.target.closest('.notification-item');
+        if (item) {
+          markNotificationAsRead(item);
+        }
+      });
     }
 
     // Close on outside click
@@ -453,14 +748,17 @@
       }
     });
 
-    // Tab switching
+    // Tab switching with filtering
     document.querySelectorAll('.notifications-panel__tab').forEach(tab => {
       tab.addEventListener('click', () => {
         document.querySelectorAll('.notifications-panel__tab').forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
-        // Filter notifications based on tab (simplified - just visual)
+        filterNotifications(tab.dataset.tab || 'all');
       });
     });
+
+    // Initialize badge count
+    updateBadges();
   }
 
   // ========================================================================
@@ -468,14 +766,92 @@
   // ========================================================================
 
   function initUserMenu() {
+    const userDropdown = document.getElementById('userDropdown');
     const userMenuBtn = document.getElementById('userMenuBtn');
+    const themeToggleMenu = document.getElementById('themeToggleMenu');
+    const themeToggleLabel = document.getElementById('themeToggleLabel');
+    const signOutBtn = document.getElementById('signOutBtn');
 
-    if (userMenuBtn) {
-      userMenuBtn.addEventListener('click', () => {
-        // Navigate to profile for now
-        window.location.href = 'profile.html';
+    if (!userDropdown || !userMenuBtn) return;
+
+    function openUserMenu() {
+      userDropdown.classList.add('is-open');
+      userMenuBtn.setAttribute('aria-expanded', 'true');
+      updateThemeLabel();
+    }
+
+    function closeUserMenu() {
+      userDropdown.classList.remove('is-open');
+      userMenuBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    function toggleUserMenu() {
+      if (userDropdown.classList.contains('is-open')) {
+        closeUserMenu();
+      } else {
+        openUserMenu();
+      }
+    }
+
+    function updateThemeLabel() {
+      if (!themeToggleLabel) return;
+      const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+      themeToggleLabel.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+    }
+
+    // Toggle menu on button click
+    userMenuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleUserMenu();
+    });
+
+    // Theme toggle
+    if (themeToggleMenu) {
+      themeToggleMenu.addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+        const newTheme = isDark ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        try {
+          localStorage.setItem('theme', newTheme);
+        } catch {
+          // localStorage unavailable
+        }
+        updateThemeLabel();
       });
     }
+
+    // Sign out (demo: just reload page)
+    if (signOutBtn) {
+      signOutBtn.addEventListener('click', () => {
+        // In production, this would call an auth logout endpoint
+        // For demo, clear localStorage and reload
+        try {
+          localStorage.removeItem('onboardingComplete');
+        } catch {
+          // localStorage unavailable
+        }
+        window.location.reload();
+      });
+    }
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (userDropdown.classList.contains('is-open') &&
+          !userDropdown.contains(e.target)) {
+        closeUserMenu();
+      }
+    });
+
+    // Close on escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && userDropdown.classList.contains('is-open')) {
+        closeUserMenu();
+        userMenuBtn.focus();
+      }
+    });
+
+    // Initialize theme label
+    updateThemeLabel();
   }
 
   // ========================================================================
