@@ -459,8 +459,8 @@
 .sidebar__user-level {
   display: inline-block;
   padding: 2px 8px;
-  background: rgba(251, 191, 36, 0.15);
-  color: #fbbf24;
+  background: var(--accent-amber-muted);
+  color: var(--accent-amber);
   font-size: var(--text-xs);
   font-weight: 600;
   border-radius: 4px;

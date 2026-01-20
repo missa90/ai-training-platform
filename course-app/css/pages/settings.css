@@ -185,8 +185,8 @@
 .settings-demo-row .settings-card {
   background: linear-gradient(
     135deg,
-    rgba(99, 102, 241, 0.05),
-    rgba(139, 92, 246, 0.05)
+    rgba(60, 110, 113, 0.05),
+    rgba(46, 86, 89, 0.05)
   );
   border-color: var(--border-default);
 }
@@ -248,7 +248,7 @@
 .settings-danger__content {
   padding: var(--space-5);
   background: var(--accent-error-muted);
-  border: 1px solid rgba(239, 68, 68, 0.3);
+  border: 1px solid rgba(231, 111, 81, 0.3);
   border-radius: var(--radius-lg);
 }
 
@@ -280,8 +280,8 @@
 .settings-danger-zone {
   margin-top: var(--space-8);
   padding: var(--space-6);
-  background: rgba(239, 68, 68, 0.05);
-  border: 1px solid rgba(239, 68, 68, 0.2);
+  background: var(--accent-error-muted);
+  border: 1px solid rgba(231, 111, 81, 0.2);
   border-radius: var(--radius-lg);
 }
 

@@ -1,5 +1,6 @@
 /* ==========================================================================
    Design Tokens - AI Training Platform
+   Updated: Brand Teal + Warm Stone + Inter Typography
    ========================================================================== */
 
 :root {
@@ -7,30 +8,44 @@
      COLOR SYSTEM
      ======================================================================== */
 
-  /* Background Colors - Dark Theme */
-  --bg-primary: #0a0a0b;          /* Main background - near black */
-  --bg-secondary: #0f0f10;        /* Sidebar, elevated surfaces */
-  --bg-tertiary: #1a1a1f;         /* Cards, inputs */
-  --bg-quaternary: #252530;       /* Hover states, highlights */
-  --bg-elevated: #1e1e24;         /* Modal backgrounds */
+  /* Background Colors - Dark Theme (Warm Stone) */
+  --bg-primary: #1C1917;          /* Main background - warm dark */
+  --bg-secondary: #292524;        /* Sidebar, elevated surfaces */
+  --bg-tertiary: #44403C;         /* Cards, inputs */
+  --bg-quaternary: #57534E;       /* Hover states, highlights */
+  --bg-elevated: #292524;         /* Modal backgrounds */
 
-  /* Text Colors */
+  /* Text Colors (Warm) */
   --text-primary: #ffffff;        /* Headlines, important text */
-  --text-secondary: #a1a1a6;      /* Body text, descriptions */
-  --text-muted: #6e6e73;          /* Captions, metadata, placeholders */
-  --text-inverse: #0a0a0b;        /* Text on light backgrounds */
+  --text-secondary: #A8A29E;      /* Body text, descriptions */
+  --text-muted: #78716C;          /* Captions, metadata, placeholders */
+  --text-inverse: #1C1917;        /* Text on light backgrounds */
 
-  /* Primary Accent - Terracotta (distinctive, warm) */
-  --accent-primary: #e07a5f;      /* Primary actions, active states */
-  --accent-primary-hover: #f08a6f;
-  --accent-primary-muted: rgba(224, 122, 95, 0.15);
-  --accent-primary-glow: rgba(224, 122, 95, 0.4);
-  --accent-primary-rgb: 224, 122, 95;
+  /* ========================================================================
+     BRAND TEAL COLOR SCALE
+     ======================================================================== */
+  --teal-50: #F2F9F9;
+  --teal-100: #E0F0F0;
+  --teal-200: #C2E1E2;
+  --teal-300: #99CDCF;
+  --teal-400: #66B0B3;
+  --teal-500: #3C6E71;             /* PRIMARY BRAND COLOR */
+  --teal-600: #2E5659;
+  --teal-700: #224042;
+  --teal-800: #182C2E;
+  --teal-900: #101D1E;
 
-  /* Secondary Accent - Deep Teal (Tools) */
-  --accent-cyan: #0d7377;
-  --accent-cyan-hover: #0f9195;
-  --accent-cyan-muted: rgba(13, 115, 119, 0.15);
+  /* Primary Accent - Brand Teal */
+  --accent-primary: #3C6E71;      /* Primary actions, active states */
+  --accent-primary-hover: #2E5659;
+  --accent-primary-muted: rgba(60, 110, 113, 0.15);
+  --accent-primary-glow: rgba(60, 110, 113, 0.3);
+  --accent-primary-rgb: 60, 110, 113;
+
+  /* Secondary Accent - Lighter Teal (Tools) */
+  --accent-cyan: #66B0B3;
+  --accent-cyan-hover: #99CDCF;
+  --accent-cyan-muted: rgba(102, 176, 179, 0.15);
 
   /* Tertiary Accent - Warm Sand (Streaks, Highlights) */
   --accent-amber: #f2cc8f;
@@ -67,17 +82,18 @@
   --shadow-xl:
     0 8px 16px rgba(0, 0, 0, 0.3),
     0 20px 40px rgba(0, 0, 0, 0.5);
+  --shadow-soft: 0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04);
   --shadow-glow: 0 0 20px var(--accent-primary-glow);
-  --shadow-glow-primary: 0 8px 32px rgba(224, 122, 95, 0.3);
+  --shadow-glow-primary: 0 8px 32px rgba(60, 110, 113, 0.3);
   --shadow-glow-success: 0 8px 32px rgba(129, 178, 154, 0.25);
 
   /* ========================================================================
      TYPOGRAPHY
      ======================================================================== */
 
-  /* Font Families - Editorial serif + refined sans-serif */
-  --font-display: 'Crimson Pro', Georgia, 'Times New Roman', serif;
-  --font-body: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Font Families - Inter for all UI */
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
 
   /* Font Sizes */
@@ -221,25 +237,25 @@
   --breakpoint-2xl: 1536px;
 
   /* Overlay */
-  --overlay-bg: rgba(0, 0, 0, 0.7);
+  --overlay-bg: rgba(28, 25, 23, 0.8);
 }
 
 /* ==========================================================================
-   Light Theme
+   Light Theme (Warm Stone)
    ========================================================================== */
 
 [data-theme="light"] {
   /* Background Colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f5f5f7;
-  --bg-tertiary: #ececf1;
-  --bg-quaternary: #e5e5e9;
+  --bg-primary: #FAFAF9;
+  --bg-secondary: #F5F5F4;
+  --bg-tertiary: #E7E5E4;
+  --bg-quaternary: #D6D3D1;
   --bg-elevated: #ffffff;
 
   /* Text Colors */
-  --text-primary: #1a1a1f;
-  --text-secondary: #5e5e63;
-  --text-muted: #8e8e93;
+  --text-primary: #1C1917;
+  --text-secondary: #57534E;
+  --text-muted: #78716C;
   --text-inverse: #ffffff;
 
   /* Borders - Inverted for light backgrounds */
@@ -252,25 +268,27 @@
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1);
   --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.12);
+  --shadow-soft: 0 2px 15px -3px rgba(0, 0, 0, 0.05), 0 10px 20px -2px rgba(0, 0, 0, 0.03);
+  --shadow-glow-primary: 0 8px 32px rgba(60, 110, 113, 0.2);
 
   /* Overlay */
-  --overlay-bg: rgba(0, 0, 0, 0.4);
+  --overlay-bg: rgba(28, 25, 23, 0.5);
 }
 
 /* System preference - applies when no explicit theme is set */
 @media (prefers-color-scheme: light) {
   :root:not([data-theme]) {
     /* Background Colors */
-    --bg-primary: #ffffff;
-    --bg-secondary: #f5f5f7;
-    --bg-tertiary: #ececf1;
-    --bg-quaternary: #e5e5e9;
+    --bg-primary: #FAFAF9;
+    --bg-secondary: #F5F5F4;
+    --bg-tertiary: #E7E5E4;
+    --bg-quaternary: #D6D3D1;
     --bg-elevated: #ffffff;
 
     /* Text Colors */
-    --text-primary: #1a1a1f;
-    --text-secondary: #5e5e63;
-    --text-muted: #8e8e93;
+    --text-primary: #1C1917;
+    --text-secondary: #57534E;
+    --text-muted: #78716C;
     --text-inverse: #ffffff;
 
     /* Borders */
@@ -283,9 +301,11 @@
     --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
     --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1);
     --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.12);
+    --shadow-soft: 0 2px 15px -3px rgba(0, 0, 0, 0.05), 0 10px 20px -2px rgba(0, 0, 0, 0.03);
+    --shadow-glow-primary: 0 8px 32px rgba(60, 110, 113, 0.2);
 
     /* Overlay */
-    --overlay-bg: rgba(0, 0, 0, 0.4);
+    --overlay-bg: rgba(28, 25, 23, 0.5);
   }
 }
 

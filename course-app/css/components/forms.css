@@ -498,7 +498,7 @@
 .form-group--error .form-input:focus,
 .form-group--error .form-textarea:focus,
 .form-group--error .form-select:focus {
-  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+  box-shadow: 0 0 0 3px var(--accent-error-muted);
 }
 
 .form-group--error .form-checkbox__box,
@@ -530,7 +530,7 @@
 .form-group--success .form-input:focus,
 .form-group--success .form-textarea:focus,
 .form-group--success .form-select:focus {
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+  box-shadow: 0 0 0 3px var(--accent-success-muted);
 }
 
 .form-success {

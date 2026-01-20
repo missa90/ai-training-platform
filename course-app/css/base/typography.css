@@ -2,11 +2,11 @@
    Typography System
    ========================================================================== */
 
-/* Google Fonts Import - Editorial serif + refined sans-serif */
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+/* Google Fonts Import - Inter + JetBrains Mono */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 /* ==========================================================================
-   Headings - Crimson Pro (Editorial Serif)
+   Headings - Inter (Modern Sans-Serif)
    ========================================================================== */
 
 h1, h2, h3, h4, h5, h6,
@@ -50,7 +50,7 @@ h6, .heading-6 {
 }
 
 /* ==========================================================================
-   Body Text - Work Sans (Refined Sans-Serif)
+   Body Text - Inter (Modern Sans-Serif)
    ========================================================================== */
 
 .text-body-lg {
