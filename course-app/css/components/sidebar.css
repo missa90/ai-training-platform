@@ -86,7 +86,7 @@
 .sidebar__logo-icon {
   width: 36px;
   height: 36px;
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-cyan));
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -96,7 +96,7 @@
   color: white;
   margin-right: var(--spacing-sm);
   flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 4px 12px var(--accent-primary-glow);
 }
 
 .sidebar.collapsed .sidebar__logo-icon {
@@ -168,14 +168,33 @@
   text-decoration: none;
   border-radius: var(--radius-md);
   cursor: pointer;
-  transition: all var(--transition-colors);
+  transition: all var(--duration-fast) var(--ease-out);
   position: relative;
   overflow: hidden;
+}
+
+/* Nav items: Slide-in underline effect */
+.sidebar__item::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: var(--spacing-lg);
+  right: var(--spacing-lg);
+  height: 2px;
+  background: var(--accent-primary);
+  border-radius: var(--radius-full);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-fast) var(--ease-spring);
 }
 
 .sidebar__item:hover {
   background: var(--bg-quaternary);
   color: var(--text-primary);
+}
+
+.sidebar__item:hover::after {
+  transform: scaleX(1);
 }
 
 .sidebar__item.active {
@@ -397,7 +416,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-success));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -477,7 +496,7 @@
 
 .sidebar__user-xp-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-success));
   border-radius: 3px;
   width: 0; /* Will be set by JS */
   transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
@@ -524,7 +543,7 @@
 .sidebar__upgrade-btn {
   width: 100%;
   padding: var(--spacing-sm) var(--spacing-md);
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  background: var(--accent-primary);
   color: var(--text-primary);
   font-size: var(--text-sm);
   font-weight: 600;
@@ -558,7 +577,7 @@
 
 .sidebar__upgrade-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(var(--accent-primary-rgb), 0.3);
+  box-shadow: var(--shadow-glow-primary);
 }
 
 .sidebar__upgrade-btn:active {

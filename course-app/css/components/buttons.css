@@ -17,7 +17,7 @@
   border: none;
   border-radius: var(--radius-lg);
   cursor: pointer;
-  transition: all var(--duration-fast) var(--ease-out);
+  transition: all var(--duration-fast) var(--ease-spring);
   white-space: nowrap;
 }
 
@@ -37,14 +37,17 @@
   color: white;
 }
 
+/* Primary: Spring lift with glow */
 .btn--primary:hover:not(:disabled) {
   background: var(--accent-primary-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px var(--accent-primary-glow);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--shadow-glow-primary);
 }
 
+/* Primary: Press bounce effect */
 .btn--primary:active:not(:disabled) {
-  transform: translateY(0);
+  transform: translateY(1px) scale(0.98);
+  transition-duration: var(--duration-instant);
 }
 
 /* Secondary Button */

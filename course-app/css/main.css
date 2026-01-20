@@ -4,44 +4,44 @@
    ========================================================================== */
 
 /* Base Styles */
-@import url('./base/tokens.css');
-@import url('./base/reset.css');
-@import url('./base/typography.css');
+@import url('./base/tokens.css?v=4');
+@import url('./base/reset.css?v=4');
+@import url('./base/typography.css?v=4');
 
 /* Layouts */
-@import url('./layouts/main-layout.css');
-@import url('./layouts/grid.css');
+@import url('./layouts/main-layout.css?v=4');
+@import url('./layouts/grid.css?v=4');
 
 /* Utilities */
-@import url('./utilities/spacing.css');
-@import url('./utilities/animations.css');
-@import url('./utilities/accessibility.css');
+@import url('./utilities/spacing.css?v=4');
+@import url('./utilities/animations.css?v=4');
+@import url('./utilities/accessibility.css?v=4');
 
 /* Components */
-@import url('./components/sidebar.css');
-@import url('./components/header.css');
-@import url('./components/buttons.css');
-@import url('./components/cards.css');
-@import url('./components/search-modal.css');
-@import url('./components/notifications.css');
-@import url('./components/skeleton.css');
-@import url('./components/onboarding.css');
-@import url('./components/forms.css');
-@import url('./components/tooltips.css');
-@import url('./components/dropdown.css');
-@import url('./components/charts.css');
-@import url('./components/progress.css');
-@import url('./components/stats.css');
-@import url('./components/context-window.css');
-@import url('./components/context-timeline.css');
-@import url('./components/rag-demo.css');
-@import url('./components/memory-explorer.css');
-@import url('./components/best-practices.css');
+@import url('./components/sidebar.css?v=4');
+@import url('./components/header.css?v=4');
+@import url('./components/buttons.css?v=4');
+@import url('./components/cards.css?v=4');
+@import url('./components/search-modal.css?v=4');
+@import url('./components/notifications.css?v=4');
+@import url('./components/skeleton.css?v=4');
+@import url('./components/onboarding.css?v=4');
+@import url('./components/forms.css?v=4');
+@import url('./components/tooltips.css?v=4');
+@import url('./components/dropdown.css?v=4');
+@import url('./components/charts.css?v=4');
+@import url('./components/progress.css?v=4');
+@import url('./components/stats.css?v=4');
+@import url('./components/context-window.css?v=4');
+@import url('./components/context-timeline.css?v=4');
+@import url('./components/rag-demo.css?v=4');
+@import url('./components/memory-explorer.css?v=4');
+@import url('./components/best-practices.css?v=4');
 
 /* Pages */
-@import url('./pages/courses.css');
-@import url('./pages/tools.css');
-@import url('./pages/community.css');
-@import url('./pages/profile.css');
-@import url('./pages/settings.css');
-@import url('./pages/lesson.css');
+@import url('./pages/courses.css?v=4');
+@import url('./pages/tools.css?v=4');
+@import url('./pages/community.css?v=4');
+@import url('./pages/profile.css?v=4');
+@import url('./pages/settings.css?v=4');
+@import url('./pages/lesson.css?v=4');

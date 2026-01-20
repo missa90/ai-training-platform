@@ -2,11 +2,11 @@
    Typography System
    ========================================================================== */
 
-/* Google Fonts Import */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+/* Google Fonts Import - Editorial serif + refined sans-serif */
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 /* ==========================================================================
-   Headings - Space Grotesk
+   Headings - Crimson Pro (Editorial Serif)
    ========================================================================== */
 
 h1, h2, h3, h4, h5, h6,
@@ -50,7 +50,7 @@ h6, .heading-6 {
 }
 
 /* ==========================================================================
-   Body Text - DM Sans
+   Body Text - Work Sans (Refined Sans-Serif)
    ========================================================================== */
 
 .text-body-lg {

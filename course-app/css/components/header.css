@@ -11,13 +11,6 @@
   backdrop-filter: blur(12px);
   z-index: var(--z-sticky);
 
-  /* Add subtle gradient overlay for depth */
-  background: linear-gradient(
-    to bottom,
-    rgba(10, 10, 11, 0.95),
-    rgba(10, 10, 11, 0.98)
-  );
-
   /* Flex layout for direct children */
   display: flex;
   align-items: center;
@@ -196,6 +189,98 @@
 .header__streak-text {
   white-space: nowrap;
   letter-spacing: var(--tracking-tight);
+}
+
+/* ==========================================================================
+   Theme Toggle
+   ========================================================================== */
+
+.header__theme-toggle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-spring);
+  overflow: hidden;
+}
+
+.header__theme-toggle:hover {
+  background: var(--bg-quaternary);
+  border-color: var(--border-default);
+  color: var(--accent-amber);
+  transform: scale(1.05);
+}
+
+.header__theme-toggle:active {
+  transform: scale(0.95);
+}
+
+.header__theme-toggle:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.header__theme-toggle-icon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  transition: all var(--duration-normal) var(--ease-spring);
+}
+
+/* Sun icon - visible in dark mode (to switch to light) */
+.header__theme-toggle-icon--sun {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+/* Moon icon - hidden in dark mode */
+.header__theme-toggle-icon--moon {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+
+/* Light mode: show moon, hide sun */
+[data-theme="light"] .header__theme-toggle-icon--sun,
+:root:not([data-theme]) .header__theme-toggle-icon--sun {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.5);
+}
+
+[data-theme="light"] .header__theme-toggle-icon--moon,
+:root:not([data-theme]) .header__theme-toggle-icon--moon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+/* Override for system preference light mode */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) .header__theme-toggle-icon--sun {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.5);
+  }
+
+  :root:not([data-theme]) .header__theme-toggle-icon--moon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+/* Force dark mode to show sun */
+[data-theme="dark"] .header__theme-toggle-icon--sun {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+[data-theme="dark"] .header__theme-toggle-icon--moon {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
 }
 
 /* ==========================================================================

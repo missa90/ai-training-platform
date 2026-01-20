@@ -15,9 +15,10 @@
   transition: var(--transition-shadow), var(--transition-transform);
 }
 
+/* Metric cards: Scale pulse like stat cards */
 .metric-card:hover {
   box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+  transform: scale(1.02);
 }
 
 .metric-card__header {
@@ -53,7 +54,7 @@
 }
 
 .metric-card__icon--amber {
-  background: rgba(245, 158, 11, 0.15);
+  background: var(--accent-amber-muted);
   color: var(--accent-amber);
 }
 
@@ -63,7 +64,7 @@
 }
 
 .metric-card__icon--purple {
-  background: rgba(139, 92, 246, 0.15);
+  background: var(--accent-purple-muted);
   color: var(--accent-purple);
 }
 
@@ -83,7 +84,7 @@
 }
 
 .metric-card__trend--down {
-  background: rgba(239, 68, 68, 0.15);
+  background: var(--accent-error-muted);
   color: var(--accent-error);
 }
 
@@ -273,22 +274,23 @@
   transform: scale(1.3);
 }
 
-/* Activity levels */
+/* Activity levels - Terracotta palette */
 .heatmap__day--level-0 { background: var(--bg-quaternary); }
-.heatmap__day--level-1 { background: rgba(99, 102, 241, 0.25); }
-.heatmap__day--level-2 { background: rgba(99, 102, 241, 0.5); }
-.heatmap__day--level-3 { background: rgba(99, 102, 241, 0.75); }
+.heatmap__day--level-1 { background: rgba(224, 122, 95, 0.25); }
+.heatmap__day--level-2 { background: rgba(224, 122, 95, 0.5); }
+.heatmap__day--level-3 { background: rgba(224, 122, 95, 0.75); }
 .heatmap__day--level-4 { background: var(--accent-primary); }
 
-/* Color variants */
-.heatmap--success .heatmap__day--level-1 { background: rgba(16, 185, 129, 0.25); }
-.heatmap--success .heatmap__day--level-2 { background: rgba(16, 185, 129, 0.5); }
-.heatmap--success .heatmap__day--level-3 { background: rgba(16, 185, 129, 0.75); }
+/* Color variants - Sage green */
+.heatmap--success .heatmap__day--level-1 { background: rgba(129, 178, 154, 0.25); }
+.heatmap--success .heatmap__day--level-2 { background: rgba(129, 178, 154, 0.5); }
+.heatmap--success .heatmap__day--level-3 { background: rgba(129, 178, 154, 0.75); }
 .heatmap--success .heatmap__day--level-4 { background: var(--accent-success); }
 
-.heatmap--amber .heatmap__day--level-1 { background: rgba(245, 158, 11, 0.25); }
-.heatmap--amber .heatmap__day--level-2 { background: rgba(245, 158, 11, 0.5); }
-.heatmap--amber .heatmap__day--level-3 { background: rgba(245, 158, 11, 0.75); }
+/* Color variants - Warm sand */
+.heatmap--amber .heatmap__day--level-1 { background: rgba(242, 204, 143, 0.25); }
+.heatmap--amber .heatmap__day--level-2 { background: rgba(242, 204, 143, 0.5); }
+.heatmap--amber .heatmap__day--level-3 { background: rgba(242, 204, 143, 0.75); }
 .heatmap--amber .heatmap__day--level-4 { background: var(--accent-amber); }
 
 .heatmap__months {

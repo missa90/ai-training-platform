@@ -7,7 +7,7 @@
   <title>Dashboard | AI Training Platform</title>
 
   <!-- Main Styles -->
-  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/main.css?v=4">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
@@ -204,6 +204,24 @@
           </svg>
           <span class="header__streak-text">7 day streak</span>
         </div>
+
+        <!-- Theme Toggle -->
+        <button class="header__theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle light/dark mode">
+          <svg class="header__theme-toggle-icon header__theme-toggle-icon--sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="header__theme-toggle-icon header__theme-toggle-icon--moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
 
         <!-- Notifications -->
         <div class="header__notifications-wrapper">
@@ -429,7 +447,7 @@
             <!-- Course Card 1 - Main (Large) -->
             <div class="course-card course-card--featured animate-fade-up">
               <div class="course-card__thumbnail">
-                <div class="course-card__thumbnail-bg" style="background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-purple) 100%);"></div>
+                <div class="course-card__thumbnail-bg" style="background: var(--accent-primary);"></div>
                 <div class="course-card__badges">
                   <span class="course-card__badge course-card__badge--level">Intermediate</span>
                   <span class="course-card__badge course-card__badge--duration">4h 30m</span>
@@ -471,7 +489,7 @@
             <!-- Course Card 2 -->
             <div class="course-card animate-fade-up">
               <div class="course-card__thumbnail">
-                <div class="course-card__thumbnail-bg" style="background: linear-gradient(135deg, var(--accent-cyan) 0%, #0ea5e9 100%);"></div>
+                <div class="course-card__thumbnail-bg" style="background: var(--accent-cyan);"></div>
                 <div class="course-card__badges">
                   <span class="course-card__badge course-card__badge--level">Beginner</span>
                 </div>
@@ -492,7 +510,7 @@
             <!-- Course Card 3 -->
             <div class="course-card animate-fade-up">
               <div class="course-card__thumbnail">
-                <div class="course-card__thumbnail-bg" style="background: linear-gradient(135deg, var(--accent-amber) 0%, #f97316 100%);"></div>
+                <div class="course-card__thumbnail-bg" style="background: var(--accent-amber);"></div>
                 <div class="course-card__badges">
                   <span class="course-card__badge course-card__badge--level">Advanced</span>
                 </div>

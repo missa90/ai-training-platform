@@ -29,12 +29,13 @@
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xl);
   padding: var(--space-5);
-  transition: all var(--duration-normal) var(--ease-out);
+  transition: all var(--duration-normal) var(--ease-spring);
 }
 
+/* Stat cards: Scale pulse effect (distinct from course cards) */
 .stat-card:hover {
   border-color: var(--border-default);
-  transform: translateY(-2px);
+  transform: scale(1.02);
   box-shadow: var(--shadow-lg);
 }
 
@@ -179,10 +180,11 @@
   transition: all var(--duration-normal) var(--ease-spring);
 }
 
+/* Course cards: Lift + glow effect (magnetic feel) */
 .course-card:hover {
-  border-color: var(--border-default);
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-xl);
+  border-color: var(--accent-primary);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-glow-primary);
 }
 
 .course-card--featured {
@@ -204,7 +206,7 @@
 .course-card__thumbnail-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-purple) 100%);
+  background: var(--accent-primary);
 }
 
 .course-card__badges {

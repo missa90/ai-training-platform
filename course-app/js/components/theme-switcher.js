@@ -19,6 +19,7 @@
       this.applyTheme();
       this.setupSystemPreferenceListener();
       this.setupThemeSelector();
+      this.setupHeaderToggle();
     }
 
     /**
@@ -173,6 +174,21 @@
         const isActive = btn.dataset.theme === this.theme;
         btn.classList.toggle('theme-selector__btn--active', isActive);
         btn.setAttribute('aria-checked', isActive ? 'true' : 'false');
+      });
+    }
+
+    /**
+     * Setup header toggle button (simple light/dark toggle)
+     */
+    setupHeaderToggle() {
+      const toggleBtn = document.getElementById('themeToggle');
+      if (!toggleBtn) return;
+
+      toggleBtn.addEventListener('click', () => {
+        // Toggle between light and dark (ignore system)
+        const resolvedTheme = this.getResolvedTheme();
+        const newTheme = resolvedTheme === 'dark' ? 'light' : 'dark';
+        this.setTheme(newTheme);
       });
     }
   }

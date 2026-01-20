@@ -20,36 +20,37 @@
   --text-muted: #6e6e73;          /* Captions, metadata, placeholders */
   --text-inverse: #0a0a0b;        /* Text on light backgrounds */
 
-  /* Primary Accent - Indigo */
-  --accent-primary: #6366f1;      /* Primary actions, active states */
-  --accent-primary-hover: #818cf8;
-  --accent-primary-muted: rgba(99, 102, 241, 0.15);
-  --accent-primary-glow: rgba(99, 102, 241, 0.4);
+  /* Primary Accent - Terracotta (distinctive, warm) */
+  --accent-primary: #e07a5f;      /* Primary actions, active states */
+  --accent-primary-hover: #f08a6f;
+  --accent-primary-muted: rgba(224, 122, 95, 0.15);
+  --accent-primary-glow: rgba(224, 122, 95, 0.4);
+  --accent-primary-rgb: 224, 122, 95;
 
-  /* Secondary Accent - Cyan (Tools) */
-  --accent-cyan: #06b6d4;
-  --accent-cyan-hover: #22d3ee;
-  --accent-cyan-muted: rgba(6, 182, 212, 0.15);
+  /* Secondary Accent - Deep Teal (Tools) */
+  --accent-cyan: #0d7377;
+  --accent-cyan-hover: #0f9195;
+  --accent-cyan-muted: rgba(13, 115, 119, 0.15);
 
-  /* Tertiary Accent - Amber (Streaks, Warnings) */
-  --accent-amber: #f59e0b;
-  --accent-amber-hover: #fbbf24;
-  --accent-amber-muted: rgba(245, 158, 11, 0.15);
+  /* Tertiary Accent - Warm Sand (Streaks, Highlights) */
+  --accent-amber: #f2cc8f;
+  --accent-amber-hover: #f5d9a8;
+  --accent-amber-muted: rgba(242, 204, 143, 0.15);
 
-  /* Success - Emerald */
-  --accent-success: #10b981;
-  --accent-success-hover: #34d399;
-  --accent-success-muted: rgba(16, 185, 129, 0.15);
+  /* Success - Sage Green */
+  --accent-success: #81b29a;
+  --accent-success-hover: #9bc4af;
+  --accent-success-muted: rgba(129, 178, 154, 0.15);
 
-  /* Error - Red */
-  --accent-error: #ef4444;
-  --accent-error-hover: #f87171;
-  --accent-error-muted: rgba(239, 68, 68, 0.15);
+  /* Error - Muted Coral */
+  --accent-error: #e76f51;
+  --accent-error-hover: #f08a6f;
+  --accent-error-muted: rgba(231, 111, 81, 0.15);
 
-  /* Purple (Achievements, Special) */
-  --accent-purple: #8b5cf6;
-  --accent-purple-hover: #a78bfa;
-  --accent-purple-muted: rgba(139, 92, 246, 0.15);
+  /* Deep Navy (Achievements, Special) */
+  --accent-purple: #3d5a80;
+  --accent-purple-hover: #4a6d99;
+  --accent-purple-muted: rgba(61, 90, 128, 0.15);
 
   /* Borders */
   --border-subtle: rgba(255, 255, 255, 0.06);
@@ -57,20 +58,26 @@
   --border-visible: rgba(255, 255, 255, 0.15);
   --border-focus: var(--accent-primary);
 
-  /* Shadows */
+  /* Shadows - Stronger depth with layering */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
-  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.6);
+  --shadow-lg:
+    0 4px 6px rgba(0, 0, 0, 0.3),
+    0 10px 20px rgba(0, 0, 0, 0.4);
+  --shadow-xl:
+    0 8px 16px rgba(0, 0, 0, 0.3),
+    0 20px 40px rgba(0, 0, 0, 0.5);
   --shadow-glow: 0 0 20px var(--accent-primary-glow);
+  --shadow-glow-primary: 0 8px 32px rgba(224, 122, 95, 0.3);
+  --shadow-glow-success: 0 8px 32px rgba(129, 178, 154, 0.25);
 
   /* ========================================================================
      TYPOGRAPHY
      ======================================================================== */
 
-  /* Font Families */
-  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Font Families - Editorial serif + refined sans-serif */
+  --font-display: 'Crimson Pro', Georgia, 'Times New Roman', serif;
+  --font-body: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
 
   /* Font Sizes */

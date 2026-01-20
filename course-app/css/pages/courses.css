@@ -501,7 +501,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(10, 10, 11, 0.7);
+  background: var(--overlay-bg);
   border-radius: var(--radius-xl);
   z-index: 5;
   backdrop-filter: blur(2px);
