@@ -26,8 +26,12 @@
      * Get saved theme from localStorage or default to 'system'
      */
     getSavedTheme() {
-      const saved = localStorage.getItem(this.STORAGE_KEY);
-      return this.THEMES.includes(saved) ? saved : 'system';
+      try {
+        const saved = localStorage.getItem(this.STORAGE_KEY);
+        return this.THEMES.includes(saved) ? saved : 'system';
+      } catch {
+        return 'system';
+      }
     }
 
     /**
@@ -37,7 +41,11 @@
       if (!this.THEMES.includes(theme)) return;
 
       this.theme = theme;
-      localStorage.setItem(this.STORAGE_KEY, theme);
+      try {
+        localStorage.setItem(this.STORAGE_KEY, theme);
+      } catch {
+        // localStorage unavailable (private browsing)
+      }
       this.applyTheme();
       this.updateThemeSelector();
 

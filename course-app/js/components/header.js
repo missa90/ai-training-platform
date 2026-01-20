@@ -71,8 +71,6 @@ class Header {
    * TODO: Integrate with actual search component
    */
   openSearch() {
-    console.log('🔍 Opening global search...');
-
     // Placeholder for search modal integration
     // This will be connected to the actual search modal component later
     // Example: window.searchModal?.open();
@@ -111,7 +109,6 @@ class Header {
     this.state.notificationsOpen = !this.state.notificationsOpen;
 
     if (this.state.notificationsOpen) {
-      console.log('🔔 Opening notifications panel...');
       this.elements.notificationsTrigger.classList.add('is-active');
 
       // Close user menu if open
@@ -165,7 +162,6 @@ class Header {
     this.state.userMenuOpen = !this.state.userMenuOpen;
 
     if (this.state.userMenuOpen) {
-      console.log('👤 Opening user menu...');
       this.elements.userMenuTrigger.classList.add('is-open');
 
       // Close notifications if open

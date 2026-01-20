@@ -69,9 +69,13 @@ class Sidebar {
    * Restore sidebar state from localStorage
    */
   restoreState() {
-    const savedState = localStorage.getItem(this.config.storageKey);
-    if (savedState === 'true' && window.innerWidth >= this.config.mobileBreakpoint) {
-      this.collapse();
+    try {
+      const savedState = localStorage.getItem(this.config.storageKey);
+      if (savedState === 'true' && window.innerWidth >= this.config.mobileBreakpoint) {
+        this.collapse();
+      }
+    } catch {
+      // localStorage unavailable
     }
   }
 
@@ -79,7 +83,11 @@ class Sidebar {
    * Save sidebar state to localStorage
    */
   saveState() {
-    localStorage.setItem(this.config.storageKey, this.isCollapsed);
+    try {
+      localStorage.setItem(this.config.storageKey, this.isCollapsed);
+    } catch {
+      // localStorage unavailable
+    }
   }
 
   /**
@@ -321,9 +329,15 @@ class Sidebar {
       }
     } else if (width >= this.config.tabletBreakpoint) {
       // Desktop: restore saved state or expand
-      const savedState = localStorage.getItem(this.config.storageKey);
-      if (savedState !== 'true' && this.isCollapsed) {
-        this.expand();
+      try {
+        const savedState = localStorage.getItem(this.config.storageKey);
+        if (savedState !== 'true' && this.isCollapsed) {
+          this.expand();
+        }
+      } catch {
+        if (this.isCollapsed) {
+          this.expand();
+        }
       }
     }
   }

@@ -205,8 +205,8 @@
   font-weight: var(--font-medium);
   padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-md);
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
+  background: var(--overlay-bg);
+  color: var(--text-inverse);
   backdrop-filter: blur(4px);
 }
 

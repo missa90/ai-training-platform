@@ -181,16 +181,20 @@
   }
 
   function saveProgress() {
-    const progress = {
-      currentSlide: state.currentSlide,
-      completedSlides: Array.from(state.completedSlides)
-    };
-    localStorage.setItem('ai-fundamentals-progress', JSON.stringify(progress));
+    try {
+      const progress = {
+        currentSlide: state.currentSlide,
+        completedSlides: Array.from(state.completedSlides)
+      };
+      localStorage.setItem('ai-fundamentals-progress', JSON.stringify(progress));
 
-    // Also update XP if all slides completed
-    if (state.completedSlides.size === state.totalSlides) {
-      const currentXP = parseInt(localStorage.getItem('user-xp') || '0');
-      localStorage.setItem('user-xp', currentXP + 300); // 50 XP per section
+      // Also update XP if all slides completed
+      if (state.completedSlides.size === state.totalSlides) {
+        const currentXP = parseInt(localStorage.getItem('user-xp') || '0');
+        localStorage.setItem('user-xp', currentXP + 300); // 50 XP per section
+      }
+    } catch {
+      // localStorage unavailable
     }
   }
 

@@ -12,7 +12,7 @@
   align-items: flex-start;
   justify-content: center;
   padding-top: 10vh;
-  background: rgba(0, 0, 0, 0.7);
+  background: var(--overlay-bg);
   backdrop-filter: blur(4px);
   opacity: 0;
   visibility: hidden;
