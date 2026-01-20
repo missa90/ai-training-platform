@@ -1,0 +1,117 @@
+/* ==========================================================================
+   Callout Components
+   Reusable callout/alert components for lessons, tips, warnings, etc.
+   ========================================================================== */
+
+/* ==========================================================================
+   Base Callout
+   ========================================================================== */
+
+.slide-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  background: var(--accent-amber-muted);
+  border: 1px solid rgba(242, 204, 143, 0.3);
+  border-radius: var(--radius-lg);
+  margin-top: var(--space-6);
+}
+
+.slide-callout__icon {
+  flex-shrink: 0;
+  color: var(--accent-amber);
+}
+
+.slide-callout__content {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+.slide-callout__content strong {
+  color: var(--accent-amber);
+}
+
+/* ==========================================================================
+   Callout Variants
+   ========================================================================== */
+
+/* Warning (Amber - informational caution) */
+.slide-callout--warning {
+  background: var(--accent-amber-muted);
+  border-color: rgba(242, 204, 143, 0.3);
+}
+
+.slide-callout--warning .slide-callout__icon {
+  color: var(--accent-amber);
+}
+
+.slide-callout--warning .slide-callout__content strong,
+.slide-callout--warning strong {
+  color: var(--accent-amber);
+}
+
+/* Error/Danger (Red - critical alerts) */
+.slide-callout--error,
+.slide-callout--danger {
+  background: var(--accent-error-muted);
+  border-color: rgba(231, 111, 81, 0.3);
+}
+
+.slide-callout--error .slide-callout__icon,
+.slide-callout--danger .slide-callout__icon {
+  color: var(--accent-error);
+}
+
+.slide-callout--error .slide-callout__content strong,
+.slide-callout--error strong,
+.slide-callout--danger .slide-callout__content strong,
+.slide-callout--danger strong {
+  color: var(--accent-error);
+}
+
+/* Success (Green - positive outcomes) */
+.slide-callout--success {
+  background: var(--accent-success-muted);
+  border-color: rgba(129, 178, 154, 0.3);
+}
+
+.slide-callout--success .slide-callout__icon {
+  color: var(--accent-success);
+}
+
+.slide-callout--success .slide-callout__content strong,
+.slide-callout--success strong {
+  color: var(--accent-success);
+}
+
+/* Info (Cyan - neutral information) */
+.slide-callout--info {
+  background: var(--accent-cyan-muted);
+  border-color: rgba(13, 115, 119, 0.3);
+}
+
+.slide-callout--info .slide-callout__icon {
+  color: var(--accent-cyan);
+}
+
+.slide-callout--info .slide-callout__content strong,
+.slide-callout--info strong {
+  color: var(--accent-cyan);
+}
+
+/* Tip (Primary - helpful suggestions) */
+.slide-callout--tip {
+  background: var(--accent-primary-muted);
+  border-color: rgba(224, 122, 95, 0.3);
+}
+
+.slide-callout--tip .slide-callout__icon {
+  color: var(--accent-primary);
+}
+
+.slide-callout--tip .slide-callout__content strong,
+.slide-callout--tip strong {
+  color: var(--accent-primary);
+}

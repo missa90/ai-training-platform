@@ -4,25 +4,8 @@
 
 /* ==========================================================================
    Stat Cards
+   Note: .stats-grid is defined in stats.css to avoid duplication
    ========================================================================== */
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-6);
-}
-
-@media (max-width: 1024px) {
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 640px) {
-  .stats-grid {
-    grid-template-columns: 1fr;
-  }
-}
 
 .stat-card {
   background: var(--bg-tertiary);

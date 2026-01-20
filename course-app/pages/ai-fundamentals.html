@@ -1,0 +1,1865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI Fundamentals - Learn the basics of AI, how LLMs work, and how to use AI effectively">
+  <title>AI Fundamentals | AI Training Platform</title>
+
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="../css/main.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+</head>
+<body class="page-lesson">
+  <!-- Skip Link for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="app-container app-container--lesson">
+    <!-- Mobile Toggle Button -->
+    <button class="sidebar__mobile-toggle" id="sidebarMobileToggle" aria-label="Toggle navigation menu">
+      <div class="sidebar__mobile-toggle-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </button>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar sidebar--lesson" id="sidebar">
+      <!-- Logo -->
+      <div class="sidebar__logo">
+        <a href="courses.html" class="sidebar__back-link">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          <span>Back to Courses</span>
+        </a>
+      </div>
+
+      <!-- Course Outline -->
+      <nav class="sidebar__nav lesson-outline">
+        <div class="sidebar__section">
+          <div class="sidebar__section-label">AI Fundamentals</div>
+          <button class="lesson-outline__item lesson-outline__item--active" data-slide="1" aria-current="true">
+            <span class="lesson-outline__number">1</span>
+            <span class="lesson-outline__title">What is AI?</span>
+          </button>
+          <button class="lesson-outline__item" data-slide="2">
+            <span class="lesson-outline__number">2</span>
+            <span class="lesson-outline__title">How LLMs Work</span>
+          </button>
+          <button class="lesson-outline__item" data-slide="3">
+            <span class="lesson-outline__number">3</span>
+            <span class="lesson-outline__title">AI Capabilities</span>
+          </button>
+          <button class="lesson-outline__item" data-slide="4">
+            <span class="lesson-outline__number">4</span>
+            <span class="lesson-outline__title">The AI Landscape</span>
+          </button>
+          <button class="lesson-outline__item" data-slide="5">
+            <span class="lesson-outline__number">5</span>
+            <span class="lesson-outline__title">Context Engineering</span>
+          </button>
+          <button class="lesson-outline__item" data-slide="6">
+            <span class="lesson-outline__number">6</span>
+            <span class="lesson-outline__title">AI Limitations</span>
+          </button>
+          <button class="lesson-outline__item" data-slide="7">
+            <span class="lesson-outline__number">7</span>
+            <span class="lesson-outline__title">Agentic AI</span>
+          </button>
+          <button class="lesson-outline__item" data-slide="8">
+            <span class="lesson-outline__number">8</span>
+            <span class="lesson-outline__title">AI Success Stories</span>
+          </button>
+          <button class="lesson-outline__item" data-slide="9">
+            <span class="lesson-outline__number">9</span>
+            <span class="lesson-outline__title">AI Benchmarks</span>
+          </button>
+          <button class="lesson-outline__item" data-slide="10">
+            <span class="lesson-outline__number">10</span>
+            <span class="lesson-outline__title">Your First Prompts</span>
+          </button>
+          <button class="lesson-outline__item" data-slide="11">
+            <span class="lesson-outline__number">11</span>
+            <span class="lesson-outline__title">Next Steps</span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Course Progress -->
+      <div class="sidebar__progress" style="margin-top: auto; padding: var(--space-4) var(--space-5);">
+        <div class="sidebar__progress-header" style="font-size: var(--text-xs); color: var(--text-muted); margin-bottom: var(--space-2);">Course Progress</div>
+        <div class="lesson-sidebar-progress">
+          <div class="lesson-sidebar-progress__bar">
+            <div class="lesson-sidebar-progress__fill" id="sidebarProgressFill" style="width: 9.09%;"></div>
+          </div>
+          <span class="lesson-sidebar-progress__text" id="sidebarProgressText">1/11 sections</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content main-content--lesson">
+      <!-- Lesson Progress Bar -->
+      <div class="lesson-progress">
+        <div class="lesson-progress__bar">
+          <div class="lesson-progress__fill" id="progressFill" style="--progress: 9.09%"></div>
+        </div>
+        <span class="lesson-progress__label" id="progressLabel">Section 1 of 11</span>
+      </div>
+
+      <!-- Lesson Stage (Presentation Area) -->
+      <main class="lesson-stage" id="main-content">
+
+        <!-- ================================================================
+             SECTION 1: What is AI?
+             ================================================================ -->
+        <section class="lesson-slide lesson-slide--active" data-slide="1" aria-label="Section 1: What is AI?">
+          <div class="slide-content">
+            <div class="slide-header">
+              <span class="slide-tag">Foundation</span>
+              <h1 class="slide-title">What is AI?</h1>
+              <p class="slide-subtitle">
+                AI is your <strong>thinking assistant</strong> — software that recognizes patterns
+                and generates human-like responses to help you work faster and smarter.
+              </p>
+            </div>
+
+            <!-- Interactive Demo: Before/After Comparison -->
+            <div class="interactive-demo">
+              <div class="ai-comparison" id="aiComparisonDemo">
+                <div class="ai-comparison__header">
+                  <div class="ai-comparison__title">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    <span>Scenario: Marketing Email Draft</span>
+                  </div>
+                </div>
+
+                <div class="ai-comparison__panels">
+                  <!-- Without AI Panel -->
+                  <div class="ai-comparison__panel ai-comparison__panel--without">
+                    <div class="ai-comparison__panel-header">
+                      <span class="ai-comparison__panel-badge ai-comparison__panel-badge--without">Before AI</span>
+                      <span class="ai-comparison__panel-time">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <span id="timeWithout">0</span> hours
+                      </span>
+                    </div>
+                    <div class="ai-comparison__content">
+                      <div class="ai-comparison__task-list">
+                        <div class="ai-comparison__task" data-task="1">
+                          <span class="ai-comparison__task-icon"></span>
+                          <span>Research competitor messaging</span>
+                        </div>
+                        <div class="ai-comparison__task" data-task="2">
+                          <span class="ai-comparison__task-icon"></span>
+                          <span>Write draft #1</span>
+                        </div>
+                        <div class="ai-comparison__task" data-task="3">
+                          <span class="ai-comparison__task-icon"></span>
+                          <span>Review and revise</span>
+                        </div>
+                        <div class="ai-comparison__task" data-task="4">
+                          <span class="ai-comparison__task-icon"></span>
+                          <span>Write drafts #2-5</span>
+                        </div>
+                        <div class="ai-comparison__task" data-task="5">
+                          <span class="ai-comparison__task-icon"></span>
+                          <span>Final editing</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- VS Divider -->
+                  <div class="ai-comparison__divider">
+                    <span>VS</span>
+                  </div>
+
+                  <!-- With AI Panel -->
+                  <div class="ai-comparison__panel ai-comparison__panel--with">
+                    <div class="ai-comparison__panel-header">
+                      <span class="ai-comparison__panel-badge ai-comparison__panel-badge--with">With AI</span>
+                      <span class="ai-comparison__panel-time ai-comparison__panel-time--fast">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <span id="timeWith">0</span> minutes
+                      </span>
+                    </div>
+                    <div class="ai-comparison__content">
+                      <div class="ai-comparison__prompt-box">
+                        <div class="ai-comparison__prompt-label">Your Prompt</div>
+                        <div class="ai-comparison__prompt-text" id="aiPromptText"></div>
+                      </div>
+                      <div class="ai-comparison__result-box">
+                        <div class="ai-comparison__result-label">AI Output</div>
+                        <div class="ai-comparison__result-text" id="aiResultText"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Time Savings Summary -->
+                <div class="ai-comparison__summary" id="comparisonSummary">
+                  <div class="ai-comparison__savings">
+                    <span class="ai-comparison__savings-label">Time Saved</span>
+                    <span class="ai-comparison__savings-value" id="timeSaved">—</span>
+                  </div>
+                  <button class="ai-comparison__play-btn" id="comparisonPlayBtn">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                    <span>Watch Comparison</span>
+                  </button>
+                  <button class="ai-comparison__reset-btn" id="comparisonResetBtn" style="display: none;">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="1 4 1 10 7 10"></polyline>
+                      <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                    </svg>
+                    <span>Reset</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Key Insight -->
+            <div class="slide-callout">
+              <div class="slide-callout__icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2z"></path>
+                  <path d="M12 16v-4"></path>
+                  <path d="M12 8h.01"></path>
+                </svg>
+              </div>
+              <div class="slide-callout__content">
+                <strong>Key insight:</strong> AI doesn't replace your expertise — it <em>accelerates</em> it.
+                You still provide the strategy, judgment, and final approval. AI handles the repetitive work.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SECTION 2: How LLMs Work
+             ================================================================ -->
+        <section class="lesson-slide" data-slide="2" aria-label="Section 2: How LLMs Work">
+          <div class="slide-content">
+            <div class="slide-header">
+              <span class="slide-tag">Under the Hood</span>
+              <h1 class="slide-title">How LLMs Work</h1>
+              <p class="slide-subtitle">
+                Large Language Models predict the <strong>next word</strong> based on patterns
+                learned from billions of text examples. Think of it as autocomplete on steroids.
+              </p>
+            </div>
+
+            <!-- Interactive Demo: Token Visualization -->
+            <div class="interactive-demo">
+              <div class="llm-demo" id="llmDemo">
+                <!-- Token Breakdown Section -->
+                <div class="llm-demo__section">
+                  <div class="llm-demo__section-header">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="4 7 4 4 20 4 20 7"></polyline>
+                      <line x1="9" y1="20" x2="15" y2="20"></line>
+                      <line x1="12" y1="4" x2="12" y2="20"></line>
+                    </svg>
+                    <span>Step 1: Text becomes Tokens</span>
+                  </div>
+                  <div class="llm-demo__token-input">
+                    <input type="text" id="tokenInput" value="Enterprise AI Training" placeholder="Type any text...">
+                    <button class="llm-demo__tokenize-btn" id="tokenizeBtn">Tokenize</button>
+                  </div>
+                  <div class="llm-demo__token-output" id="tokenOutput">
+                    <div class="llm-demo__token-hint">Click "Tokenize" to see how AI breaks text into tokens</div>
+                  </div>
+                  <div class="llm-demo__token-count" id="tokenCount" style="display: none;">
+                    <span class="llm-demo__token-count-label">Total Tokens:</span>
+                    <span class="llm-demo__token-count-value" id="tokenCountValue">0</span>
+                  </div>
+                </div>
+
+                <!-- Prediction Section -->
+                <div class="llm-demo__section">
+                  <div class="llm-demo__section-header">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    <span>Step 2: Predicting the Next Word</span>
+                  </div>
+                  <div class="llm-demo__prediction-context">
+                    <span class="llm-demo__prediction-label">Given this context:</span>
+                    <span class="llm-demo__prediction-text">"The quarterly sales report shows that revenue"</span>
+                  </div>
+                  <div class="llm-demo__prediction-bars" id="predictionBars">
+                    <div class="llm-demo__prediction-bar" data-word="increased" style="--probability: 42%">
+                      <span class="llm-demo__bar-word">increased</span>
+                      <div class="llm-demo__bar-fill"></div>
+                      <span class="llm-demo__bar-percent">42%</span>
+                    </div>
+                    <div class="llm-demo__prediction-bar" data-word="decreased" style="--probability: 28%">
+                      <span class="llm-demo__bar-word">decreased</span>
+                      <div class="llm-demo__bar-fill"></div>
+                      <span class="llm-demo__bar-percent">28%</span>
+                    </div>
+                    <div class="llm-demo__prediction-bar" data-word="exceeded" style="--probability: 18%">
+                      <span class="llm-demo__bar-word">exceeded</span>
+                      <div class="llm-demo__bar-fill"></div>
+                      <span class="llm-demo__bar-percent">18%</span>
+                    </div>
+                    <div class="llm-demo__prediction-bar" data-word="remained" style="--probability: 12%">
+                      <span class="llm-demo__bar-word">remained</span>
+                      <div class="llm-demo__bar-fill"></div>
+                      <span class="llm-demo__bar-percent">12%</span>
+                    </div>
+                  </div>
+                  <button class="llm-demo__animate-btn" id="animatePredictionBtn">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                    <span>See Prediction Process</span>
+                  </button>
+                </div>
+
+                <!-- Process Flow -->
+                <div class="llm-demo__flow">
+                  <div class="llm-demo__flow-step" data-step="1">
+                    <div class="llm-demo__flow-icon">
+                      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="4 7 4 4 20 4 20 7"></polyline>
+                        <line x1="9" y1="20" x2="15" y2="20"></line>
+                        <line x1="12" y1="4" x2="12" y2="20"></line>
+                      </svg>
+                    </div>
+                    <span>Tokenize</span>
+                  </div>
+                  <div class="llm-demo__flow-arrow">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </div>
+                  <div class="llm-demo__flow-step" data-step="2">
+                    <div class="llm-demo__flow-icon">
+                      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 6v6l4 2"></path>
+                      </svg>
+                    </div>
+                    <span>Analyze Patterns</span>
+                  </div>
+                  <div class="llm-demo__flow-arrow">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </div>
+                  <div class="llm-demo__flow-step" data-step="3">
+                    <div class="llm-demo__flow-icon">
+                      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                      </svg>
+                    </div>
+                    <span>Generate Output</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Key Insight -->
+            <div class="slide-callout">
+              <div class="slide-callout__icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2z"></path>
+                  <path d="M12 16v-4"></path>
+                  <path d="M12 8h.01"></path>
+                </svg>
+              </div>
+              <div class="slide-callout__content">
+                <strong>Important:</strong> AI doesn't "understand" like humans do. It's incredibly good at
+                pattern recognition, but it's predicting words — not reasoning about meaning.
+                This is why context matters so much.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SECTION 3: AI Capabilities
+             ================================================================ -->
+        <section class="lesson-slide" data-slide="3" aria-label="Section 3: AI Capabilities">
+          <div class="slide-content">
+            <div class="slide-header">
+              <span class="slide-tag">What AI Can Do</span>
+              <h1 class="slide-title">AI Capabilities Today</h1>
+              <p class="slide-subtitle">
+                Modern AI excels at specific tasks. <strong>Click each tab</strong> to see
+                live simulations of AI in action.
+              </p>
+            </div>
+
+            <!-- Interactive Demo: Capability Simulator -->
+            <div class="interactive-demo">
+              <div class="capability-simulator" id="capabilitySimulator">
+                <!-- Tab Navigation -->
+                <div class="capability-tabs">
+                  <button class="capability-tab capability-tab--active" data-capability="email">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    <span>Email Drafting</span>
+                  </button>
+                  <button class="capability-tab" data-capability="analysis">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="18" y1="20" x2="18" y2="10"></line>
+                      <line x1="12" y1="20" x2="12" y2="4"></line>
+                      <line x1="6" y1="20" x2="6" y2="14"></line>
+                    </svg>
+                    <span>Data Analysis</span>
+                  </button>
+                  <button class="capability-tab" data-capability="code">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="16 18 22 12 16 6"></polyline>
+                      <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                    <span>Code Generation</span>
+                  </button>
+                  <button class="capability-tab" data-capability="research">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <span>Research</span>
+                  </button>
+                  <button class="capability-tab" data-capability="creative">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                    <span>Creative</span>
+                  </button>
+                </div>
+
+                <!-- Simulation Panels -->
+                <div class="capability-panels">
+                  <!-- Email Drafting Panel -->
+                  <div class="capability-panel capability-panel--active" data-panel="email">
+                    <div class="sim-email">
+                      <div class="sim-email__context">
+                        <div class="sim-email__context-label">
+                          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                          </svg>
+                          Scenario: Client follow-up after a meeting
+                        </div>
+                        <div class="sim-email__incoming">
+                          <div class="sim-email__header">
+                            <span class="sim-email__from">From: sarah.chen@clientcorp.com</span>
+                            <span class="sim-email__subject">Re: Q1 Strategy Discussion</span>
+                          </div>
+                          <div class="sim-email__body">
+                            Hi team, thanks for the productive meeting today. Could you send over the proposal we discussed with pricing options? We need to present to our board next week.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="sim-email__ai-section">
+                        <div class="sim-email__prompt">
+                          <span class="sim-email__prompt-label">Your instruction to AI:</span>
+                          <span class="sim-email__prompt-text">"Draft a professional follow-up confirming next steps"</span>
+                        </div>
+                        <button class="sim-email__generate-btn" id="emailGenerateBtn">
+                          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                          </svg>
+                          Generate Response
+                        </button>
+                        <div class="sim-email__response" id="emailResponse">
+                          <div class="sim-email__response-header">
+                            <span class="sim-email__response-badge">AI Draft</span>
+                            <span class="sim-email__response-time">Generated in 1.2s</span>
+                          </div>
+                          <div class="sim-email__response-content">
+                            <p>Hi Sarah,</p>
+                            <p>Thank you for taking the time to meet with us today. It was great to align on your Q1 priorities.</p>
+                            <p>As discussed, I'll have the proposal with three pricing tiers ready by <strong>Wednesday EOD</strong> to give your team time to review before the board presentation.</p>
+                            <p>The proposal will include:</p>
+                            <ul>
+                              <li>Implementation timeline (8-12 weeks)</li>
+                              <li>Starter, Professional, and Enterprise options</li>
+                              <li>ROI projections based on your current metrics</li>
+                            </ul>
+                            <p>Please let me know if you need anything adjusted for the board deck.</p>
+                            <p>Best regards</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Data Analysis Panel -->
+                  <div class="capability-panel" data-panel="analysis">
+                    <div class="sim-analysis">
+                      <div class="sim-analysis__input">
+                        <div class="sim-analysis__input-label">
+                          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                          </svg>
+                          Input: Monthly Sales Report (Q4 2024)
+                        </div>
+                        <div class="sim-analysis__data-preview">
+                          <table class="sim-analysis__table">
+                            <thead>
+                              <tr><th>Region</th><th>Oct</th><th>Nov</th><th>Dec</th><th>Total</th></tr>
+                            </thead>
+                            <tbody>
+                              <tr><td>North</td><td>$142K</td><td>$156K</td><td>$198K</td><td>$496K</td></tr>
+                              <tr><td>South</td><td>$98K</td><td>$87K</td><td>$102K</td><td>$287K</td></tr>
+                              <tr><td>East</td><td>$167K</td><td>$189K</td><td>$243K</td><td>$599K</td></tr>
+                              <tr><td>West</td><td>$134K</td><td>$128K</td><td>$119K</td><td>$381K</td></tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                      <button class="sim-analysis__btn" id="analysisGenerateBtn">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                        Analyze Data
+                      </button>
+                      <div class="sim-analysis__output" id="analysisResponse">
+                        <div class="sim-analysis__insight sim-analysis__insight--positive">
+                          <span class="sim-analysis__insight-icon">📈</span>
+                          <div class="sim-analysis__insight-content">
+                            <strong>Top Performer:</strong> East region up 45% vs Q3, driven by December surge (+28% MoM)
+                          </div>
+                        </div>
+                        <div class="sim-analysis__insight sim-analysis__insight--warning">
+                          <span class="sim-analysis__insight-icon">⚠️</span>
+                          <div class="sim-analysis__insight-content">
+                            <strong>Concern:</strong> West region declining 3 consecutive months (-11% trend)
+                          </div>
+                        </div>
+                        <div class="sim-analysis__insight sim-analysis__insight--neutral">
+                          <span class="sim-analysis__insight-icon">💡</span>
+                          <div class="sim-analysis__insight-content">
+                            <strong>Recommendation:</strong> Investigate West's sales team capacity and pipeline health
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Code Generation Panel -->
+                  <div class="capability-panel" data-panel="code">
+                    <div class="sim-code">
+                      <div class="sim-code__request">
+                        <div class="sim-code__request-label">
+                          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                          </svg>
+                          Plain English Request
+                        </div>
+                        <div class="sim-code__request-text">
+                          "Create an Excel formula that finds the highest sale in column B and returns the salesperson name from column A"
+                        </div>
+                      </div>
+                      <button class="sim-code__btn" id="codeGenerateBtn">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                        Generate Formula
+                      </button>
+                      <div class="sim-code__output" id="codeResponse">
+                        <div class="sim-code__formula">
+                          <div class="sim-code__formula-label">Generated Formula:</div>
+                          <code class="sim-code__formula-code">=INDEX(A:A,MATCH(MAX(B:B),B:B,0))</code>
+                        </div>
+                        <div class="sim-code__explanation">
+                          <div class="sim-code__explanation-title">How it works:</div>
+                          <ol class="sim-code__steps">
+                            <li><code>MAX(B:B)</code> finds the highest value in column B</li>
+                            <li><code>MATCH(...,B:B,0)</code> returns the row number of that value</li>
+                            <li><code>INDEX(A:A,...)</code> returns the name from column A at that row</li>
+                          </ol>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Research Panel -->
+                  <div class="capability-panel" data-panel="research">
+                    <div class="sim-research">
+                      <div class="sim-research__query">
+                        <div class="sim-research__query-label">
+                          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                          </svg>
+                          Research Request
+                        </div>
+                        <div class="sim-research__query-text">
+                          "Summarize the key differences between our top 3 competitors in the CRM space"
+                        </div>
+                      </div>
+                      <button class="sim-research__btn" id="researchGenerateBtn">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                        Generate Summary
+                      </button>
+                      <div class="sim-research__output" id="researchResponse">
+                        <div class="sim-research__comparison">
+                          <div class="sim-research__competitor">
+                            <div class="sim-research__competitor-name">Competitor A</div>
+                            <div class="sim-research__competitor-focus">Enterprise-focused</div>
+                            <ul class="sim-research__points">
+                              <li>Complex customization</li>
+                              <li>Higher price point ($150+/user)</li>
+                              <li>6-month implementation</li>
+                            </ul>
+                          </div>
+                          <div class="sim-research__competitor">
+                            <div class="sim-research__competitor-name">Competitor B</div>
+                            <div class="sim-research__competitor-focus">SMB-focused</div>
+                            <ul class="sim-research__points">
+                              <li>Easy setup</li>
+                              <li>Lower price ($30/user)</li>
+                              <li>Limited scalability</li>
+                            </ul>
+                          </div>
+                          <div class="sim-research__competitor">
+                            <div class="sim-research__competitor-name">Competitor C</div>
+                            <div class="sim-research__competitor-focus">AI-native</div>
+                            <ul class="sim-research__points">
+                              <li>Automation-first</li>
+                              <li>Mid-range ($75/user)</li>
+                              <li>Newer, less proven</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Creative Panel -->
+                  <div class="capability-panel" data-panel="creative">
+                    <div class="sim-creative">
+                      <div class="sim-creative__brief">
+                        <div class="sim-creative__brief-label">
+                          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                          </svg>
+                          Creative Brief
+                        </div>
+                        <div class="sim-creative__brief-text">
+                          "Generate 3 tagline options for our new eco-friendly product line launch"
+                        </div>
+                      </div>
+                      <button class="sim-creative__btn" id="creativeGenerateBtn">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                        Generate Ideas
+                      </button>
+                      <div class="sim-creative__output" id="creativeResponse">
+                        <div class="sim-creative__option">
+                          <div class="sim-creative__option-number">1</div>
+                          <div class="sim-creative__option-content">
+                            <div class="sim-creative__tagline">"Tomorrow's Choice, Made Today"</div>
+                            <div class="sim-creative__rationale">Focus on forward-thinking consumers</div>
+                          </div>
+                        </div>
+                        <div class="sim-creative__option">
+                          <div class="sim-creative__option-number">2</div>
+                          <div class="sim-creative__option-content">
+                            <div class="sim-creative__tagline">"Good for You. Better for Earth."</div>
+                            <div class="sim-creative__rationale">Dual benefit messaging</div>
+                          </div>
+                        </div>
+                        <div class="sim-creative__option">
+                          <div class="sim-creative__option-number">3</div>
+                          <div class="sim-creative__option-content">
+                            <div class="sim-creative__tagline">"Small Steps. Big Impact."</div>
+                            <div class="sim-creative__rationale">Approachable, action-oriented</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Key Insight -->
+            <div class="slide-callout">
+              <div class="slide-callout__icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2z"></path>
+                  <path d="M12 16v-4"></path>
+                  <path d="M12 8h.01"></path>
+                </svg>
+              </div>
+              <div class="slide-callout__content">
+                <strong>Pattern:</strong> AI works best when tasks have clear inputs (your request)
+                and clear outputs (the deliverable). Vague requests get vague results.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SECTION 4: The AI Landscape
+             ================================================================ -->
+        <section class="lesson-slide" data-slide="4" aria-label="Section 4: The AI Landscape">
+          <div class="slide-content">
+            <div class="slide-header">
+              <span class="slide-tag">Industry Overview</span>
+              <h1 class="slide-title">The AI Landscape</h1>
+              <p class="slide-subtitle">
+                Understanding the major players and their unique approaches helps you
+                <strong>choose the right tool</strong> for your needs.
+              </p>
+            </div>
+
+            <!-- AI Players Grid -->
+            <div class="interactive-demo">
+              <div class="ai-landscape" id="aiLandscape">
+                <div class="ai-landscape__grid">
+                  <!-- OpenAI -->
+                  <div class="ai-landscape__player" data-player="openai">
+                    <div class="ai-landscape__player-logo ai-landscape__player-logo--openai">
+                      <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+                        <path d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073z"/>
+                      </svg>
+                    </div>
+                    <h3 class="ai-landscape__player-name">OpenAI</h3>
+                    <div class="ai-landscape__player-models">GPT-4o, o1, o3</div>
+                    <div class="ai-landscape__player-focus">
+                      <span class="ai-landscape__tag ai-landscape__tag--primary">Consumer</span>
+                      <span class="ai-landscape__tag ai-landscape__tag--primary">API</span>
+                    </div>
+                    <p class="ai-landscape__player-desc">
+                      First-mover advantage. Strong at creative writing, code, and general reasoning. ChatGPT most widely adopted.
+                    </p>
+                    <div class="ai-landscape__player-strengths">
+                      <strong>Best for:</strong> General tasks, creative writing, broad adoption
+                    </div>
+                  </div>
+
+                  <!-- Anthropic -->
+                  <div class="ai-landscape__player" data-player="anthropic">
+                    <div class="ai-landscape__player-logo ai-landscape__player-logo--anthropic">
+                      <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+                        <path d="M13.827 3.52h3.603L24 20.48h-3.603l-6.57-16.96zm-7.258 0h3.767L16.906 20.48h-3.674l-1.343-3.461H5.017l-1.344 3.46H0L6.569 3.52zm.713 10.236h4.312L9.439 7.064l-2.157 6.692z"/>
+                      </svg>
+                    </div>
+                    <h3 class="ai-landscape__player-name">Anthropic</h3>
+                    <div class="ai-landscape__player-models">Claude 3.5, Claude Opus 4.5</div>
+                    <div class="ai-landscape__player-focus">
+                      <span class="ai-landscape__tag ai-landscape__tag--purple">Enterprise</span>
+                      <span class="ai-landscape__tag ai-landscape__tag--purple">Safety</span>
+                    </div>
+                    <p class="ai-landscape__player-desc">
+                      Focus on AI safety and reliability. Excels at long-context analysis and nuanced conversations.
+                    </p>
+                    <div class="ai-landscape__player-strengths">
+                      <strong>Best for:</strong> Enterprise, complex analysis, long documents
+                    </div>
+                  </div>
+
+                  <!-- Google -->
+                  <div class="ai-landscape__player" data-player="google">
+                    <div class="ai-landscape__player-logo ai-landscape__player-logo--google">
+                      <svg viewBox="0 0 24 24" width="32" height="32">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                      </svg>
+                    </div>
+                    <h3 class="ai-landscape__player-name">Google</h3>
+                    <div class="ai-landscape__player-models">Gemini 2.0, Gemini Ultra</div>
+                    <div class="ai-landscape__player-focus">
+                      <span class="ai-landscape__tag ai-landscape__tag--cyan">Multimodal</span>
+                      <span class="ai-landscape__tag ai-landscape__tag--cyan">Integration</span>
+                    </div>
+                    <p class="ai-landscape__player-desc">
+                      Deep integration with Google Workspace. Strong multimodal capabilities (text, image, video).
+                    </p>
+                    <div class="ai-landscape__player-strengths">
+                      <strong>Best for:</strong> Google ecosystem, multimodal tasks, search integration
+                    </div>
+                  </div>
+
+                  <!-- Meta -->
+                  <div class="ai-landscape__player" data-player="meta">
+                    <div class="ai-landscape__player-logo ai-landscape__player-logo--meta">
+                      <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+                        <path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.52 1.49-3.9 3.77-3.9 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02z"/>
+                      </svg>
+                    </div>
+                    <h3 class="ai-landscape__player-name">Meta</h3>
+                    <div class="ai-landscape__player-models">Llama 3.2, Llama 4</div>
+                    <div class="ai-landscape__player-focus">
+                      <span class="ai-landscape__tag ai-landscape__tag--amber">Open Source</span>
+                      <span class="ai-landscape__tag ai-landscape__tag--amber">On-Prem</span>
+                    </div>
+                    <p class="ai-landscape__player-desc">
+                      Open-source models you can run locally. Great for privacy-conscious organizations.
+                    </p>
+                    <div class="ai-landscape__player-strengths">
+                      <strong>Best for:</strong> Self-hosting, data privacy, customization
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Comparison Note -->
+                <div class="ai-landscape__comparison-note">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M12 16v-4"></path>
+                    <path d="M12 8h.01"></path>
+                  </svg>
+                  <p>
+                    <strong>Pro tip:</strong> Many organizations use multiple providers for different use cases.
+                    Claude for analysis, GPT for creative, Gemini for Google integration.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Key Insight -->
+            <div class="slide-callout">
+              <div class="slide-callout__icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2z"></path>
+                  <path d="M12 16v-4"></path>
+                  <path d="M12 8h.01"></path>
+                </svg>
+              </div>
+              <div class="slide-callout__content">
+                <strong>Key Insight:</strong> The "best" AI depends on your specific use case.
+                Evaluate based on your needs: cost, privacy, integration, and task type.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SECTION 5: Context Engineering
+             ================================================================ -->
+        <section class="lesson-slide" data-slide="5" aria-label="Section 5: Context Engineering">
+          <div class="slide-content">
+            <div class="slide-header">
+              <span class="slide-tag slide-tag--warning">Critical Concept</span>
+              <h1 class="slide-title">Context Engineering</h1>
+              <p class="slide-subtitle">
+                AI has <strong>no persistent memory</strong>. Every conversation starts fresh.
+                Understanding this is key to getting reliable results.
+              </p>
+            </div>
+
+            <!-- Stateless Animation Demo -->
+            <div class="interactive-demo">
+              <div class="context-demo" id="contextDemo">
+                <div class="context-demo__brain">
+                  <div class="context-demo__brain-icon">
+                    <svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path d="M12 4.5a2.5 2.5 0 0 0-4.96-.46 2.5 2.5 0 0 0-1.98 3 2.5 2.5 0 0 0-1.32 4.24 3 3 0 0 0 .34 5.58 2.5 2.5 0 0 0 2.96 3.08A2.5 2.5 0 0 0 12 19.5a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 12 4.5"></path>
+                      <path d="M12 4.5v15"></path>
+                      <path d="M12 12h9"></path>
+                      <path d="M12 12H3"></path>
+                    </svg>
+                  </div>
+                  <div class="context-demo__brain-label">AI Memory</div>
+                  <div class="context-demo__brain-status" id="brainStatus">Empty</div>
+                </div>
+
+                <div class="context-demo__conversation">
+                  <div class="context-demo__message context-demo__message--user">
+                    <span class="context-demo__message-label">You</span>
+                    <span class="context-demo__message-text">My name is Sarah and I work at Acme Corp.</span>
+                  </div>
+                  <div class="context-demo__message context-demo__message--ai">
+                    <span class="context-demo__message-label">AI</span>
+                    <span class="context-demo__message-text">Nice to meet you, Sarah! How can I help you today?</span>
+                  </div>
+                  <div class="context-demo__divider">
+                    <span>— New Session Started —</span>
+                  </div>
+                  <div class="context-demo__message context-demo__message--user">
+                    <span class="context-demo__message-label">You</span>
+                    <span class="context-demo__message-text">What's my name?</span>
+                  </div>
+                  <div class="context-demo__message context-demo__message--ai context-demo__message--confused">
+                    <span class="context-demo__message-label">AI</span>
+                    <span class="context-demo__message-text">I don't have access to that information. Could you tell me your name?</span>
+                  </div>
+                </div>
+
+                <button class="context-demo__replay-btn" id="contextReplayBtn">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
+                  Watch Animation
+                </button>
+              </div>
+            </div>
+
+            <!-- Context Window Explanation -->
+            <div class="context-explanation">
+              <h3 class="context-explanation__title">What You Need to Provide Each Time</h3>
+              <div class="context-explanation__grid">
+                <div class="context-explanation__item">
+                  <div class="context-explanation__icon">📋</div>
+                  <div class="context-explanation__label">Instructions</div>
+                  <div class="context-explanation__desc">What you want the AI to do</div>
+                </div>
+                <div class="context-explanation__item">
+                  <div class="context-explanation__icon">📄</div>
+                  <div class="context-explanation__label">Documents</div>
+                  <div class="context-explanation__desc">Relevant files and data</div>
+                </div>
+                <div class="context-explanation__item">
+                  <div class="context-explanation__icon">🔧</div>
+                  <div class="context-explanation__label">Tools</div>
+                  <div class="context-explanation__desc">Capabilities to enable</div>
+                </div>
+                <div class="context-explanation__item">
+                  <div class="context-explanation__icon">💬</div>
+                  <div class="context-explanation__label">Conversation</div>
+                  <div class="context-explanation__desc">Prior messages in session</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Key Insight -->
+            <div class="slide-callout slide-callout--warning">
+              <div class="slide-callout__icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                  <line x1="12" y1="9" x2="12" y2="13"></line>
+                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+              </div>
+              <div class="slide-callout__content">
+                <strong>Remember:</strong> AI doesn't remember yesterday's conversation. Each session is a blank slate.
+                Include all relevant context in your prompts.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SECTION 6: AI Limitations
+             ================================================================ -->
+        <section class="lesson-slide" data-slide="6" aria-label="Section 6: AI Limitations">
+          <div class="slide-content">
+            <div class="slide-header">
+              <span class="slide-tag slide-tag--warning">Critical Knowledge</span>
+              <h1 class="slide-title">What AI Gets Wrong</h1>
+              <p class="slide-subtitle">
+                AI is powerful but <strong>not infallible</strong>. Understanding its limitations
+                helps you use it safely and catch mistakes before they matter.
+              </p>
+            </div>
+
+            <!-- Interactive Demo: Hallucination Example -->
+            <div class="interactive-demo">
+              <div class="hallucination-demo" id="hallucinationDemo">
+                <div class="hallucination-demo__header">
+                  <div class="hallucination-demo__title">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                      <line x1="12" y1="9" x2="12" y2="13"></line>
+                      <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                    <span>Hallucination Example: Fact-Checking Scenario</span>
+                  </div>
+                </div>
+
+                <div class="hallucination-demo__query">
+                  <div class="hallucination-demo__query-label">User Query</div>
+                  <div class="hallucination-demo__query-text">
+                    "What was Acme Corp's revenue in Q3 2024?"
+                  </div>
+                </div>
+
+                <div class="hallucination-demo__comparison">
+                  <!-- AI Response (Wrong) -->
+                  <div class="hallucination-demo__panel hallucination-demo__panel--wrong">
+                    <div class="hallucination-demo__panel-header">
+                      <span class="hallucination-demo__panel-badge hallucination-demo__panel-badge--wrong">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <line x1="15" y1="9" x2="9" y2="15"></line>
+                          <line x1="9" y1="9" x2="15" y2="15"></line>
+                        </svg>
+                        AI's Response
+                      </span>
+                    </div>
+                    <div class="hallucination-demo__content">
+                      <p class="hallucination-demo__text">
+                        "Acme Corp reported <strong>$847 million</strong> in revenue for Q3 2024,
+                        representing a 12% year-over-year increase. The growth was driven primarily
+                        by their cloud services division."
+                      </p>
+                      <div class="hallucination-demo__confidence">
+                        <span>Confidence: High</span>
+                        <span class="hallucination-demo__confidence-warning">(but wrong!)</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Actual Fact -->
+                  <div class="hallucination-demo__panel hallucination-demo__panel--correct">
+                    <div class="hallucination-demo__panel-header">
+                      <span class="hallucination-demo__panel-badge hallucination-demo__panel-badge--correct">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        Actual Fact
+                      </span>
+                    </div>
+                    <div class="hallucination-demo__content">
+                      <p class="hallucination-demo__text">
+                        Acme Corp reported <strong>$723 million</strong> in revenue for Q3 2024.
+                        Growth was 8% YoY, with hardware sales as the main driver.
+                      </p>
+                      <div class="hallucination-demo__source">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                        </svg>
+                        <span>Source: Q3 2024 Earnings Report (SEC Filing)</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Limitation Cards -->
+                <div class="hallucination-demo__limitations">
+                  <h4 class="hallucination-demo__limitations-title">Three Key Limitations</h4>
+                  <div class="hallucination-demo__limitation-cards">
+                    <div class="hallucination-demo__limitation">
+                      <div class="hallucination-demo__limitation-icon">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                      </div>
+                      <div class="hallucination-demo__limitation-content">
+                        <strong>Hallucinations</strong>
+                        <span>AI can confidently state false information</span>
+                      </div>
+                    </div>
+                    <div class="hallucination-demo__limitation">
+                      <div class="hallucination-demo__limitation-icon">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                      </div>
+                      <div class="hallucination-demo__limitation-content">
+                        <strong>Knowledge Cutoff</strong>
+                        <span>Training data has a date limit</span>
+                      </div>
+                    </div>
+                    <div class="hallucination-demo__limitation">
+                      <div class="hallucination-demo__limitation-icon">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                          <line x1="3" y1="9" x2="21" y2="9"></line>
+                          <line x1="9" y1="21" x2="9" y2="9"></line>
+                        </svg>
+                      </div>
+                      <div class="hallucination-demo__limitation-content">
+                        <strong>No True Reasoning</strong>
+                        <span>Pattern matching, not logical deduction</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Warning Callout -->
+            <div class="slide-callout slide-callout--warning">
+              <div class="slide-callout__icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                  <line x1="12" y1="9" x2="12" y2="13"></line>
+                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+              </div>
+              <div class="slide-callout__content">
+                <strong>Golden Rule:</strong> Always verify critical information from AI.
+                Use it as a starting point, not a final answer — especially for facts, figures, and decisions.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SECTION 7: Agentic vs Non-Agentic AI
+             ================================================================ -->
+        <section class="lesson-slide" data-slide="7" aria-label="Section 7: Agentic vs Non-Agentic AI">
+          <div class="slide-content">
+            <div class="slide-header">
+              <span class="slide-tag">Architecture Types</span>
+              <h1 class="slide-title">Agentic vs Non-Agentic AI</h1>
+              <p class="slide-subtitle">
+                Understanding the difference between <strong>reactive assistants</strong> and
+                <strong>autonomous agents</strong> shapes how you use AI effectively.
+              </p>
+            </div>
+
+            <!-- Comparison Demo -->
+            <div class="interactive-demo">
+              <div class="agentic-demo" id="agenticDemo">
+                <div class="agentic-demo__comparison">
+                  <!-- Non-Agentic -->
+                  <div class="agentic-demo__panel agentic-demo__panel--nonagentic">
+                    <div class="agentic-demo__panel-header">
+                      <div class="agentic-demo__panel-icon">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                          <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                          <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                        </svg>
+                      </div>
+                      <h3 class="agentic-demo__panel-title">Non-Agentic (Chat)</h3>
+                      <span class="agentic-demo__panel-subtitle">Reactive Assistant</span>
+                    </div>
+                    <div class="agentic-demo__panel-content">
+                      <div class="agentic-demo__flow">
+                        <div class="agentic-demo__flow-step">
+                          <div class="agentic-demo__flow-icon">👤</div>
+                          <span>You ask a question</span>
+                        </div>
+                        <div class="agentic-demo__flow-arrow">→</div>
+                        <div class="agentic-demo__flow-step">
+                          <div class="agentic-demo__flow-icon">🤖</div>
+                          <span>AI responds once</span>
+                        </div>
+                        <div class="agentic-demo__flow-arrow">→</div>
+                        <div class="agentic-demo__flow-step">
+                          <div class="agentic-demo__flow-icon">⏹️</div>
+                          <span>Done (waits for next input)</span>
+                        </div>
+                      </div>
+                      <div class="agentic-demo__traits">
+                        <div class="agentic-demo__trait">
+                          <span class="agentic-demo__trait-icon">✓</span>
+                          <span>Single response per prompt</span>
+                        </div>
+                        <div class="agentic-demo__trait">
+                          <span class="agentic-demo__trait-icon">✓</span>
+                          <span>No autonomous actions</span>
+                        </div>
+                        <div class="agentic-demo__trait">
+                          <span class="agentic-demo__trait-icon">✓</span>
+                          <span>Human drives all decisions</span>
+                        </div>
+                      </div>
+                      <div class="agentic-demo__example">
+                        <strong>Example:</strong> ChatGPT basic chat, email drafting, Q&A
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Agentic -->
+                  <div class="agentic-demo__panel agentic-demo__panel--agentic">
+                    <div class="agentic-demo__panel-header">
+                      <div class="agentic-demo__panel-icon agentic-demo__panel-icon--agentic">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2z"></path>
+                          <path d="M12 8v4l3 3"></path>
+                        </svg>
+                      </div>
+                      <h3 class="agentic-demo__panel-title">Agentic AI</h3>
+                      <span class="agentic-demo__panel-subtitle">Autonomous Agent</span>
+                    </div>
+                    <div class="agentic-demo__panel-content">
+                      <div class="agentic-demo__flow">
+                        <div class="agentic-demo__flow-step agentic-demo__flow-step--highlight">
+                          <div class="agentic-demo__flow-icon">🎯</div>
+                          <span>You set a goal</span>
+                        </div>
+                        <div class="agentic-demo__flow-arrow">→</div>
+                        <div class="agentic-demo__flow-step agentic-demo__flow-step--highlight">
+                          <div class="agentic-demo__flow-icon">🔄</div>
+                          <span>AI plans & executes steps</span>
+                        </div>
+                        <div class="agentic-demo__flow-arrow">→</div>
+                        <div class="agentic-demo__flow-step agentic-demo__flow-step--highlight">
+                          <div class="agentic-demo__flow-icon">🛠️</div>
+                          <span>Uses tools autonomously</span>
+                        </div>
+                      </div>
+                      <div class="agentic-demo__traits">
+                        <div class="agentic-demo__trait agentic-demo__trait--highlight">
+                          <span class="agentic-demo__trait-icon">★</span>
+                          <span>Multi-step reasoning loops</span>
+                        </div>
+                        <div class="agentic-demo__trait agentic-demo__trait--highlight">
+                          <span class="agentic-demo__trait-icon">★</span>
+                          <span>Can call APIs, browse web, write files</span>
+                        </div>
+                        <div class="agentic-demo__trait agentic-demo__trait--highlight">
+                          <span class="agentic-demo__trait-icon">★</span>
+                          <span>Self-corrects and iterates</span>
+                        </div>
+                      </div>
+                      <div class="agentic-demo__example">
+                        <strong>Example:</strong> Claude Code, Devin, Auto-GPT, research agents
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- When to Use Which -->
+                <div class="agentic-demo__guidance">
+                  <h4 class="agentic-demo__guidance-title">When to Use Each</h4>
+                  <div class="agentic-demo__guidance-grid">
+                    <div class="agentic-demo__guidance-item">
+                      <span class="agentic-demo__guidance-label">Use Non-Agentic for:</span>
+                      <span class="agentic-demo__guidance-text">Quick answers, drafts, brainstorming, simple tasks</span>
+                    </div>
+                    <div class="agentic-demo__guidance-item agentic-demo__guidance-item--agentic">
+                      <span class="agentic-demo__guidance-label">Use Agentic for:</span>
+                      <span class="agentic-demo__guidance-text">Complex workflows, research, coding projects, automation</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Key Insight -->
+            <div class="slide-callout">
+              <div class="slide-callout__icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2z"></path>
+                  <path d="M12 16v-4"></path>
+                  <path d="M12 8h.01"></path>
+                </svg>
+              </div>
+              <div class="slide-callout__content">
+                <strong>Trend:</strong> The industry is moving toward more agentic systems.
+                Understanding both patterns prepares you for the future of AI-assisted work.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SECTION 8: AI Success Stories
+             ================================================================ -->
+        <section class="lesson-slide" data-slide="8" aria-label="Section 8: AI Success Stories">
+          <div class="slide-content">
+            <div class="slide-header">
+              <span class="slide-tag slide-tag--success">Case Studies</span>
+              <h1 class="slide-title">AI Success Stories</h1>
+              <p class="slide-subtitle">
+                Real-world examples of how organizations are using AI to
+                <strong>transform their operations</strong>.
+              </p>
+            </div>
+
+            <!-- Success Stories Grid -->
+            <div class="interactive-demo">
+              <div class="success-stories" id="successStories">
+                <div class="success-stories__grid">
+                  <!-- Customer Service -->
+                  <div class="success-story">
+                    <div class="success-story__icon success-story__icon--support">
+                      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                      </svg>
+                    </div>
+                    <div class="success-story__category">Customer Service</div>
+                    <h4 class="success-story__title">Klarna's AI Assistant</h4>
+                    <p class="success-story__desc">
+                      Handles 2/3 of customer service chats, equivalent to 700 full-time agents.
+                    </p>
+                    <div class="success-story__metrics">
+                      <div class="success-story__metric">
+                        <span class="success-story__metric-value">66%</span>
+                        <span class="success-story__metric-label">Chats automated</span>
+                      </div>
+                      <div class="success-story__metric">
+                        <span class="success-story__metric-value">25%</span>
+                        <span class="success-story__metric-label">Repeat inquiries ↓</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Legal -->
+                  <div class="success-story">
+                    <div class="success-story__icon success-story__icon--legal">
+                      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                      </svg>
+                    </div>
+                    <div class="success-story__category">Legal</div>
+                    <h4 class="success-story__title">Contract Analysis</h4>
+                    <p class="success-story__desc">
+                      Law firms use AI to review contracts 90% faster, flagging risks instantly.
+                    </p>
+                    <div class="success-story__metrics">
+                      <div class="success-story__metric">
+                        <span class="success-story__metric-value">90%</span>
+                        <span class="success-story__metric-label">Time saved</span>
+                      </div>
+                      <div class="success-story__metric">
+                        <span class="success-story__metric-value">3x</span>
+                        <span class="success-story__metric-label">More deals reviewed</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Software Development -->
+                  <div class="success-story">
+                    <div class="success-story__icon success-story__icon--code">
+                      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                      </svg>
+                    </div>
+                    <div class="success-story__category">Software Development</div>
+                    <h4 class="success-story__title">GitHub Copilot</h4>
+                    <p class="success-story__desc">
+                      Developers complete tasks 55% faster with AI-powered code suggestions.
+                    </p>
+                    <div class="success-story__metrics">
+                      <div class="success-story__metric">
+                        <span class="success-story__metric-value">55%</span>
+                        <span class="success-story__metric-label">Faster task completion</span>
+                      </div>
+                      <div class="success-story__metric">
+                        <span class="success-story__metric-value">46%</span>
+                        <span class="success-story__metric-label">Code from AI</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Marketing -->
+                  <div class="success-story">
+                    <div class="success-story__icon success-story__icon--marketing">
+                      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 20V10"></path>
+                        <path d="M18 20V4"></path>
+                        <path d="M6 20v-4"></path>
+                      </svg>
+                    </div>
+                    <div class="success-story__category">Marketing</div>
+                    <h4 class="success-story__title">Content at Scale</h4>
+                    <p class="success-story__desc">
+                      Marketing teams generate 10x more content variations for A/B testing.
+                    </p>
+                    <div class="success-story__metrics">
+                      <div class="success-story__metric">
+                        <span class="success-story__metric-value">10x</span>
+                        <span class="success-story__metric-label">More variations</span>
+                      </div>
+                      <div class="success-story__metric">
+                        <span class="success-story__metric-value">40%</span>
+                        <span class="success-story__metric-label">Better engagement</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Key Insight -->
+            <div class="slide-callout slide-callout--success">
+              <div class="slide-callout__icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <div class="slide-callout__content">
+                <strong>Common Thread:</strong> Successful AI adoption starts with specific, measurable use cases—
+                not trying to "AI everything" at once.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SECTION 9: AI Benchmarks & Evaluation
+             ================================================================ -->
+        <section class="lesson-slide" data-slide="9" aria-label="Section 9: AI Benchmarks">
+          <div class="slide-content">
+            <div class="slide-header">
+              <span class="slide-tag">Measuring AI</span>
+              <h1 class="slide-title">AI Benchmarks & Evaluation</h1>
+              <p class="slide-subtitle">
+                How do we know if AI is actually getting better?
+                <strong>Benchmarks and evals</strong> provide objective measurements.
+              </p>
+            </div>
+
+            <!-- Benchmarks Demo -->
+            <div class="interactive-demo">
+              <div class="benchmarks-demo" id="benchmarksDemo">
+                <!-- What Are Evals -->
+                <div class="benchmarks-demo__intro">
+                  <div class="benchmarks-demo__intro-icon">
+                    <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                  </div>
+                  <div class="benchmarks-demo__intro-content">
+                    <h4>What are AI Evaluations?</h4>
+                    <p>Standardized tests that measure AI performance across different capabilities—reasoning, coding, knowledge, safety, and more.</p>
+                  </div>
+                </div>
+
+                <!-- Key Benchmarks Grid -->
+                <div class="benchmarks-demo__grid">
+                  <div class="benchmark-card">
+                    <div class="benchmark-card__header">
+                      <span class="benchmark-card__name">MMLU</span>
+                      <span class="benchmark-card__type">Knowledge</span>
+                    </div>
+                    <p class="benchmark-card__desc">
+                      57 subjects from STEM to humanities. Tests broad knowledge and reasoning.
+                    </p>
+                    <div class="benchmark-card__score">
+                      <span class="benchmark-card__score-label">Top models:</span>
+                      <span class="benchmark-card__score-value">~90%</span>
+                    </div>
+                  </div>
+
+                  <div class="benchmark-card">
+                    <div class="benchmark-card__header">
+                      <span class="benchmark-card__name">HumanEval</span>
+                      <span class="benchmark-card__type">Coding</span>
+                    </div>
+                    <p class="benchmark-card__desc">
+                      164 programming problems. Tests code generation accuracy.
+                    </p>
+                    <div class="benchmark-card__score">
+                      <span class="benchmark-card__score-label">Top models:</span>
+                      <span class="benchmark-card__score-value">~95%</span>
+                    </div>
+                  </div>
+
+                  <div class="benchmark-card">
+                    <div class="benchmark-card__header">
+                      <span class="benchmark-card__name">GPQA</span>
+                      <span class="benchmark-card__type">Expert Reasoning</span>
+                    </div>
+                    <p class="benchmark-card__desc">
+                      Graduate-level questions in biology, physics, chemistry.
+                    </p>
+                    <div class="benchmark-card__score">
+                      <span class="benchmark-card__score-label">Top models:</span>
+                      <span class="benchmark-card__score-value">~75%</span>
+                    </div>
+                  </div>
+
+                  <div class="benchmark-card benchmark-card--highlight">
+                    <div class="benchmark-card__header">
+                      <span class="benchmark-card__name">SWE-bench</span>
+                      <span class="benchmark-card__type">Real-World Coding</span>
+                    </div>
+                    <p class="benchmark-card__desc">
+                      Fix actual GitHub issues. Tests practical software engineering.
+                    </p>
+                    <div class="benchmark-card__score">
+                      <span class="benchmark-card__score-label">Top models:</span>
+                      <span class="benchmark-card__score-value">~70%</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Why This Matters -->
+                <div class="benchmarks-demo__takeaway">
+                  <h4>Why This Matters to You</h4>
+                  <div class="benchmarks-demo__takeaway-points">
+                    <div class="benchmarks-demo__point">
+                      <span class="benchmarks-demo__point-icon">📊</span>
+                      <span>Compare models objectively before adopting them</span>
+                    </div>
+                    <div class="benchmarks-demo__point">
+                      <span class="benchmarks-demo__point-icon">📈</span>
+                      <span>Track improvement over time (models improve rapidly)</span>
+                    </div>
+                    <div class="benchmarks-demo__point">
+                      <span class="benchmarks-demo__point-icon">⚠️</span>
+                      <span>Understand limitations—high scores don't mean perfect</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Key Insight -->
+            <div class="slide-callout">
+              <div class="slide-callout__icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2z"></path>
+                  <path d="M12 16v-4"></path>
+                  <path d="M12 8h.01"></path>
+                </svg>
+              </div>
+              <div class="slide-callout__content">
+                <strong>Reality Check:</strong> Benchmarks are useful but not everything.
+                Real-world performance depends on your specific use case—always test with your actual data.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SECTION 10: Your First Prompts
+             ================================================================ -->
+        <section class="lesson-slide" data-slide="10" aria-label="Section 10: Your First Prompts">
+          <div class="slide-content">
+            <div class="slide-header">
+              <span class="slide-tag">Hands-On</span>
+              <h1 class="slide-title">Your First Prompts</h1>
+              <p class="slide-subtitle">
+                The quality of AI output depends on the quality of your input.
+                Let's practice writing <strong>effective prompts</strong>.
+              </p>
+            </div>
+
+            <!-- Interactive Demo: Prompt Playground -->
+            <div class="interactive-demo">
+              <div class="prompt-playground" id="promptPlayground">
+                <div class="prompt-playground__header">
+                  <div class="prompt-playground__title">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                      <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                    </svg>
+                    <span>Prompt Playground</span>
+                  </div>
+                </div>
+
+                <div class="prompt-playground__input-area">
+                  <label for="promptInput" class="prompt-playground__label">Write your prompt:</label>
+                  <textarea
+                    id="promptInput"
+                    class="prompt-playground__textarea"
+                    placeholder="Try writing a prompt... Example: 'Write an email'"
+                    rows="3"
+                  ></textarea>
+                  <button class="prompt-playground__analyze-btn" id="analyzePromptBtn">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Analyze Prompt</span>
+                  </button>
+                </div>
+
+                <!-- Feedback Area -->
+                <div class="prompt-playground__feedback" id="promptFeedback" style="display: none;">
+                  <div class="prompt-playground__feedback-header">
+                    <span class="prompt-playground__feedback-title">Prompt Analysis</span>
+                    <span class="prompt-playground__feedback-score" id="promptScore"></span>
+                  </div>
+                  <div class="prompt-playground__feedback-items" id="feedbackItems">
+                    <!-- Populated by JS -->
+                  </div>
+                  <div class="prompt-playground__suggestion" id="promptSuggestion">
+                    <!-- Populated by JS -->
+                  </div>
+                </div>
+
+                <!-- Before/After Examples -->
+                <div class="prompt-playground__examples">
+                  <h4 class="prompt-playground__examples-title">Before & After Examples</h4>
+                  <div class="prompt-playground__example-cards">
+                    <div class="prompt-example-card">
+                      <div class="prompt-example-card__header">
+                        <span class="prompt-example-card__badge prompt-example-card__badge--before">Vague</span>
+                        <button class="prompt-example-card__copy" data-copy="Write an email">
+                          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                          </svg>
+                        </button>
+                      </div>
+                      <div class="prompt-example-card__content">
+                        "Write an email"
+                      </div>
+                    </div>
+                    <div class="prompt-example-card__arrow">
+                      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </div>
+                    <div class="prompt-example-card">
+                      <div class="prompt-example-card__header">
+                        <span class="prompt-example-card__badge prompt-example-card__badge--after">Specific</span>
+                        <button class="prompt-example-card__copy" data-copy="Write a professional follow-up email to a prospect who attended our webinar last week. Tone: friendly but professional. Goal: schedule a 15-minute demo call. Include: reference to the webinar topic (AI automation), one key benefit, and a clear CTA with calendar link.">
+                          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                          </svg>
+                        </button>
+                      </div>
+                      <div class="prompt-example-card__content">
+                        "Write a professional follow-up email to a prospect who attended our webinar last week. Tone: friendly but professional. Goal: schedule a 15-minute demo call. Include: reference to the webinar topic (AI automation), one key benefit, and a clear CTA with calendar link."
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Quick Tips -->
+                <div class="prompt-playground__tips">
+                  <h4 class="prompt-playground__tips-title">Quick Tips for Better Prompts</h4>
+                  <div class="prompt-playground__tips-grid">
+                    <div class="prompt-tip">
+                      <span class="prompt-tip__icon">1</span>
+                      <span class="prompt-tip__text">Be specific about format and length</span>
+                    </div>
+                    <div class="prompt-tip">
+                      <span class="prompt-tip__icon">2</span>
+                      <span class="prompt-tip__text">Include context and constraints</span>
+                    </div>
+                    <div class="prompt-tip">
+                      <span class="prompt-tip__icon">3</span>
+                      <span class="prompt-tip__text">Specify the tone and audience</span>
+                    </div>
+                    <div class="prompt-tip">
+                      <span class="prompt-tip__icon">4</span>
+                      <span class="prompt-tip__text">Give examples when possible</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Key Insight -->
+            <div class="slide-callout">
+              <div class="slide-callout__icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2z"></path>
+                  <path d="M12 16v-4"></path>
+                  <path d="M12 8h.01"></path>
+                </svg>
+              </div>
+              <div class="slide-callout__content">
+                <strong>Remember:</strong> Prompt engineering is a skill that improves with practice.
+                Start simple, iterate, and learn what works for your specific use cases.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SECTION 11: Next Steps
+             ================================================================ -->
+        <section class="lesson-slide" data-slide="11" aria-label="Section 11: Next Steps">
+          <div class="slide-content">
+            <div class="slide-header">
+              <span class="slide-tag">Your Journey</span>
+              <h1 class="slide-title">Next Steps in Your AI Journey</h1>
+              <p class="slide-subtitle">
+                You've completed AI Fundamentals! Here's where to go next to
+                <strong>deepen your skills</strong>.
+              </p>
+            </div>
+
+            <!-- Course Pathway -->
+            <div class="interactive-demo">
+              <div class="course-pathway" id="coursePathway">
+                <div class="course-pathway__timeline">
+                  <!-- Completed: AI Fundamentals -->
+                  <div class="course-pathway__node course-pathway__node--completed">
+                    <div class="course-pathway__node-marker">
+                      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                    <div class="course-pathway__node-content">
+                      <span class="course-pathway__node-status">Completed</span>
+                      <h4 class="course-pathway__node-title">AI Fundamentals</h4>
+                      <p class="course-pathway__node-desc">What AI is, how it works, capabilities and limitations</p>
+                    </div>
+                  </div>
+
+                  <div class="course-pathway__connector course-pathway__connector--active"></div>
+
+                  <!-- Next Up: Context Engineering -->
+                  <div class="course-pathway__node course-pathway__node--next">
+                    <div class="course-pathway__node-marker">
+                      <span>2</span>
+                    </div>
+                    <div class="course-pathway__node-content">
+                      <span class="course-pathway__node-status">Recommended Next</span>
+                      <h4 class="course-pathway__node-title">Context Engineering</h4>
+                      <p class="course-pathway__node-desc">Master AI memory, context windows, and RAG systems</p>
+                      <a href="lesson.html" class="course-pathway__node-cta">
+                        Start Course
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                          <line x1="5" y1="12" x2="19" y2="12"></line>
+                          <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="course-pathway__connector"></div>
+
+                  <!-- Locked: Prompt Engineering -->
+                  <div class="course-pathway__node course-pathway__node--locked">
+                    <div class="course-pathway__node-marker">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                      </svg>
+                    </div>
+                    <div class="course-pathway__node-content">
+                      <span class="course-pathway__node-status">Coming Soon</span>
+                      <h4 class="course-pathway__node-title">Advanced Prompt Engineering</h4>
+                      <p class="course-pathway__node-desc">Chain-of-thought, few-shot learning, and system prompts</p>
+                    </div>
+                  </div>
+
+                  <div class="course-pathway__connector"></div>
+
+                  <!-- Locked: AI + Company Data -->
+                  <div class="course-pathway__node course-pathway__node--locked">
+                    <div class="course-pathway__node-marker">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                      </svg>
+                    </div>
+                    <div class="course-pathway__node-content">
+                      <span class="course-pathway__node-status">Coming Soon</span>
+                      <h4 class="course-pathway__node-title">AI + Company Data</h4>
+                      <p class="course-pathway__node-desc">Connect AI to your documents, databases, and knowledge bases</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Completion Stats -->
+                <div class="course-pathway__stats">
+                  <div class="course-pathway__stat">
+                    <span class="course-pathway__stat-value">6</span>
+                    <span class="course-pathway__stat-label">Sections Completed</span>
+                  </div>
+                  <div class="course-pathway__stat">
+                    <span class="course-pathway__stat-value">300</span>
+                    <span class="course-pathway__stat-label">XP Earned</span>
+                  </div>
+                  <div class="course-pathway__stat">
+                    <span class="course-pathway__stat-value">1</span>
+                    <span class="course-pathway__stat-label">Course Complete</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="slide-actions">
+              <a href="lesson.html" class="slide-action-btn slide-action-btn--primary">
+                <span>Continue to Context Engineering</span>
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+              <a href="courses.html" class="slide-action-btn slide-action-btn--secondary">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="14" width="7" height="7"></rect>
+                  <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+                <span>Back to Dashboard</span>
+              </a>
+            </div>
+
+            <!-- Celebration Callout -->
+            <div class="slide-callout slide-callout--success">
+              <div class="slide-callout__icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </div>
+              <div class="slide-callout__content">
+                <strong>Congratulations!</strong> You now understand the fundamentals of AI.
+                You know what it can do, what it can't, and how to start using it effectively.
+                Keep learning and practicing!
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- Lesson Navigation -->
+      <nav class="lesson-nav" aria-label="Lesson navigation">
+        <button class="lesson-nav__btn lesson-nav__btn--prev" id="prevSlideBtn" disabled aria-label="Previous section">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          <span>Previous</span>
+        </button>
+
+        <div class="lesson-nav__dots" role="tablist" aria-label="Section navigation">
+          <button class="lesson-nav__dot lesson-nav__dot--active" data-slide="1" role="tab" aria-selected="true" aria-label="Section 1"></button>
+          <button class="lesson-nav__dot" data-slide="2" role="tab" aria-selected="false" aria-label="Section 2"></button>
+          <button class="lesson-nav__dot" data-slide="3" role="tab" aria-selected="false" aria-label="Section 3"></button>
+          <button class="lesson-nav__dot" data-slide="4" role="tab" aria-selected="false" aria-label="Section 4"></button>
+          <button class="lesson-nav__dot" data-slide="5" role="tab" aria-selected="false" aria-label="Section 5"></button>
+          <button class="lesson-nav__dot" data-slide="6" role="tab" aria-selected="false" aria-label="Section 6"></button>
+          <button class="lesson-nav__dot" data-slide="7" role="tab" aria-selected="false" aria-label="Section 7"></button>
+          <button class="lesson-nav__dot" data-slide="8" role="tab" aria-selected="false" aria-label="Section 8"></button>
+          <button class="lesson-nav__dot" data-slide="9" role="tab" aria-selected="false" aria-label="Section 9"></button>
+          <button class="lesson-nav__dot" data-slide="10" role="tab" aria-selected="false" aria-label="Section 10"></button>
+          <button class="lesson-nav__dot" data-slide="11" role="tab" aria-selected="false" aria-label="Section 11"></button>
+        </div>
+
+        <button class="lesson-nav__btn lesson-nav__btn--next" id="nextSlideBtn" aria-label="Next section">
+          <span>Next</span>
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Sidebar Overlay (mobile) -->
+    <div class="sidebar__overlay" id="sidebarOverlay"></div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="../js/components/theme-switcher.js"></script>
+  <script src="../js/components/sidebar.js"></script>
+  <script src="../js/ai-fundamentals.js"></script>
+</body>
+</html>

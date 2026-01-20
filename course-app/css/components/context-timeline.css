@@ -499,20 +499,8 @@
 
 /* ==========================================================================
    Callout Variant
+   Note: Moved to callouts.css. For error/danger styling, use .slide-callout--error
    ========================================================================== */
-
-.slide-callout--warning {
-  background: var(--accent-error-muted);
-  border-color: rgba(239, 68, 68, 0.3);
-}
-
-.slide-callout--warning .slide-callout__icon {
-  color: var(--accent-error);
-}
-
-.slide-callout--warning strong {
-  color: var(--accent-error);
-}
 
 /* ==========================================================================
    Responsive

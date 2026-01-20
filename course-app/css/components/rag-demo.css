@@ -409,21 +409,9 @@
 }
 
 /* ==========================================================================
-   Success Callout Variant
+   Callout Variant
+   Note: Moved to callouts.css for reusability
    ========================================================================== */
-
-.slide-callout--success {
-  background: var(--accent-success-muted);
-  border-color: rgba(16, 185, 129, 0.3);
-}
-
-.slide-callout--success .slide-callout__icon {
-  color: var(--accent-success);
-}
-
-.slide-callout--success strong {
-  color: var(--accent-success);
-}
 
 /* ==========================================================================
    Loading/Processing State

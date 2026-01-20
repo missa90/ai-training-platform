@@ -98,8 +98,8 @@
 }
 
 .prompt-studio__panel-badge--bad {
-  background: var(--accent-rose-muted);
-  color: var(--accent-rose);
+  background: var(--accent-error-muted);
+  color: var(--accent-error);
 }
 
 .prompt-studio__panel-badge--good {
@@ -153,7 +153,7 @@
 }
 
 .prompt-studio__issue {
-  color: var(--accent-rose);
+  color: var(--accent-error);
 }
 
 .prompt-studio__improvement {
@@ -450,8 +450,8 @@
 }
 
 .future-timeline__item-icon--cross-app {
-  background: var(--accent-rose-muted);
-  color: var(--accent-rose);
+  background: var(--accent-error-muted);
+  color: var(--accent-error);
 }
 
 .future-timeline__item-icon--rag {

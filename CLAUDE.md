@@ -102,9 +102,14 @@ course-app/
 
 ### Design System
 - **CSS Custom Properties**: All theming via `tokens.css` (colors, spacing, typography, shadows)
+  - **CRITICAL**: All colors MUST use CSS variables (var(--bg-primary), var(--overlay-bg), etc.)
+  - Hardcoded colors break theme system; single rgba(10,10,11) hides UI in dark mode
 - **Naming Convention**: BEM-like pattern (`.component__element--modifier`)
 - **Dark Theme**: Default dark UI with accent colors (indigo primary, cyan, amber, purple)
 - **Responsive Breakpoints**: 1400px, 1200px, 1024px, 768px, 640px, 480px
+- **CSS @import Caching**: Add ?v=N query params to all @import statements to bypass browser caching
+  - Example: `@import url('base/tokens.css?v=4');`
+  - Browser caches @import files indefinitely; version params force refresh on changes
 
 ### Key Components
 1. **Sidebar**: Collapsible navigation with sections (main nav, tools, learning path, weekly progress)
@@ -130,6 +135,13 @@ open course-app/pages/index.html
 
 # Or use a local server for proper module loading
 npx serve course-app
+
+# CSS Cache-Busting for Development
+# After modifying CSS files in base/, layouts/, components/, pages/, or utilities/:
+# 1. Edit course-app/css/main.css
+# 2. Update ?v=N query param (increment version number on all @import statements)
+# 3. Save and reload browser page (browser will fetch fresh CSS due to new URL)
+# Example: @import url('base/tokens.css?v=4'); → @import url('base/tokens.css?v=5');
 ```
 
 ### Testing Features
@@ -187,6 +199,34 @@ git push origin main
 - **Validated Benefit**: Implement without cluttering demo experience
 - **Guidance**: Build features, hide via `display: none`, unhide for production
 - **Implementation**: Use CSS class toggles or data attributes for feature flags
+
+### Pattern 7: CSS @import Cache-Busting for Theme Systems (Jan 2026)
+- **Evidence**: Theme toggle bug fixed via ?v=N query params on all imports
+- **Validated Benefit**: Solves browser caching of CSS files, enables dynamic theme switching
+- **Guidance**: Always add version query params to @import statements: `@import url('file.css?v=4');`
+- **Anti-Pattern**: Relying on browser refresh to apply CSS changes in development
+
+### Pattern 8: Hardcoded Colors Break Theme Systems (Jan 2026)
+- **Evidence**: rgba(10, 10, 11) hardcoded dark color hides UI elements in dark mode
+- **Validated Benefit**: Using CSS variables (var(--bg-primary), var(--overlay-bg)) ensures theme compliance
+- **Guidance**: Code review rule: All colors must use CSS variables, no rgba() or hex hardcoding
+- **Implementation**: Grep for hardcoded color patterns, enforce variable usage
+
+### Pattern 9: Tabbed Interface for Multi-Demo Sections (Sprint 10)
+- **Evidence**: Section 3 Capability Simulator with 5 interactive demo tabs (Email, Analysis, Code, Research, Creative)
+- **Validated Benefit**: Single component hosts multiple realistic scenarios; users compare demos via tab switching without cognitive overload
+- **Guidance**: Use tabbed patterns when presenting multiple scenarios that need context and comparison
+- **Implementation**: CSS :checked selector for radio button tabs + CSS Grid for responsive content layout (no JavaScript tab libraries)
+- **Anti-Pattern**: Avoid tabs with >8 items; usability degrades beyond this threshold
+- **Application**: Ideal for capability demos, feature comparisons, multi-workflow sections
+
+### Pattern 10: Quantified Metrics for Enterprise Content (Sprint 10)
+- **Evidence**: Section 8 Success Stories with concrete numbers (66% customer service automation, 90% time saved on legal review)
+- **Validated Benefit**: Metrics are memorable and measurable; enable ROI comparisons; build credibility with enterprise decision-makers
+- **Guidance**: Always pair AI success stories with quantified metrics; format as "[Number]% [Outcome]" or "[Number] [Unit] [Outcome]"
+- **Examples**: "66% customer service automation", "90% time saved on legal review", "40% code generation accuracy improvement"
+- **Application**: Essential for enterprise positioning, buyer education, case study credibility
+- **Strategic Impact**: Differentiates training as ROI-focused (not just conceptual)
 
 ## Technical Patterns & Best Practices
 
@@ -270,7 +310,7 @@ When developing training materials for this repository:
 
 **Impact**: Clean, performant visualization layer ready for dashboard analytics integration
 
-### Sprint 7 (In Progress - Jan 2026) - Course Lesson Page & Interactive Components
+### Sprint 7 (Completed - Jan 2026) - Course Lesson Page & Interactive Components
 - Course lesson page with slide-based navigation (presentation-style layout)
 - Keyboard navigation (arrow keys for slide switching)
 - Context Engineering course content and interactive demos
@@ -280,7 +320,18 @@ When developing training materials for this repository:
 - Research Agent content pipeline: Research Report → Outline → Implementation
 - CSS-only animations following Sprint 5-6 patterns
 - Intersection Observer for scroll-triggered component initialization
-- Commit: (pending - in progress)
+- Commit: 67af8e7 (theme toggle bug fix, gradient removal, CSS refactoring)
+
+**Theme Toggle Bug Fix (Jan 19)**:
+- **Problem**: Light/dark mode toggle not applying CSS changes
+- **Root Cause**: Browser CSS @import caching preventing dynamic theme updates
+- **Solution**: Added ?v=4 cache-bust query params to all @import statements in main.css
+- **Additional Refinements**:
+  - Removed linear-gradient() from button and course card backgrounds
+  - Replaced hardcoded rgba(10, 10, 11) colors with CSS variables (var(--bg-primary), var(--overlay-bg))
+  - Result: Clean visual hierarchy, fully functional theme system
+- **Established Patterns**: Cache-busting for CSS development, 100% CSS variable usage for colors
+- **Impact**: Theme system now reliable; sets precedent for color management
 
 **Key Decisions**:
 - Slide-based architecture for sequential storytelling
@@ -300,7 +351,57 @@ When developing training materials for this repository:
 - Mobile responsiveness testing
 - Final git commit
 
+### Sprint 9 (Completed - Jan 2026) - AI Fundamentals Training Module (Initial)
+- Complete AI Fundamentals course with 6 interactive sections
+- Section 1: What is AI? - Before/after marketing scenario comparison demo
+- Section 2: How LLMs Work - Token visualization and next-word prediction bars
+- Section 3: AI Capabilities - 3D flip cards (Writing, Analysis, Code, Research, Translation)
+- Section 4: AI Limitations - Hallucination example with fact-checking scenario
+- Section 5: Your First Prompts - Interactive prompt playground with analysis feedback
+- Section 6: Next Steps - Course pathway timeline with completion stats
+
+### Sprint 10 (Completed - Jan 2026) - AI Fundamentals Module Expansion
+- **Module expansion: 6 → 11 sections (83% growth)** with comprehensive enterprise coverage
+- **Strategic positioning**: Covers new user journey (what is AI) → evaluation (landscape, benchmarks) → implementation (success stories, context engineering)
+
+**Section 3 Enhancement: Capability Simulator** (Replaces 3D flip cards)
+- Tabbed interface with 5 interactive live demos: Email Drafting, Data Analysis, Code Generation, Research, Creative
+- Click-to-generate simulation buttons with CSS spin loading animation
+- Each demo grounded in realistic business scenarios (user personalization)
+- Benefit: Users find "their" use case visible and interactive (vs. abstract examples)
+
+**New Sections Added**:
+- **Section 4**: The AI Landscape - OpenAI, Anthropic, Google, Meta profiles with model names, strengths, best-for guidance
+- **Section 5**: Context Engineering - Animated stateless memory demo with message sequence replay and context component breakdown
+- **Section 7**: Agentic vs Non-Agentic AI - Side-by-side comparison panels, flow diagrams, traits checklist, decision guidance
+- **Section 8**: AI Success Stories - 4 enterprise case studies (Customer Service, Legal, Software Dev, Marketing) with quantified metrics
+- **Section 9**: AI Benchmarks & Evaluation - Benchmark cards (MMLU, HumanEval, GPQA, SWE-bench) with ROI guidance
+
+**Technical Implementation**:
+- Tabbed interface: CSS :checked selector + radio buttons (no JS tab library)
+- Demo buttons: CSS spin animation for loading states
+- Case study cards: CSS Grid responsive layout with hover states
+- Message sequences: Staggered CSS animations for visual pacing
+- All animations follow CSS-only philosophy from Sprint 5-7
+
+**New Code**: ~4000 lines (HTML +1850, CSS +2200, JS updated for 11 slides)
+**CSS cache-bust**: Updated to ?v=6
+**Files Modified**: ai-fundamentals.html, ai-fundamentals.css, ai-fundamentals.js, main.css
+
+**Patterns Validated** (2 new):
+- Pattern 9: Tabbed Interface for multi-demo sections (emerging, proven in Section 3)
+- Pattern 10: Quantified Metrics for enterprise content (emerging, proven in Section 8)
+
+**Enterprise Impact**:
+- Positions module as ROI-focused training (metrics + success stories)
+- Covers entire buyer journey in single integrated module
+- Establishes clear differentiation: awareness → evaluation → implementation
+
+**Remaining Work**: Sections 10-11 deferred (Memory Feature Explorer, What's Coming Next) - built but hidden for future launch
+
 ### Future Sprints (Planned)
-- Sprint 8: Settings pages, accessibility improvements
-- Sprint 9: Advanced animations, performance optimization
-- Sprint 10+: Additional course content modules
+- **Sprint 11**: Settings pages, accessibility improvements (validate tabbed UI pattern across accessibility standards)
+- **Sprint 12**: Advanced animations, performance optimization (apply quantified metrics pattern to new courses)
+- **Sprint 13**: Prompt Engineering Advanced course (builds on Section 5 Context Engineering)
+- **Sprint 14**: AI + Company Data course (builds on Section 8 Success Stories framework)
+- **Sprint 15+**: Additional vertical-specific training modules (Industry-specific AI applications)
