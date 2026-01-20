@@ -1325,6 +1325,676 @@
   }
 
   // ========================================================================
+  // Coming Soon Modal
+  // ========================================================================
+
+  function initComingSoonModal() {
+    // Create the modal if it doesn't exist
+    if (!document.getElementById('comingSoonModal')) {
+      const modal = document.createElement('div');
+      modal.id = 'comingSoonModal';
+      modal.className = 'coming-soon-modal';
+      modal.setAttribute('role', 'dialog');
+      modal.setAttribute('aria-modal', 'true');
+      modal.setAttribute('aria-labelledby', 'comingSoonTitle');
+      modal.innerHTML = `
+        <div class="coming-soon-modal__backdrop"></div>
+        <div class="coming-soon-modal__content">
+          <div class="coming-soon-modal__icon">
+            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <h2 id="comingSoonTitle" class="coming-soon-modal__title">Coming Soon</h2>
+          <p id="comingSoonMessage" class="coming-soon-modal__message">This feature is currently under development.</p>
+          <p class="coming-soon-modal__submessage">We're working hard to bring you an amazing experience. Check back soon!</p>
+          <button class="coming-soon-modal__btn btn btn--primary" id="comingSoonClose">Got it</button>
+        </div>
+      `;
+      document.body.appendChild(modal);
+
+      // Add styles
+      const style = document.createElement('style');
+      style.textContent = `
+        .coming-soon-modal {
+          position: fixed;
+          inset: 0;
+          z-index: 9999;
+          display: none;
+          align-items: center;
+          justify-content: center;
+          padding: var(--space-4);
+        }
+        .coming-soon-modal.active {
+          display: flex;
+        }
+        .coming-soon-modal__backdrop {
+          position: absolute;
+          inset: 0;
+          background: rgba(0, 0, 0, 0.7);
+          backdrop-filter: blur(4px);
+        }
+        .coming-soon-modal__content {
+          position: relative;
+          background: var(--bg-secondary);
+          border: 1px solid var(--border-subtle);
+          border-radius: var(--radius-xl);
+          padding: var(--space-8);
+          max-width: 400px;
+          width: 100%;
+          text-align: center;
+          animation: modalSlideUp 0.3s ease-out;
+        }
+        @keyframes modalSlideUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+        .coming-soon-modal__icon {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+          color: white;
+          margin-bottom: var(--space-4);
+        }
+        .coming-soon-modal__title {
+          font-size: var(--text-xl);
+          font-weight: 600;
+          color: var(--text-primary);
+          margin-bottom: var(--space-2);
+        }
+        .coming-soon-modal__message {
+          font-size: var(--text-base);
+          color: var(--text-secondary);
+          margin-bottom: var(--space-2);
+        }
+        .coming-soon-modal__submessage {
+          font-size: var(--text-sm);
+          color: var(--text-muted);
+          margin-bottom: var(--space-6);
+        }
+        .coming-soon-modal__btn {
+          min-width: 120px;
+        }
+      `;
+      document.head.appendChild(style);
+
+      // Event listeners
+      const closeBtn = document.getElementById('comingSoonClose');
+      const backdrop = modal.querySelector('.coming-soon-modal__backdrop');
+
+      closeBtn?.addEventListener('click', closeComingSoonModal);
+      backdrop?.addEventListener('click', closeComingSoonModal);
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+          closeComingSoonModal();
+        }
+      });
+    }
+  }
+
+  function showComingSoonModal(featureName) {
+    const modal = document.getElementById('comingSoonModal');
+    const message = document.getElementById('comingSoonMessage');
+    if (modal && message) {
+      message.textContent = `${featureName || 'This feature'} is currently under development.`;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeComingSoonModal() {
+    const modal = document.getElementById('comingSoonModal');
+    if (modal) {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+
+  // Expose globally for testing
+  window.showComingSoonModal = showComingSoonModal;
+
+  // ========================================================================
+  // Help Modal
+  // ========================================================================
+
+  function initHelpModal() {
+    // Create help modal
+    if (!document.getElementById('helpModal')) {
+      const modal = document.createElement('div');
+      modal.id = 'helpModal';
+      modal.className = 'help-modal';
+      modal.setAttribute('role', 'dialog');
+      modal.setAttribute('aria-modal', 'true');
+      modal.innerHTML = `
+        <div class="help-modal__backdrop"></div>
+        <div class="help-modal__content">
+          <button class="help-modal__close" aria-label="Close help">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+          <h2 class="help-modal__title">Help & Support</h2>
+          <div class="help-modal__sections">
+            <div class="help-modal__section">
+              <h3>Keyboard Shortcuts</h3>
+              <ul class="help-modal__shortcuts">
+                <li><kbd>⌘</kbd> + <kbd>K</kbd> <span>Open search</span></li>
+                <li><kbd>Esc</kbd> <span>Close modals</span></li>
+                <li><kbd>←</kbd> <kbd>→</kbd> <span>Navigate lessons</span></li>
+              </ul>
+            </div>
+            <div class="help-modal__section">
+              <h3>Quick Links</h3>
+              <ul class="help-modal__links">
+                <li><a href="courses.html">Browse Courses</a></li>
+                <li><a href="tools.html">AI Tools</a></li>
+                <li><a href="community.html">Community</a></li>
+              </ul>
+            </div>
+            <div class="help-modal__section">
+              <h3>Need More Help?</h3>
+              <p class="text-secondary text-sm">Contact our support team at <a href="mailto:support@intraverseai.com">support@intraverseai.com</a></p>
+            </div>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(modal);
+
+      // Add styles
+      const style = document.createElement('style');
+      style.textContent = `
+        .help-modal {
+          position: fixed;
+          inset: 0;
+          z-index: 9999;
+          display: none;
+          align-items: center;
+          justify-content: center;
+          padding: var(--space-4);
+        }
+        .help-modal.active {
+          display: flex;
+        }
+        .help-modal__backdrop {
+          position: absolute;
+          inset: 0;
+          background: rgba(0, 0, 0, 0.7);
+          backdrop-filter: blur(4px);
+        }
+        .help-modal__content {
+          position: relative;
+          background: var(--bg-secondary);
+          border: 1px solid var(--border-subtle);
+          border-radius: var(--radius-xl);
+          padding: var(--space-6);
+          max-width: 500px;
+          width: 100%;
+          animation: modalSlideUp 0.3s ease-out;
+        }
+        .help-modal__close {
+          position: absolute;
+          top: var(--space-4);
+          right: var(--space-4);
+          background: none;
+          border: none;
+          color: var(--text-muted);
+          cursor: pointer;
+          padding: var(--space-1);
+          border-radius: var(--radius-md);
+          transition: color 0.2s, background 0.2s;
+        }
+        .help-modal__close:hover {
+          color: var(--text-primary);
+          background: var(--bg-tertiary);
+        }
+        .help-modal__title {
+          font-size: var(--text-xl);
+          font-weight: 600;
+          color: var(--text-primary);
+          margin-bottom: var(--space-6);
+        }
+        .help-modal__sections {
+          display: flex;
+          flex-direction: column;
+          gap: var(--space-6);
+        }
+        .help-modal__section h3 {
+          font-size: var(--text-sm);
+          font-weight: 600;
+          color: var(--text-secondary);
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          margin-bottom: var(--space-3);
+        }
+        .help-modal__shortcuts {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          gap: var(--space-2);
+        }
+        .help-modal__shortcuts li {
+          display: flex;
+          align-items: center;
+          gap: var(--space-2);
+          font-size: var(--text-sm);
+          color: var(--text-secondary);
+        }
+        .help-modal__shortcuts kbd {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          min-width: 24px;
+          height: 24px;
+          padding: 0 var(--space-2);
+          background: var(--bg-tertiary);
+          border: 1px solid var(--border-default);
+          border-radius: var(--radius-sm);
+          font-size: var(--text-xs);
+          font-family: inherit;
+          color: var(--text-primary);
+        }
+        .help-modal__shortcuts span {
+          margin-left: auto;
+          color: var(--text-muted);
+        }
+        .help-modal__links {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          gap: var(--space-2);
+        }
+        .help-modal__links a {
+          color: var(--accent-primary);
+          text-decoration: none;
+          font-size: var(--text-sm);
+        }
+        .help-modal__links a:hover {
+          text-decoration: underline;
+        }
+      `;
+      document.head.appendChild(style);
+
+      // Event listeners
+      const closeBtn = modal.querySelector('.help-modal__close');
+      const backdrop = modal.querySelector('.help-modal__backdrop');
+
+      closeBtn?.addEventListener('click', closeHelpModal);
+      backdrop?.addEventListener('click', closeHelpModal);
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+          closeHelpModal();
+        }
+      });
+    }
+
+    // Wire up help links
+    document.querySelectorAll('.sidebar__item[data-tooltip="Help"], a[href="#"][data-tooltip="Help"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        openHelpModal();
+      });
+    });
+  }
+
+  function openHelpModal() {
+    const modal = document.getElementById('helpModal');
+    if (modal) {
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeHelpModal() {
+    const modal = document.getElementById('helpModal');
+    if (modal) {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+
+  // ========================================================================
+  // Tools Page Handlers
+  // ========================================================================
+
+  function initToolsPage() {
+    // Tool launch buttons
+    document.querySelectorAll('.tool-card__action').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const card = btn.closest('.tool-card');
+        const toolName = card?.querySelector('.tool-card__title')?.textContent || 'This tool';
+        showComingSoonModal(toolName);
+      });
+    });
+
+    // Suggestion chips
+    document.querySelectorAll('.suggestion-chip, .tools-hero__chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const toolName = chip.textContent?.trim() || 'This tool';
+        showComingSoonModal(toolName);
+      });
+      chip.style.cursor = 'pointer';
+    });
+
+    // Recent work open buttons
+    document.querySelectorAll('.recent-work__action').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.recent-work__item');
+        const workName = item?.querySelector('.recent-work__title')?.textContent || 'This item';
+        showComingSoonModal(`Opening "${workName}"`);
+      });
+    });
+  }
+
+  // ========================================================================
+  // Courses Page Handlers
+  // ========================================================================
+
+  function initCoursesPage() {
+    const searchInput = document.querySelector('.courses-search__input');
+    const courseGrid = document.querySelector('.course-grid');
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const viewToggles = document.querySelectorAll('.view-toggle__btn');
+
+    // Course card buttons
+    document.querySelectorAll('.course-card .btn').forEach(btn => {
+      const card = btn.closest('.course-card');
+      const isPlaceholder = card?.dataset.placeholder === 'true';
+      const courseName = card?.querySelector('.course-card__title')?.textContent || 'This course';
+
+      // Check if it's a link to a real course
+      if (btn.tagName === 'A' && btn.getAttribute('href') && btn.getAttribute('href') !== '#') {
+        return; // Skip - it's a real link
+      }
+
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (isPlaceholder) {
+          showComingSoonModal(courseName);
+        } else {
+          const btnText = btn.textContent?.trim().toLowerCase();
+          if (btnText === 'start course' || btnText === 'continue') {
+            showComingSoonModal(`${courseName} lessons`);
+          }
+        }
+      });
+    });
+
+    // Course search
+    if (searchInput && courseGrid) {
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        const cards = courseGrid.querySelectorAll('.course-card');
+
+        cards.forEach(card => {
+          const title = card.querySelector('.course-card__title')?.textContent?.toLowerCase() || '';
+          const description = card.querySelector('.course-card__description')?.textContent?.toLowerCase() || '';
+          const isPlaceholder = card.dataset.placeholder === 'true';
+
+          if (query === '') {
+            // Show non-placeholder cards when search is cleared
+            card.style.display = isPlaceholder ? 'none' : '';
+          } else {
+            // Search matches title or description (including placeholder cards)
+            const matches = title.includes(query) || description.includes(query);
+            card.style.display = matches ? '' : 'none';
+          }
+        });
+
+        // Update filter tab to "All" when searching
+        filterTabs.forEach(tab => tab.classList.remove('active'));
+        filterTabs[0]?.classList.add('active');
+      });
+    }
+
+    // Filter tabs
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Update active state
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const filter = tab.dataset.filter;
+        const cards = courseGrid?.querySelectorAll('.course-card') || [];
+
+        cards.forEach(card => {
+          const isPlaceholder = card.dataset.placeholder === 'true';
+          const hasProgress = card.querySelector('.course-card__progress-bar');
+          const progressText = card.querySelector('.course-card__progress-bar .text-caption')?.textContent || '';
+          const isCompleted = progressText.includes('100%') || card.classList.contains('course-card--completed');
+          const isInProgress = hasProgress && !isCompleted;
+
+          switch (filter) {
+            case 'all':
+              card.style.display = isPlaceholder ? 'none' : '';
+              break;
+            case 'in-progress':
+              card.style.display = (isInProgress && !isPlaceholder) ? '' : 'none';
+              break;
+            case 'completed':
+              card.style.display = (isCompleted && !isPlaceholder) ? '' : 'none';
+              break;
+            case 'saved':
+              // No saved courses in demo
+              card.style.display = 'none';
+              break;
+            default:
+              card.style.display = isPlaceholder ? 'none' : '';
+          }
+        });
+
+        // Clear search when changing filters
+        if (searchInput) searchInput.value = '';
+      });
+    });
+
+    // View toggle (grid/list)
+    viewToggles.forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        viewToggles.forEach(t => t.classList.remove('active'));
+        toggle.classList.add('active');
+
+        const view = toggle.dataset.view;
+        if (courseGrid) {
+          if (view === 'list') {
+            courseGrid.classList.add('course-grid--list');
+          } else {
+            courseGrid.classList.remove('course-grid--list');
+          }
+        }
+      });
+    });
+  }
+
+  // ========================================================================
+  // Upgrade Button Handler
+  // ========================================================================
+
+  function initUpgradeButton() {
+    document.querySelectorAll('.sidebar__upgrade-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        showComingSoonModal('Pro subscription');
+      });
+    });
+  }
+
+  // ========================================================================
+  // Streak Badge Handler
+  // ========================================================================
+
+  function initStreakBadge() {
+    const streakBadge = document.getElementById('streakBadge');
+    if (streakBadge) {
+      streakBadge.style.cursor = 'pointer';
+      streakBadge.setAttribute('title', 'Click to see streak details');
+      streakBadge.addEventListener('click', () => {
+        showComingSoonModal('Streak history');
+      });
+    }
+  }
+
+  // ========================================================================
+  // Community Page Handlers
+  // ========================================================================
+
+  function initCommunityPage() {
+    // Community tabs
+    const communityTabs = document.querySelectorAll('.community-tabs__tab');
+    const tabContents = document.querySelectorAll('.community-tab-content');
+
+    communityTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const targetTab = tab.dataset.tab;
+
+        // Update active tab
+        communityTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        // Show/hide tab content
+        tabContents.forEach(content => {
+          if (content.dataset.tab === targetTab) {
+            content.classList.add('active');
+            content.style.display = '';
+          } else {
+            content.classList.remove('active');
+            content.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // New Discussion button
+    const newDiscussionBtn = document.querySelector('.community-header .btn--primary, .discussions-header .btn--primary');
+    if (newDiscussionBtn) {
+      newDiscussionBtn.addEventListener('click', () => {
+        showComingSoonModal('Create new discussion');
+      });
+    }
+
+    // Filter buttons (All, Questions, Tips)
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const parent = btn.parentElement;
+        parent?.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+
+    // Leaderboard filters
+    document.querySelectorAll('.leaderboard-filter').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const parent = btn.parentElement;
+        parent?.querySelectorAll('.leaderboard-filter').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+
+    // Discussion card interactions
+    document.querySelectorAll('.discussion-card').forEach(card => {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', () => {
+        const title = card.querySelector('.discussion-card__title')?.textContent || 'Discussion';
+        showComingSoonModal(`Open "${title}"`);
+      });
+    });
+
+    // Study group join buttons
+    document.querySelectorAll('.study-group-card .btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const card = btn.closest('.study-group-card');
+        const groupName = card?.querySelector('.study-group-card__title')?.textContent || 'Study group';
+        showComingSoonModal(`Join "${groupName}"`);
+      });
+    });
+
+    // Event registration buttons
+    document.querySelectorAll('.event-card .btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const card = btn.closest('.event-card');
+        const eventName = card?.querySelector('.event-card__title')?.textContent || 'Event';
+        showComingSoonModal(`Register for "${eventName}"`);
+      });
+    });
+  }
+
+  // ========================================================================
+  // Sign Out Handler
+  // ========================================================================
+
+  function initSignOutButton() {
+    const signOutBtn = document.getElementById('signOutBtn');
+    if (signOutBtn) {
+      signOutBtn.addEventListener('click', () => {
+        showComingSoonModal('Sign out');
+      });
+    }
+  }
+
+  // ========================================================================
+  // Profile Page Handlers
+  // ========================================================================
+
+  function initProfilePage() {
+    // Edit profile button
+    document.querySelectorAll('.profile-header .btn--secondary, .profile-actions .btn').forEach(btn => {
+      const btnText = btn.textContent?.toLowerCase().trim();
+      if (btnText?.includes('edit') || btnText?.includes('settings')) {
+        btn.addEventListener('click', () => {
+          window.location.href = 'settings.html';
+        });
+      }
+    });
+
+    // Achievement cards
+    document.querySelectorAll('.achievement-card').forEach(card => {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', () => {
+        const achievementName = card.querySelector('.achievement-card__title')?.textContent || 'Achievement';
+        showComingSoonModal(`${achievementName} details`);
+      });
+    });
+  }
+
+  // ========================================================================
+  // Settings Page Handlers
+  // ========================================================================
+
+  function initSettingsPage() {
+    // Save buttons in settings
+    document.querySelectorAll('.settings-section .btn--primary').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        showComingSoonModal('Save settings');
+      });
+    });
+
+    // Danger zone buttons
+    document.querySelectorAll('.settings-danger .btn--danger, .settings-section .btn--danger').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        showComingSoonModal('Account deletion');
+      });
+    });
+  }
+
+  // ========================================================================
   // Initialize Everything
   // ========================================================================
 
@@ -1365,6 +2035,17 @@
     initLeaderboardAnimation();
     initMetricCardAnimations();
 
+    // UX Fixes: Interactive handlers for previously dead buttons
+    initComingSoonModal();
+    initHelpModal();
+    initToolsPage();
+    initCoursesPage();
+    initUpgradeButton();
+    initStreakBadge();
+    initCommunityPage();
+    initSignOutButton();
+    initProfilePage();
+    initSettingsPage();
   }
 
   init();

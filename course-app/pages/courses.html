@@ -373,13 +373,13 @@
 
         <!-- Course Grid -->
         <section class="course-grid stagger-children-100">
-          <!-- Course Card 1 - In Progress (Indigo) - HIDDEN: placeholder course -->
-          <div class="course-card animate-fade-up" style="display: none;" data-placeholder="true">
+          <!-- Course Card 1 - Coming Soon (Indigo) -->
+          <div class="course-card course-card--coming-soon animate-fade-up" data-placeholder="true">
             <div class="course-card__thumbnail">
               <div class="course-card__thumbnail-bg" style="background: #6366f1;"></div>
               <div class="course-card__badges">
+                <span class="course-card__badge course-card__badge--coming-soon">Coming Soon</span>
                 <span class="course-card__badge course-card__badge--level">Intermediate</span>
-                <span class="course-card__badge course-card__badge--duration">4h 30m</span>
               </div>
             </div>
             <div class="course-card__content">
@@ -388,33 +388,26 @@
               </div>
               <h3 class="course-card__title heading-5">Prompt Engineering Mastery</h3>
               <p class="course-card__description text-body-sm text-secondary line-clamp-2">Master the art of crafting effective prompts for AI models to get better results.</p>
-              <div class="course-card__progress-bar">
-                <div class="progress-bar">
-                  <div class="progress-fill" style="width: 75%; background: #6366f1;"></div>
+              <div class="course-card__stats" style="display: flex; gap: var(--space-4); margin-top: var(--space-4);">
+                <div class="course-stat">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-muted);">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span class="text-caption">4h 30m</span>
                 </div>
-                <span class="text-caption">75% complete</span>
               </div>
-              <div class="course-card__footer" style="margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center;">
-                <div class="course-card__social">
-                  <div class="course-card__avatars">
-                    <span class="course-card__avatar">A</span>
-                    <span class="course-card__avatar">B</span>
-                    <span class="course-card__avatar">C</span>
-                  </div>
-                  <span class="text-caption">1,234 learners</span>
-                </div>
-                <button class="btn btn--primary btn--sm">Continue</button>
-              </div>
+              <button class="btn btn--secondary btn--sm" style="margin-top: var(--space-4); width: 100%;">Notify Me</button>
             </div>
           </div>
 
-          <!-- Course Card 2 - Not Started (Cyan) - HIDDEN: placeholder course -->
-          <div class="course-card animate-fade-up" style="display: none;" data-placeholder="true">
+          <!-- Course Card 2 - Coming Soon (Cyan) -->
+          <div class="course-card course-card--coming-soon animate-fade-up" data-placeholder="true">
             <div class="course-card__thumbnail">
               <div class="course-card__thumbnail-bg" style="background: #06b6d4;"></div>
               <div class="course-card__badges">
+                <span class="course-card__badge course-card__badge--coming-soon">Coming Soon</span>
                 <span class="course-card__badge course-card__badge--level">Beginner</span>
-                <span class="course-card__badge course-card__badge--duration">2h 15m</span>
               </div>
             </div>
             <div class="course-card__content">
@@ -431,25 +424,18 @@
                   </svg>
                   <span class="text-caption">2h 15m</span>
                 </div>
-                <div class="course-stat">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-muted);">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="9" cy="7" r="4"></circle>
-                  </svg>
-                  <span class="text-caption">892 enrolled</span>
-                </div>
               </div>
-              <button class="btn btn--secondary btn--sm" style="margin-top: var(--space-4); width: 100%;">Start Course</button>
+              <button class="btn btn--secondary btn--sm" style="margin-top: var(--space-4); width: 100%;">Notify Me</button>
             </div>
           </div>
 
-          <!-- Course Card 3 - In Progress (Amber) - HIDDEN: placeholder course -->
-          <div class="course-card animate-fade-up" style="display: none;" data-placeholder="true">
+          <!-- Course Card 3 - Coming Soon (Amber) -->
+          <div class="course-card course-card--coming-soon animate-fade-up" data-placeholder="true">
             <div class="course-card__thumbnail">
               <div class="course-card__thumbnail-bg" style="background: #f59e0b;"></div>
               <div class="course-card__badges">
+                <span class="course-card__badge course-card__badge--coming-soon">Coming Soon</span>
                 <span class="course-card__badge course-card__badge--level">Advanced</span>
-                <span class="course-card__badge course-card__badge--duration">6h 45m</span>
               </div>
             </div>
             <div class="course-card__content">
@@ -458,22 +444,16 @@
               </div>
               <h3 class="course-card__title heading-5">AI Ethics & Safety</h3>
               <p class="course-card__description text-body-sm text-secondary line-clamp-2">Understand responsible AI development and implement safety measures in production systems.</p>
-              <div class="course-card__progress-bar">
-                <div class="progress-bar">
-                  <div class="progress-fill" style="width: 20%; background: #f59e0b;"></div>
+              <div class="course-card__stats" style="display: flex; gap: var(--space-4); margin-top: var(--space-4);">
+                <div class="course-stat">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-muted);">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span class="text-caption">6h 45m</span>
                 </div>
-                <span class="text-caption">20% complete</span>
               </div>
-              <div class="course-card__footer" style="margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center;">
-                <div class="course-card__social">
-                  <div class="course-card__avatars">
-                    <span class="course-card__avatar">D</span>
-                    <span class="course-card__avatar">E</span>
-                  </div>
-                  <span class="text-caption">567 learners</span>
-                </div>
-                <button class="btn btn--primary btn--sm">Continue</button>
-              </div>
+              <button class="btn btn--secondary btn--sm" style="margin-top: var(--space-4); width: 100%;">Notify Me</button>
             </div>
           </div>
 
@@ -508,13 +488,13 @@
             </div>
           </div>
 
-          <!-- Course Card 5 - Not Started (Purple) - HIDDEN: placeholder course -->
-          <div class="course-card animate-fade-up" style="display: none;" data-placeholder="true">
+          <!-- Course Card 5 - Coming Soon (Purple) -->
+          <div class="course-card course-card--coming-soon animate-fade-up" data-placeholder="true">
             <div class="course-card__thumbnail">
               <div class="course-card__thumbnail-bg" style="background: #8b5cf6;"></div>
               <div class="course-card__badges">
+                <span class="course-card__badge course-card__badge--coming-soon">Coming Soon</span>
                 <span class="course-card__badge course-card__badge--level">Beginner</span>
-                <span class="course-card__badge course-card__badge--duration">2h 45m</span>
               </div>
             </div>
             <div class="course-card__content">
@@ -531,24 +511,18 @@
                   </svg>
                   <span class="text-caption">2h 45m</span>
                 </div>
-                <div class="course-stat">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-muted);">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                  </svg>
-                  <span class="text-caption">4.9 rating</span>
-                </div>
               </div>
-              <button class="btn btn--secondary btn--sm" style="margin-top: var(--space-4); width: 100%;">Start Course</button>
+              <button class="btn btn--secondary btn--sm" style="margin-top: var(--space-4); width: 100%;">Notify Me</button>
             </div>
           </div>
 
-          <!-- Course Card 6 - Not Started (Rose) - HIDDEN: placeholder course -->
-          <div class="course-card animate-fade-up" style="display: none;" data-placeholder="true">
+          <!-- Course Card 6 - Coming Soon (Rose) -->
+          <div class="course-card course-card--coming-soon animate-fade-up" data-placeholder="true">
             <div class="course-card__thumbnail">
               <div class="course-card__thumbnail-bg" style="background: #f43f5e;"></div>
               <div class="course-card__badges">
+                <span class="course-card__badge course-card__badge--coming-soon">Coming Soon</span>
                 <span class="course-card__badge course-card__badge--level">Intermediate</span>
-                <span class="course-card__badge course-card__badge--duration">3h 15m</span>
               </div>
             </div>
             <div class="course-card__content">
@@ -565,25 +539,18 @@
                   </svg>
                   <span class="text-caption">3h 15m</span>
                 </div>
-                <div class="course-stat">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-muted);">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="9" cy="7" r="4"></circle>
-                  </svg>
-                  <span class="text-caption">2,156 enrolled</span>
-                </div>
               </div>
-              <button class="btn btn--secondary btn--sm" style="margin-top: var(--space-4); width: 100%;">Start Course</button>
+              <button class="btn btn--secondary btn--sm" style="margin-top: var(--space-4); width: 100%;">Notify Me</button>
             </div>
           </div>
 
-          <!-- Course Card 7 - Not Started (Teal) - HIDDEN: placeholder course -->
-          <div class="course-card animate-fade-up" style="display: none;" data-placeholder="true">
+          <!-- Course Card 7 - Coming Soon (Teal) -->
+          <div class="course-card course-card--coming-soon animate-fade-up" data-placeholder="true">
             <div class="course-card__thumbnail">
               <div class="course-card__thumbnail-bg" style="background: #14b8a6;"></div>
               <div class="course-card__badges">
+                <span class="course-card__badge course-card__badge--coming-soon">Coming Soon</span>
                 <span class="course-card__badge course-card__badge--level">Beginner</span>
-                <span class="course-card__badge course-card__badge--duration">3h 30m</span>
               </div>
             </div>
             <div class="course-card__content">
@@ -600,25 +567,18 @@
                   </svg>
                   <span class="text-caption">3h 30m</span>
                 </div>
-                <div class="course-stat">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-muted);">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="9" cy="7" r="4"></circle>
-                  </svg>
-                  <span class="text-caption">1,105 enrolled</span>
-                </div>
               </div>
-              <button class="btn btn--secondary btn--sm" style="margin-top: var(--space-4); width: 100%;">Start Course</button>
+              <button class="btn btn--secondary btn--sm" style="margin-top: var(--space-4); width: 100%;">Notify Me</button>
             </div>
           </div>
 
-          <!-- Course Card 8 - Not Started (Lime) - HIDDEN: placeholder course -->
-          <div class="course-card animate-fade-up" style="display: none;" data-placeholder="true">
+          <!-- Course Card 8 - Coming Soon (Lime) -->
+          <div class="course-card course-card--coming-soon animate-fade-up" data-placeholder="true">
             <div class="course-card__thumbnail">
               <div class="course-card__thumbnail-bg" style="background: #84cc16;"></div>
               <div class="course-card__badges">
+                <span class="course-card__badge course-card__badge--coming-soon">Coming Soon</span>
                 <span class="course-card__badge course-card__badge--level">Beginner</span>
-                <span class="course-card__badge course-card__badge--duration">2h 30m</span>
               </div>
             </div>
             <div class="course-card__content">
@@ -630,29 +590,23 @@
               <div class="course-card__stats" style="display: flex; gap: var(--space-4); margin-top: var(--space-4);">
                 <div class="course-stat">
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-muted);">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
                   </svg>
-                  <span class="text-caption">4.9 rating</span>
-                </div>
-                <div class="course-stat">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-muted);">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="9" cy="7" r="4"></circle>
-                  </svg>
-                  <span class="text-caption">1,892 enrolled</span>
+                  <span class="text-caption">2h 30m</span>
                 </div>
               </div>
-              <button class="btn btn--secondary btn--sm" style="margin-top: var(--space-4); width: 100%;">Start Course</button>
+              <button class="btn btn--secondary btn--sm" style="margin-top: var(--space-4); width: 100%;">Notify Me</button>
             </div>
           </div>
 
-          <!-- Course Card 9 - Not Started (Sky) - HIDDEN: placeholder course -->
-          <div class="course-card animate-fade-up" style="display: none;" data-placeholder="true">
+          <!-- Course Card 9 - Coming Soon (Sky) -->
+          <div class="course-card course-card--coming-soon animate-fade-up" data-placeholder="true">
             <div class="course-card__thumbnail">
               <div class="course-card__thumbnail-bg" style="background: #0ea5e9;"></div>
               <div class="course-card__badges">
+                <span class="course-card__badge course-card__badge--coming-soon">Coming Soon</span>
                 <span class="course-card__badge course-card__badge--level">Intermediate</span>
-                <span class="course-card__badge course-card__badge--duration">3h 45m</span>
               </div>
             </div>
             <div class="course-card__content">
@@ -669,14 +623,8 @@
                   </svg>
                   <span class="text-caption">3h 45m</span>
                 </div>
-                <div class="course-stat">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-muted);">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                  </svg>
-                  <span class="text-caption">4.8 rating</span>
-                </div>
               </div>
-              <button class="btn btn--secondary btn--sm" style="margin-top: var(--space-4); width: 100%;">Start Course</button>
+              <button class="btn btn--secondary btn--sm" style="margin-top: var(--space-4); width: 100%;">Notify Me</button>
             </div>
           </div>
         </section>

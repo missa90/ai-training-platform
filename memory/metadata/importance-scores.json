@@ -1,0 +1,65 @@
+{
+  "metadata": {
+    "last_updated": "2026-01-19",
+    "consolidation_phase": "initial",
+    "scoring_system": "Astrocyte-Inspired Complement Cascade"
+  },
+  "items": [
+    {
+      "id": "sprint-6-completion",
+      "title": "Sprint 6 - Data Visualization & Charts",
+      "file": "memory/sessions/2026-01-19-sprint-6-completion.md",
+      "type": "sprint-completion",
+      "created": "2026-01-19",
+      "last_accessed": "2026-01-19",
+      "access_count": 1,
+      "base_score": 5,
+      "contextual_boosts": {
+        "css_performance_decision": 5,
+        "pattern_frequency": 4,
+        "bug_fixes": 3,
+        "learning_path_impact": 3,
+        "total_boost": 15
+      },
+      "final_score": 20,
+      "protection_level": "permanent",
+      "protection_reasons": [
+        "High importance score (20 >= 15 threshold)",
+        "Foundational CSS-only pattern for future sprints",
+        "Critical bug fixes for layout issues",
+        "Recent creation (stabilization period)"
+      ],
+      "tags": ["sprint-6", "data-visualization", "charts", "css-only", "decisions"]
+    },
+    {
+      "id": "sprint-7-planning",
+      "title": "Sprint 7 - Course Lesson Page & Interactive Components",
+      "file": "memory/sessions/2026-01-19-sprint-7-planning.md",
+      "type": "sprint-planning",
+      "created": "2026-01-19",
+      "last_accessed": "2026-01-19",
+      "access_count": 1,
+      "base_score": 7,
+      "contextual_boosts": {
+        "content_research_pipeline": 5,
+        "css_animation_patterns": 4,
+        "scenario_based_learning": 2,
+        "total_boost": 11
+      },
+      "final_score": 18,
+      "protection_level": "extended",
+      "protection_reasons": [
+        "High importance score (18 >= 15 threshold)",
+        "Establishes content research pipeline for future courses",
+        "Extends CSS-only patterns from Sprint 6",
+        "Recent creation (stabilization period)"
+      ],
+      "tags": ["sprint-7", "course-lesson", "interactive-components", "content-pipeline", "decisions"]
+    }
+  ],
+  "protection_signals": {
+    "tags": ["#important", "#core-principle", "#keep"],
+    "reference_threshold": 3,
+    "stabilization_period_days": 14
+  }
+}

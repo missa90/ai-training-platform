@@ -687,6 +687,55 @@
   }
 }
 
+/* ==========================================================================
+   Coming Soon Course Cards
+   ========================================================================== */
+
+.course-card--coming-soon {
+  position: relative;
+}
+
+.course-card--coming-soon .course-card__thumbnail-bg {
+  filter: grayscale(30%);
+}
+
+.course-card--coming-soon::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 60%, rgba(99, 102, 241, 0.1) 100%);
+  pointer-events: none;
+  border-radius: var(--radius-xl);
+}
+
+.course-card__badge--coming-soon {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  color: white;
+  font-weight: var(--font-semibold);
+  animation: comingSoonPulse 2s ease-in-out infinite;
+}
+
+@keyframes comingSoonPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.course-card--coming-soon .btn {
+  background: var(--bg-quaternary);
+  color: var(--text-secondary);
+  border-color: var(--border-subtle);
+  cursor: pointer;
+}
+
+.course-card--coming-soon .btn:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
 /* High contrast mode */
 @media (prefers-contrast: high) {
   .learning-path__step,
