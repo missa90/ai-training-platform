@@ -12,7 +12,7 @@
   align-items: center;
   justify-content: center;
   padding: var(--space-4);
-  background: rgba(0, 0, 0, 0.85);
+  background: var(--overlay-bg);
   backdrop-filter: blur(8px);
   opacity: 0;
   visibility: hidden;
@@ -400,13 +400,13 @@
 .onboarding-spotlight__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: var(--overlay-bg);
 }
 
 .onboarding-spotlight__cutout {
   position: absolute;
   background: transparent;
-  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 0 9999px var(--overlay-bg);
   border-radius: var(--radius-md);
   transition: all var(--duration-normal) var(--ease-out);
 }

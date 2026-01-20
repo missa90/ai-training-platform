@@ -219,15 +219,23 @@
         if (mainContent) mainContent.classList.toggle('main-content--expanded');
 
         // Save state to localStorage
-        const isCollapsed = sidebar.classList.contains('sidebar--collapsed');
-        localStorage.setItem('sidebarCollapsed', isCollapsed);
+        try {
+          const isCollapsed = sidebar.classList.contains('sidebar--collapsed');
+          localStorage.setItem('sidebarCollapsed', isCollapsed);
+        } catch {
+          // localStorage unavailable
+        }
       });
 
       // Restore state from localStorage
-      const savedState = localStorage.getItem('sidebarCollapsed');
-      if (savedState === 'true') {
-        sidebar.classList.add('sidebar--collapsed');
-        if (mainContent) mainContent.classList.add('main-content--expanded');
+      try {
+        const savedState = localStorage.getItem('sidebarCollapsed');
+        if (savedState === 'true') {
+          sidebar.classList.add('sidebar--collapsed');
+          if (mainContent) mainContent.classList.add('main-content--expanded');
+        }
+      } catch {
+        // localStorage unavailable
       }
     }
   }
@@ -482,7 +490,11 @@
 
     function showOnboarding() {
       // Check if user has seen onboarding
-      if (localStorage.getItem('onboardingComplete')) return;
+      try {
+        if (localStorage.getItem('onboardingComplete')) return;
+      } catch {
+        // localStorage unavailable, show onboarding
+      }
       onboarding?.classList.add('active');
       document.body.style.overflow = 'hidden';
     }
@@ -490,7 +502,11 @@
     function hideOnboarding() {
       onboarding?.classList.remove('active');
       document.body.style.overflow = '';
-      localStorage.setItem('onboardingComplete', 'true');
+      try {
+        localStorage.setItem('onboardingComplete', 'true');
+      } catch {
+        // localStorage unavailable
+      }
     }
 
     function goToStep(step) {
@@ -973,15 +989,6 @@
     initLeaderboardAnimation();
     initMetricCardAnimations();
 
-    // Console branding
-    console.log(
-      '%cAI Training Platform',
-      'font-size: 24px; font-weight: bold; color: #6366f1; text-shadow: 2px 2px 0 #8b5cf6;'
-    );
-    console.log(
-      '%cBuilt with modern web standards and smooth animations',
-      'font-size: 12px; color: #a1a1a6;'
-    );
   }
 
   init();
